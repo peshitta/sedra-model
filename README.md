@@ -59,3 +59,88 @@ npm run build
 ```
 
 ## API Reference
+
+* [sedra](#module_sedra)
+    * [.getRoot](#module_sedra.getRoot)
+    * [.getLexeme](#module_sedra.getLexeme)
+    * [.getWord](#module_sedra.getWord)
+    * [.getEnglish](#module_sedra.getEnglish)
+    * [.getEtymology](#module_sedra.getEtymology)
+
+<a name="module_sedra.getRoot"></a>
+
+### sedra.getRoot
+Root records, e.g. 0:2,"AB","ab           |A",0
+Id is the position in the array so it is not stored
+
+**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| root | <code>string</code> | e.g. "AB" |
+| sort | <code>string</code> | e.g. "ab          |A" |
+| attributes | <code>number</code> | 16-bit map |
+
+<a name="module_sedra.getLexeme"></a>
+
+### sedra.getLexeme
+Lexeme records, e.g. 1:2,0:2,"ABA",41960448,16
+Id is the position in the array so it is not stored
+
+**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| rootId | <code>number</code> | Root Address, e.g. 2 |
+| lexeme | <code>string</code> | e.g. "ABA" |
+| morphologicalType | <code>number</code> | 32-bit map |
+| attributes | <code>number</code> | 16-bit map |
+
+<a name="module_sedra.getWord"></a>
+
+### sedra.getWord
+Word records, e.g. 2:8,1:2,"ABHOH;","AaB,oHaOH_;",7405716,129
+Id is the position in the array so it is not stored
+
+**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| lexemeId | <code>number</code> | Lexeme Address, e.g. 2 |
+| word | <code>string</code> | Word, e.g. "ABHOH;" |
+| vocalised | <code>string</code> | Vocalised Word, e.g. "AaB,oHaOH_;" |
+| morphologicalType | <code>number</code> | 32-bit map |
+| attributes | <code>number</code> | 16-bit map |
+
+<a name="module_sedra.getEnglish"></a>
+
+### sedra.getEnglish
+English meaning, e.g. 3:165,1:97,"cause","without","","",0,0
+Id is the position in the array so it is not stored
+
+**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| lexemeId | <code>number</code> | Lexeme address, e.g. 97 |
+| word | <code>string</code> | Meaning, e.g. "cause" |
+| before | <code>string</code> | String before meaning, e.g. "without" (i.e. without cause) |
+| after | <code>number</code> | String after meaning, e.g. "" |
+| comment | <code>number</code> | Comment, e.g. "" |
+| attributes | <code>number</code> | 16-bit map |
+| flag | <code>number</code> | 1 bit flag |
+
+<a name="module_sedra.getEtymology"></a>
+
+### sedra.getEtymology
+Etymology records, e.g. 4:1,1:1,"a\255h\256r",5
+Id is the position in the array so it is not stored
+
+**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| lexemeId | <code>number</code> | Lexeme address, e.g. 1 |
+| word | <code>string</code> | Word Origin, e.g. "a\255h\256r" |
+| attributes | <code>number</code> | 16-bit map |
+
