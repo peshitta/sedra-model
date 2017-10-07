@@ -89,7 +89,7 @@ npm run build
     * [.wordTense](#module_sedra.wordTense) : <code>Array.&lt;string&gt;</code>
     * [.wordForm](#module_sedra.wordForm) : <code>Array.&lt;string&gt;</code>
     * [.getWord](#module_sedra.getWord) ⇒ <code>Word</code>
-    * [.makeWordAttribute](#module_sedra.makeWordAttribute)
+    * [.makeWordAttribute](#module_sedra.makeWordAttribute) ⇒ <code>WordAttribute</code>
     * [.getWordAttribute](#module_sedra.getWordAttribute) ⇒ <code>WordAttribute</code>
     * [.makeWordMorphologicalType](#module_sedra.makeWordMorphologicalType) ⇒ <code>WordMorphologicalType</code>
     * [.getWordMorphologicalType](#module_sedra.getWordMorphologicalType) ⇒ <code>WordMorphologicalType</code>
@@ -366,10 +366,11 @@ Id is the position in the array so it is not stored
 
 <a name="module_sedra.makeWordAttribute"></a>
 
-### sedra.makeWordAttribute
+### sedra.makeWordAttribute ⇒ <code>WordAttribute</code>
 Build Word Attribute object
 
 **Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>WordAttribute</code> - Word Attribute object  
 
 | Param | Type | Description |
 | --- | --- | --- |

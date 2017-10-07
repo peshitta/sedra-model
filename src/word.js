@@ -157,6 +157,7 @@ export const getWord = (
  * @param { number } listing Undocumented
  * @param { * } enclitic true if word has enclitics
  * @param { boolean } lexeme true if current word is lexeme
+ * @returns { WordAttribute } Word Attribute object
  */
 export const makeWordAttribute = (seyame, listing, enclitic, lexeme) =>
   Object.freeze(

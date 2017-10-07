@@ -1,5 +1,4 @@
-import babel from 'rollup-plugin-babel';
-import babelrc from 'babelrc-rollup';
+import buble from 'rollup-plugin-buble';
 import istanbul from 'rollup-plugin-istanbul';
 import uglify from 'rollup-plugin-uglify';
 import pkg from './package.json';
@@ -43,9 +42,9 @@ const name = 'sedraModel';
 const format = 'umd';
 const globals = {};
 const sourcemap = !isProduction;
-const plugins = [babel(babelrc({ path: 'babelrc.json' }))];
+const plugins = [buble()];
 
-// browser-friendly UMD build
+// browser/nodejs-friendly UMD build
 const targets = [
   {
     input,
@@ -80,7 +79,7 @@ if (isProduction) {
     })
   );
 
-  // browser-friendly minified UMD build
+  // browser/nodejs-friendly minified UMD build
   targets.push({
     input,
     output: [{ file: pkg.main݂Min, format }],
