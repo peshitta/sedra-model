@@ -1,4 +1,5 @@
 /** @module sedra */
+import { wordGender, wordNumber, wordForm } from './common';
 
 /**
  * Word Suffix Gender enumeration
@@ -33,30 +34,11 @@ export const wordSuffixNumber = Object.freeze(['SingularOrNone', 'Plural']);
 export const wordSuffixType = Object.freeze(['', 'Suffix', 'Contraction']);
 
 /**
- * Word Gender enumeration
- * @const
- * @type { Array.<string> }
- */
-export const wordGender = Object.freeze([
-  '',
-  'Common',
-  'Masculine',
-  'Feminine'
-]);
-
-/**
  * Word Person enumeration
  * @const
  * @type { Array.<string> }
  */
 export const wordPerson = Object.freeze(['', 'Third', 'Second', 'First']);
-
-/**
- * Word Number enumeration
- * @const
- * @type { Array.<string> }
- */
-export const wordNumber = Object.freeze(['', 'Singular', 'Plural']);
 
 /**
  * Word State enumeration
@@ -84,43 +66,6 @@ export const wordTense = Object.freeze([
   'ActiveParticiple',
   'PassiveParticiple',
   'Participles'
-]);
-
-/**
- * Word Form enumeration
- * @const
- * @type { Array.<string> }
- */
-export const wordForm = Object.freeze([
-  '',
-  'Peal',
-  'Ethpeal',
-  'Pael',
-  'Ethpael',
-  'Aphel',
-  'Ettaphal',
-  'Shaphel',
-  'Eshtaphal',
-  'Saphel',
-  'Estaphal',
-  'Pauel',
-  'Ethpaual',
-  'Paiel',
-  'Ethpaial',
-  'Palpal',
-  'Ethpalpal',
-  'Palpel',
-  'Ethpalpal1',
-  'Pamel',
-  'Ethpamal',
-  'Parel',
-  'Ethparal',
-  'Pali',
-  'Ethpali',
-  'Pahli',
-  'Ethpahli',
-  'Taphel',
-  'Ethaphal'
 ]);
 
 /**
@@ -155,7 +100,7 @@ export const getWord = (
  * Build Word Attribute object
  * @param { boolean } seyame true if word has seyame
  * @param { number } listing Undocumented
- * @param { * } enclitic true if word has enclitics
+ * @param { boolean } enclitic true if word has enclitics
  * @param { boolean } lexeme true if current word is lexeme
  * @returns { WordAttribute } Word Attribute object
  */

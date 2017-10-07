@@ -73,7 +73,6 @@ npm run build
     * [.getLexemeAttribute](#module_sedra.getLexemeAttribute) ⇒ <code>LexemeAttribute</code>
     * [.makeLexemeMorphologicalType](#module_sedra.makeLexemeMorphologicalType) ⇒ <code>LexemeMorphologicalType</code>
     * [.getLexemeMorphologicalType](#module_sedra.getLexemeMorphologicalType) ⇒ <code>LexemeMorphologicalType</code>
-    * [.getEnglish](#module_sedra.getEnglish) ⇒ <code>English</code>
     * [.getEtymology](#module_sedra.getEtymology) ⇒ <code>Etymology</code>
     * [.getRoot](#module_sedra.getRoot) ⇒ <code>Root</code>
     * [.makeRootAttribute](#module_sedra.makeRootAttribute) ⇒ <code>RootAttribute</code>
@@ -82,12 +81,9 @@ npm run build
     * [.wordSuffixPerson](#module_sedra.wordSuffixPerson) : <code>Array.&lt;string&gt;</code>
     * [.wordSuffixNumber](#module_sedra.wordSuffixNumber) : <code>Array.&lt;string&gt;</code>
     * [.wordSuffixType](#module_sedra.wordSuffixType) : <code>Array.&lt;string&gt;</code>
-    * [.wordGender](#module_sedra.wordGender) : <code>Array.&lt;string&gt;</code>
     * [.wordPerson](#module_sedra.wordPerson) : <code>Array.&lt;string&gt;</code>
-    * [.wordNumber](#module_sedra.wordNumber) : <code>Array.&lt;string&gt;</code>
     * [.wordState](#module_sedra.wordState) : <code>Array.&lt;string&gt;</code>
     * [.wordTense](#module_sedra.wordTense) : <code>Array.&lt;string&gt;</code>
-    * [.wordForm](#module_sedra.wordForm) : <code>Array.&lt;string&gt;</code>
     * [.getWord](#module_sedra.getWord) ⇒ <code>Word</code>
     * [.makeWordAttribute](#module_sedra.makeWordAttribute) ⇒ <code>WordAttribute</code>
     * [.getWordAttribute](#module_sedra.getWordAttribute) ⇒ <code>WordAttribute</code>
@@ -213,25 +209,6 @@ Get Lexeme Morphological Type object from lexeme bit map
 | --- | --- | --- |
 | attributes | <code>number</code> | Morphological Type 32-bit map |
 
-<a name="module_sedra.getEnglish"></a>
-
-### sedra.getEnglish ⇒ <code>English</code>
-English meaning, e.g. 3:165,1:97,"cause","without","","",0,0
-Id is the position in the array so it is not stored
-
-**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
-**Returns**: <code>English</code> - Sedra English row  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| lexemeId | <code>number</code> | Lexeme address, e.g. 97 |
-| word | <code>string</code> | Meaning, e.g. "cause" |
-| before | <code>string</code> | String before meaning, e.g. "without" (i.e. without cause) |
-| after | <code>number</code> | String after meaning, e.g. "" |
-| comment | <code>number</code> | Comment, e.g. "" |
-| attributes | <code>number</code> | 16-bit map |
-| flag | <code>number</code> | 1 bit flag |
-
 <a name="module_sedra.getEtymology"></a>
 
 ### sedra.getEtymology ⇒ <code>Etymology</code>
@@ -311,22 +288,10 @@ Word Suffix Number enumeration
 Word Suffix Type enumeration
 
 **Kind**: static constant of [<code>sedra</code>](#module_sedra)  
-<a name="module_sedra.wordGender"></a>
-
-### sedra.wordGender : <code>Array.&lt;string&gt;</code>
-Word Gender enumeration
-
-**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
 <a name="module_sedra.wordPerson"></a>
 
 ### sedra.wordPerson : <code>Array.&lt;string&gt;</code>
 Word Person enumeration
-
-**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
-<a name="module_sedra.wordNumber"></a>
-
-### sedra.wordNumber : <code>Array.&lt;string&gt;</code>
-Word Number enumeration
 
 **Kind**: static constant of [<code>sedra</code>](#module_sedra)  
 <a name="module_sedra.wordState"></a>
@@ -339,12 +304,6 @@ Word State enumeration
 
 ### sedra.wordTense : <code>Array.&lt;string&gt;</code>
 Word Tense enumeration
-
-**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
-<a name="module_sedra.wordForm"></a>
-
-### sedra.wordForm : <code>Array.&lt;string&gt;</code>
-Word Form enumeration
 
 **Kind**: static constant of [<code>sedra</code>](#module_sedra)  
 <a name="module_sedra.getWord"></a>
@@ -376,7 +335,7 @@ Build Word Attribute object
 | --- | --- | --- |
 | seyame | <code>boolean</code> | true if word has seyame |
 | listing | <code>number</code> | Undocumented |
-| enclitic | <code>\*</code> | true if word has enclitics |
+| enclitic | <code>boolean</code> | true if word has enclitics |
 | lexeme | <code>boolean</code> | true if current word is lexeme |
 
 <a name="module_sedra.getWordAttribute"></a>
