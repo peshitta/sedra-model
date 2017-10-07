@@ -1,8 +1,8 @@
-/** @module sedra */
 import { wordType as wt, vowel as v } from './common';
 
 /**
  * Lexeme Grammatical Category enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -25,6 +25,7 @@ export const lexemeGrammaticalCategory = Object.freeze([
 
 /**
  * Lexeme First Suffix enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -46,6 +47,7 @@ export const lexemeFirstSuffix = Object.freeze([
 
 /**
  * Second Second Suffix enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -53,6 +55,7 @@ export const lexemeSecondSuffix = Object.freeze(['', 'oTo)', 'iTto)']);
 
 /**
  * Lexeme Third Suffix enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -60,6 +63,7 @@ export const lexemeThirdSuffix = Object.freeze(['', 'wuto)', 'o)iTt']);
 
 /**
  * Lexeme Prefix enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -72,6 +76,7 @@ export const lexemePrefix = Object.freeze([
 
 /**
  * Lexeme Radical Type enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -87,6 +92,7 @@ export const lexemeRadicalType = Object.freeze([
 
 /**
  * Lexeme Form enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -111,6 +117,7 @@ export const lexemeForm = Object.freeze([
  * Lexeme records, e.g. 1:2,0:2,"ABA",41960448,16
  * Id is the position in the array so it is not stored
  *
+ * @static
  * @param { number } rootId Root Address, e.g. 2
  * @param { string } lexeme e.g. "ABA"
  * @param { number } morphologicalType 32-bit map
@@ -129,6 +136,7 @@ export const getLexeme = (rootId, lexeme, morphologicalType, attributes) =>
 
 /**
  * Build Lexeme Attribute object
+ * @static
  * @param { boolean } seyame true if root has seyame
  * @param { string } wordType word type enumeration
  * @param { string } grammaticalCategory grammatical category enumeration
@@ -152,6 +160,7 @@ export const makeLexemeAttribute = (
 
 /**
  * Get Lexeme Attribute object from lexeme attribute bit map
+ * @static
  * @param { number } attributes 16-bit map
  * @returns { LexemeAttribute } Lexeme Attribute object
  */
@@ -168,6 +177,7 @@ export const getLexemeAttribute = attributes =>
 
 /**
  * Build Lexeme Morphological Type object
+ * @static
  * @param { string } firstSuffix First suffix enumeration
  * @param { string } secondSuffix Second suffix enumeration
  * @param { string } thirdSuffix Third suffix enumeration
@@ -212,6 +222,7 @@ export const makeLexemeMorphologicalType = (
 
 /**
  * Get Lexeme Morphological Type object from lexeme bit map
+ * @static
  * @param { number } attributes Morphological Type 32-bit map
  * @returns { LexemeMorphologicalType } Lexeme Morphological Type object
  */

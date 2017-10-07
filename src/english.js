@@ -2,6 +2,7 @@ import { wordNumber, wordGender, wordForm } from './common';
 
 /**
  * Text position enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -9,6 +10,7 @@ export const textPosition = Object.freeze(['Before Meaning', 'After Meaning']);
 
 /**
  * Font type enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -17,6 +19,7 @@ export const fontType = Object.freeze(['Normal', 'Italic']);
 /**
  * Verb type enumeration
  * @const
+ * @static
  * @type { Array.<string> }
  */
 export const verbType = Object.freeze(['None', 'Transitive', 'Intransitive']);
@@ -25,6 +28,7 @@ export const verbType = Object.freeze(['None', 'Transitive', 'Intransitive']);
  * English meaning, e.g. 3:165,1:97,"cause","without","","",0,0
  * Id is the position in the database array so it is not stored
  *
+ * @static
  * @param { number } lexemeId Lexeme address, e.g. 97
  * @param { string } word Meaning, e.g. "cause"
  * @param { string } before String before meaning, e.g. "without" (i.e. without cause)
@@ -57,6 +61,7 @@ export const getEnglish = (
 
 /**
  * Build English Attribute object
+ * @static
  * @param { string } commentPosition Comment before or after word meaning
  * @param { string } commentFont Normal or Italic
  * @param { string } stringBeforeFont Normal or Italic string before text font
@@ -92,6 +97,7 @@ export const makeEnglishAttribute = (
 
 /**
 * Get English Attribute object from english attribute bit map
+* @static
 * @param { number } attributes 16-bit map
 * @returns { EnglishAttribute } English Attribute object
 */

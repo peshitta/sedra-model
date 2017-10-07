@@ -6,7 +6,8 @@ import pkg from './package.json';
 const isProduction = process.env.BUILD === 'production';
 const isDev = process.env.BUILD === 'dev';
 const banner = isProduction
-  ? '/**\n' +
+  ? '/** @module sedra */\n' +
+    '/**\n' +
     '* @file Sedra models and related utility functions\n' +
     '* @version 1.0.0\n' +
     '* @author Greg Borota\n' +

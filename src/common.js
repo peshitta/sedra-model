@@ -1,5 +1,6 @@
 /**
  * Word Type enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -12,6 +13,7 @@ export const wordType = Object.freeze([
 
 /**
  * Vowel enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -19,6 +21,7 @@ export const vowel = Object.freeze(['', 'a', 'o', 'e', 'i', 'u']);
 
 /**
  * Word Number enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -26,6 +29,7 @@ export const wordNumber = Object.freeze(['', 'Singular', 'Plural']);
 
 /**
  * Word Gender enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -38,6 +42,7 @@ export const wordGender = Object.freeze([
 
 /**
  * Word Form enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */

@@ -1,8 +1,8 @@
-/** @module sedra */
 import { wordGender, wordNumber, wordForm } from './common';
 
 /**
  * Word Suffix Gender enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -14,6 +14,7 @@ export const wordSuffixGender = Object.freeze([
 
 /**
  * Word Suffix Person enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -21,6 +22,7 @@ export const wordSuffixPerson = Object.freeze(['', 'Third', 'Second', 'First']);
 
 /**
  * Word Suffix Number enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -28,6 +30,7 @@ export const wordSuffixNumber = Object.freeze(['SingularOrNone', 'Plural']);
 
 /**
  * Word Suffix Type enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -35,6 +38,7 @@ export const wordSuffixType = Object.freeze(['', 'Suffix', 'Contraction']);
 
 /**
  * Word Person enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -42,6 +46,7 @@ export const wordPerson = Object.freeze(['', 'Third', 'Second', 'First']);
 
 /**
  * Word State enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -54,6 +59,7 @@ export const wordState = Object.freeze([
 
 /**
  * Word Tense enumeration
+ * @static
  * @const
  * @type { Array.<string> }
  */
@@ -72,6 +78,7 @@ export const wordTense = Object.freeze([
  * Word records, e.g. 2:8,1:2,"ABHOH;","AaB,oHaOH_;",7405716,129
  * Id is the position in the array so it is not stored
  *
+ * @static
  * @param { number } lexemeId Lexeme Address, e.g. 2
  * @param { string } word Word, e.g. "ABHOH;"
  * @param { string } vocalised Vocalised Word, e.g. "AaB,oHaOH_;"
@@ -98,6 +105,7 @@ export const getWord = (
 
 /**
  * Build Word Attribute object
+ * @static
  * @param { boolean } seyame true if word has seyame
  * @param { number } listing Undocumented
  * @param { boolean } enclitic true if word has enclitics
@@ -116,6 +124,7 @@ export const makeWordAttribute = (seyame, listing, enclitic, lexeme) =>
 
 /**
  * Get Word Attribute object from word attribute bit map
+ * @static
  * @param { number } attributes 16-bit map
  * @returns { WordAttribute } Word Attribute object
  */
@@ -129,6 +138,7 @@ export const getWordAttribute = attributes =>
 
 /**
  * Build Word Morphological Type object
+ * @static
  * @param { string } suffixGender Word Suffix Gender enumeration
  * @param { string } suffixPerson Word Suffix Person enumeration
  * @param { string } suffixNumber Word Suffix Number enumeration
@@ -173,6 +183,7 @@ export const makeWordMorphologicalType = (
 
 /**
  * Get Word Morphological Type object from word bit map
+ * @static
  * @param { number } attributes Morphological Type 32-bit map
  * @returns { WordMorphologicalType } Word Morphological Type object
  */

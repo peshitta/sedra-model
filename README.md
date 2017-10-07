@@ -61,6 +61,11 @@ npm run build
 ## API Reference
 
 * [sedra](#module_sedra)
+    * [.wordType](#module_sedra.wordType) : <code>Array.&lt;string&gt;</code>
+    * [.vowel](#module_sedra.vowel) : <code>Array.&lt;string&gt;</code>
+    * [.wordNumber](#module_sedra.wordNumber) : <code>Array.&lt;string&gt;</code>
+    * [.wordGender](#module_sedra.wordGender) : <code>Array.&lt;string&gt;</code>
+    * [.wordForm](#module_sedra.wordForm) : <code>Array.&lt;string&gt;</code>
     * [.lexemeGrammaticalCategory](#module_sedra.lexemeGrammaticalCategory) : <code>Array.&lt;string&gt;</code>
     * [.lexemeFirstSuffix](#module_sedra.lexemeFirstSuffix) : <code>Array.&lt;string&gt;</code>
     * [.lexemeSecondSuffix](#module_sedra.lexemeSecondSuffix) : <code>Array.&lt;string&gt;</code>
@@ -68,15 +73,6 @@ npm run build
     * [.lexemePrefix](#module_sedra.lexemePrefix) : <code>Array.&lt;string&gt;</code>
     * [.lexemeRadicalType](#module_sedra.lexemeRadicalType) : <code>Array.&lt;string&gt;</code>
     * [.lexemeForm](#module_sedra.lexemeForm) : <code>Array.&lt;string&gt;</code>
-    * [.getLexeme](#module_sedra.getLexeme) ⇒ <code>Lexeme</code>
-    * [.makeLexemeAttribute](#module_sedra.makeLexemeAttribute) ⇒ <code>LexemeAttribute</code>
-    * [.getLexemeAttribute](#module_sedra.getLexemeAttribute) ⇒ <code>LexemeAttribute</code>
-    * [.makeLexemeMorphologicalType](#module_sedra.makeLexemeMorphologicalType) ⇒ <code>LexemeMorphologicalType</code>
-    * [.getLexemeMorphologicalType](#module_sedra.getLexemeMorphologicalType) ⇒ <code>LexemeMorphologicalType</code>
-    * [.getEtymology](#module_sedra.getEtymology) ⇒ <code>Etymology</code>
-    * [.getRoot](#module_sedra.getRoot) ⇒ <code>Root</code>
-    * [.makeRootAttribute](#module_sedra.makeRootAttribute) ⇒ <code>RootAttribute</code>
-    * [.getRootAttribute](#module_sedra.getRootAttribute) ⇒ <code>RootAttribute</code>
     * [.wordSuffixGender](#module_sedra.wordSuffixGender) : <code>Array.&lt;string&gt;</code>
     * [.wordSuffixPerson](#module_sedra.wordSuffixPerson) : <code>Array.&lt;string&gt;</code>
     * [.wordSuffixNumber](#module_sedra.wordSuffixNumber) : <code>Array.&lt;string&gt;</code>
@@ -84,12 +80,60 @@ npm run build
     * [.wordPerson](#module_sedra.wordPerson) : <code>Array.&lt;string&gt;</code>
     * [.wordState](#module_sedra.wordState) : <code>Array.&lt;string&gt;</code>
     * [.wordTense](#module_sedra.wordTense) : <code>Array.&lt;string&gt;</code>
-    * [.getWord](#module_sedra.getWord) ⇒ <code>Word</code>
-    * [.makeWordAttribute](#module_sedra.makeWordAttribute) ⇒ <code>WordAttribute</code>
-    * [.getWordAttribute](#module_sedra.getWordAttribute) ⇒ <code>WordAttribute</code>
-    * [.makeWordMorphologicalType](#module_sedra.makeWordMorphologicalType) ⇒ <code>WordMorphologicalType</code>
-    * [.getWordMorphologicalType](#module_sedra.getWordMorphologicalType) ⇒ <code>WordMorphologicalType</code>
+    * [.textPosition](#module_sedra.textPosition) : <code>Array.&lt;string&gt;</code>
+    * [.fontType](#module_sedra.fontType) : <code>Array.&lt;string&gt;</code>
+    * [.verbType](#module_sedra.verbType) : <code>Array.&lt;string&gt;</code>
+    * [.etymologyLanguage](#module_sedra.etymologyLanguage) : <code>Array.&lt;string&gt;</code>
+    * [.getRoot(root, sort, attributes)](#module_sedra.getRoot) ⇒ <code>Root</code>
+    * [.makeRootAttribute(seyame, rootType)](#module_sedra.makeRootAttribute) ⇒ <code>RootAttribute</code>
+    * [.getRootAttribute(attributes)](#module_sedra.getRootAttribute) ⇒ <code>RootAttribute</code>
+    * [.getLexeme(rootId, lexeme, morphologicalType, attributes)](#module_sedra.getLexeme) ⇒ <code>Lexeme</code>
+    * [.makeLexemeAttribute(seyame, wordType, grammaticalCategory, listing)](#module_sedra.makeLexemeAttribute) ⇒ <code>LexemeAttribute</code>
+    * [.getLexemeAttribute(attributes)](#module_sedra.getLexemeAttribute) ⇒ <code>LexemeAttribute</code>
+    * [.makeLexemeMorphologicalType(firstSuffix, secondSuffix, thirdSuffix, prefix, firstVowel, secondVowel, thirdVowel, fourthVowel, vowelCount, radicalType, form)](#module_sedra.makeLexemeMorphologicalType) ⇒ <code>LexemeMorphologicalType</code>
+    * [.getLexemeMorphologicalType(attributes)](#module_sedra.getLexemeMorphologicalType) ⇒ <code>LexemeMorphologicalType</code>
+    * [.getWord(lexemeId, word, vocalised, morphologicalType, attributes)](#module_sedra.getWord) ⇒ <code>Word</code>
+    * [.makeWordAttribute(seyame, listing, enclitic, lexeme)](#module_sedra.makeWordAttribute) ⇒ <code>WordAttribute</code>
+    * [.getWordAttribute(attributes)](#module_sedra.getWordAttribute) ⇒ <code>WordAttribute</code>
+    * [.makeWordMorphologicalType(suffixGender, suffixPerson, suffixNumber, suffixType, prefixCode, gender, person, number, state, tense, form)](#module_sedra.makeWordMorphologicalType) ⇒ <code>WordMorphologicalType</code>
+    * [.getWordMorphologicalType(attributes)](#module_sedra.getWordMorphologicalType) ⇒ <code>WordMorphologicalType</code>
+    * [.getEnglish(lexemeId, word, before, after, comment, attributes, flag)](#module_sedra.getEnglish) ⇒ <code>English</code>
+    * [.makeEnglishAttribute(commentPosition, commentFont, stringBeforeFont, stringAfterFont, verb, number, gender, form)](#module_sedra.makeEnglishAttribute) ⇒ <code>EnglishAttribute</code>
+    * [.getEnglishAttribute(attributes)](#module_sedra.getEnglishAttribute) ⇒ <code>EnglishAttribute</code>
+    * [.getEtymology(lexemeId, word, attributes)](#module_sedra.getEtymology) ⇒ <code>Etymology</code>
+    * [.makeEtymologyAttribute(language, type)](#module_sedra.makeEtymologyAttribute) ⇒ <code>EtymologyAttribute</code>
+    * [.getEtymologyAttribute(attributes)](#module_sedra.getEtymologyAttribute) ⇒ <code>EtymologyAttribute</code>
 
+<a name="module_sedra.wordType"></a>
+
+### sedra.wordType : <code>Array.&lt;string&gt;</code>
+Word Type enumeration
+
+**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+<a name="module_sedra.vowel"></a>
+
+### sedra.vowel : <code>Array.&lt;string&gt;</code>
+Vowel enumeration
+
+**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+<a name="module_sedra.wordNumber"></a>
+
+### sedra.wordNumber : <code>Array.&lt;string&gt;</code>
+Word Number enumeration
+
+**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+<a name="module_sedra.wordGender"></a>
+
+### sedra.wordGender : <code>Array.&lt;string&gt;</code>
+Word Gender enumeration
+
+**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+<a name="module_sedra.wordForm"></a>
+
+### sedra.wordForm : <code>Array.&lt;string&gt;</code>
+Word Form enumeration
+
+**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
 <a name="module_sedra.lexemeGrammaticalCategory"></a>
 
 ### sedra.lexemeGrammaticalCategory : <code>Array.&lt;string&gt;</code>
@@ -132,138 +176,6 @@ Lexeme Radical Type enumeration
 Lexeme Form enumeration
 
 **Kind**: static constant of [<code>sedra</code>](#module_sedra)  
-<a name="module_sedra.getLexeme"></a>
-
-### sedra.getLexeme ⇒ <code>Lexeme</code>
-Lexeme records, e.g. 1:2,0:2,"ABA",41960448,16
-Id is the position in the array so it is not stored
-
-**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
-**Returns**: <code>Lexeme</code> - Sedra Lexeme row  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| rootId | <code>number</code> | Root Address, e.g. 2 |
-| lexeme | <code>string</code> | e.g. "ABA" |
-| morphologicalType | <code>number</code> | 32-bit map |
-| attributes | <code>number</code> | 16-bit map |
-
-<a name="module_sedra.makeLexemeAttribute"></a>
-
-### sedra.makeLexemeAttribute ⇒ <code>LexemeAttribute</code>
-Build Lexeme Attribute object
-
-**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
-**Returns**: <code>LexemeAttribute</code> - Lexeme Attribute object  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| seyame | <code>boolean</code> | true if root has seyame |
-| wordType | <code>string</code> | word type enumeration |
-| grammaticalCategory | <code>string</code> | grammatical category enumeration |
-| listing | <code>boolean</code> | not clear yet what this is used for |
-
-<a name="module_sedra.getLexemeAttribute"></a>
-
-### sedra.getLexemeAttribute ⇒ <code>LexemeAttribute</code>
-Get Lexeme Attribute object from lexeme attribute bit map
-
-**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
-**Returns**: <code>LexemeAttribute</code> - Lexeme Attribute object  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| attributes | <code>number</code> | 16-bit map |
-
-<a name="module_sedra.makeLexemeMorphologicalType"></a>
-
-### sedra.makeLexemeMorphologicalType ⇒ <code>LexemeMorphologicalType</code>
-Build Lexeme Morphological Type object
-
-**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
-**Returns**: <code>LexemeMorphologicalType</code> - Lexeme Morphological Type object  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| firstSuffix | <code>string</code> | First suffix enumeration |
-| secondSuffix | <code>string</code> | Second suffix enumeration |
-| thirdSuffix | <code>string</code> | Third suffix enumeration |
-| prefix | <code>string</code> | M, T, ? enumeration |
-| firstVowel | <code>string</code> | First Vowel |
-| secondVowel | <code>string</code> | Second Vowel |
-| thirdVowel | <code>string</code> | Third Vowel |
-| fourthVowel | <code>string</code> | Forth Vowel |
-| vowelCount | <code>number</code> | Total no of vowels in lexeme |
-| radicalType | <code>string</code> | Radical type enumeration |
-| form | <code>string</code> | Word form enumeration |
-
-<a name="module_sedra.getLexemeMorphologicalType"></a>
-
-### sedra.getLexemeMorphologicalType ⇒ <code>LexemeMorphologicalType</code>
-Get Lexeme Morphological Type object from lexeme bit map
-
-**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
-**Returns**: <code>LexemeMorphologicalType</code> - Lexeme Morphological Type object  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| attributes | <code>number</code> | Morphological Type 32-bit map |
-
-<a name="module_sedra.getEtymology"></a>
-
-### sedra.getEtymology ⇒ <code>Etymology</code>
-Etymology records, e.g. 4:1,1:1,"a\255h\256r",5
-Id is the position in the array so it is not stored
-
-**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
-**Returns**: <code>Etymology</code> - Sedra Etymology row  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| lexemeId | <code>number</code> | Lexeme address, e.g. 1 |
-| word | <code>string</code> | Word Origin, e.g. "a\255h\256r" |
-| attributes | <code>number</code> | 16-bit map |
-
-<a name="module_sedra.getRoot"></a>
-
-### sedra.getRoot ⇒ <code>Root</code>
-Root records, e.g. 0:2,"AB","ab           |A",0
-Id is the position in the containing array so it is not stored
-
-**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
-**Returns**: <code>Root</code> - Sedra Root row  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| root | <code>string</code> | e.g. "AB" |
-| sort | <code>string</code> | e.g. "ab          |A" |
-| attributes | <code>number</code> | 16-bit map |
-
-<a name="module_sedra.makeRootAttribute"></a>
-
-### sedra.makeRootAttribute ⇒ <code>RootAttribute</code>
-Build Root Attribute object
-
-**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
-**Returns**: <code>RootAttribute</code> - Root Attribute object  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| seyame | <code>boolean</code> | true if root has seyame |
-| rootType | <code>string</code> | word type enumeration |
-
-<a name="module_sedra.getRootAttribute"></a>
-
-### sedra.getRootAttribute ⇒ <code>RootAttribute</code>
-Get Root Attribute object from root attribute bit map
-
-**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
-**Returns**: <code>RootAttribute</code> - Root Attribute object  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| attributes | <code>number</code> | 16-bit map |
-
 <a name="module_sedra.wordSuffixGender"></a>
 
 ### sedra.wordSuffixGender : <code>Array.&lt;string&gt;</code>
@@ -306,13 +218,154 @@ Word State enumeration
 Word Tense enumeration
 
 **Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+<a name="module_sedra.textPosition"></a>
+
+### sedra.textPosition : <code>Array.&lt;string&gt;</code>
+Text position enumeration
+
+**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+<a name="module_sedra.fontType"></a>
+
+### sedra.fontType : <code>Array.&lt;string&gt;</code>
+Font type enumeration
+
+**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+<a name="module_sedra.verbType"></a>
+
+### sedra.verbType : <code>Array.&lt;string&gt;</code>
+Verb type enumeration
+
+**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+<a name="module_sedra.etymologyLanguage"></a>
+
+### sedra.etymologyLanguage : <code>Array.&lt;string&gt;</code>
+Etymology Language enumeration
+
+**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+<a name="module_sedra.getRoot"></a>
+
+### sedra.getRoot(root, sort, attributes) ⇒ <code>Root</code>
+Root records, e.g. 0:2,"AB","ab           |A",0
+Id is the position in the containing array so it is not stored
+
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>Root</code> - Sedra Root row  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| root | <code>string</code> | e.g. "AB" |
+| sort | <code>string</code> | e.g. "ab          |A" |
+| attributes | <code>number</code> | 16-bit map |
+
+<a name="module_sedra.makeRootAttribute"></a>
+
+### sedra.makeRootAttribute(seyame, rootType) ⇒ <code>RootAttribute</code>
+Build Root Attribute object
+
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>RootAttribute</code> - Root Attribute object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| seyame | <code>boolean</code> | true if root has seyame |
+| rootType | <code>string</code> | word type enumeration |
+
+<a name="module_sedra.getRootAttribute"></a>
+
+### sedra.getRootAttribute(attributes) ⇒ <code>RootAttribute</code>
+Get Root Attribute object from root attribute bit map
+
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>RootAttribute</code> - Root Attribute object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| attributes | <code>number</code> | 16-bit map |
+
+<a name="module_sedra.getLexeme"></a>
+
+### sedra.getLexeme(rootId, lexeme, morphologicalType, attributes) ⇒ <code>Lexeme</code>
+Lexeme records, e.g. 1:2,0:2,"ABA",41960448,16
+Id is the position in the array so it is not stored
+
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>Lexeme</code> - Sedra Lexeme row  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| rootId | <code>number</code> | Root Address, e.g. 2 |
+| lexeme | <code>string</code> | e.g. "ABA" |
+| morphologicalType | <code>number</code> | 32-bit map |
+| attributes | <code>number</code> | 16-bit map |
+
+<a name="module_sedra.makeLexemeAttribute"></a>
+
+### sedra.makeLexemeAttribute(seyame, wordType, grammaticalCategory, listing) ⇒ <code>LexemeAttribute</code>
+Build Lexeme Attribute object
+
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>LexemeAttribute</code> - Lexeme Attribute object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| seyame | <code>boolean</code> | true if root has seyame |
+| wordType | <code>string</code> | word type enumeration |
+| grammaticalCategory | <code>string</code> | grammatical category enumeration |
+| listing | <code>boolean</code> | not clear yet what this is used for |
+
+<a name="module_sedra.getLexemeAttribute"></a>
+
+### sedra.getLexemeAttribute(attributes) ⇒ <code>LexemeAttribute</code>
+Get Lexeme Attribute object from lexeme attribute bit map
+
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>LexemeAttribute</code> - Lexeme Attribute object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| attributes | <code>number</code> | 16-bit map |
+
+<a name="module_sedra.makeLexemeMorphologicalType"></a>
+
+### sedra.makeLexemeMorphologicalType(firstSuffix, secondSuffix, thirdSuffix, prefix, firstVowel, secondVowel, thirdVowel, fourthVowel, vowelCount, radicalType, form) ⇒ <code>LexemeMorphologicalType</code>
+Build Lexeme Morphological Type object
+
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>LexemeMorphologicalType</code> - Lexeme Morphological Type object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| firstSuffix | <code>string</code> | First suffix enumeration |
+| secondSuffix | <code>string</code> | Second suffix enumeration |
+| thirdSuffix | <code>string</code> | Third suffix enumeration |
+| prefix | <code>string</code> | M, T, ? enumeration |
+| firstVowel | <code>string</code> | First Vowel |
+| secondVowel | <code>string</code> | Second Vowel |
+| thirdVowel | <code>string</code> | Third Vowel |
+| fourthVowel | <code>string</code> | Forth Vowel |
+| vowelCount | <code>number</code> | Total no of vowels in lexeme |
+| radicalType | <code>string</code> | Radical type enumeration |
+| form | <code>string</code> | Word form enumeration |
+
+<a name="module_sedra.getLexemeMorphologicalType"></a>
+
+### sedra.getLexemeMorphologicalType(attributes) ⇒ <code>LexemeMorphologicalType</code>
+Get Lexeme Morphological Type object from lexeme bit map
+
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>LexemeMorphologicalType</code> - Lexeme Morphological Type object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| attributes | <code>number</code> | Morphological Type 32-bit map |
+
 <a name="module_sedra.getWord"></a>
 
-### sedra.getWord ⇒ <code>Word</code>
+### sedra.getWord(lexemeId, word, vocalised, morphologicalType, attributes) ⇒ <code>Word</code>
 Word records, e.g. 2:8,1:2,"ABHOH;","AaB,oHaOH_;",7405716,129
 Id is the position in the array so it is not stored
 
-**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
 **Returns**: <code>Word</code> - Sedra Word row  
 
 | Param | Type | Description |
@@ -325,10 +378,10 @@ Id is the position in the array so it is not stored
 
 <a name="module_sedra.makeWordAttribute"></a>
 
-### sedra.makeWordAttribute ⇒ <code>WordAttribute</code>
+### sedra.makeWordAttribute(seyame, listing, enclitic, lexeme) ⇒ <code>WordAttribute</code>
 Build Word Attribute object
 
-**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
 **Returns**: <code>WordAttribute</code> - Word Attribute object  
 
 | Param | Type | Description |
@@ -340,10 +393,10 @@ Build Word Attribute object
 
 <a name="module_sedra.getWordAttribute"></a>
 
-### sedra.getWordAttribute ⇒ <code>WordAttribute</code>
+### sedra.getWordAttribute(attributes) ⇒ <code>WordAttribute</code>
 Get Word Attribute object from word attribute bit map
 
-**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
 **Returns**: <code>WordAttribute</code> - Word Attribute object  
 
 | Param | Type | Description |
@@ -352,10 +405,10 @@ Get Word Attribute object from word attribute bit map
 
 <a name="module_sedra.makeWordMorphologicalType"></a>
 
-### sedra.makeWordMorphologicalType ⇒ <code>WordMorphologicalType</code>
+### sedra.makeWordMorphologicalType(suffixGender, suffixPerson, suffixNumber, suffixType, prefixCode, gender, person, number, state, tense, form) ⇒ <code>WordMorphologicalType</code>
 Build Word Morphological Type object
 
-**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
 **Returns**: <code>WordMorphologicalType</code> - Word Morphological Type object  
 
 | Param | Type | Description |
@@ -374,13 +427,103 @@ Build Word Morphological Type object
 
 <a name="module_sedra.getWordMorphologicalType"></a>
 
-### sedra.getWordMorphologicalType ⇒ <code>WordMorphologicalType</code>
+### sedra.getWordMorphologicalType(attributes) ⇒ <code>WordMorphologicalType</code>
 Get Word Morphological Type object from word bit map
 
-**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
 **Returns**: <code>WordMorphologicalType</code> - Word Morphological Type object  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | attributes | <code>number</code> | Morphological Type 32-bit map |
+
+<a name="module_sedra.getEnglish"></a>
+
+### sedra.getEnglish(lexemeId, word, before, after, comment, attributes, flag) ⇒ <code>English</code>
+English meaning, e.g. 3:165,1:97,"cause","without","","",0,0
+Id is the position in the database array so it is not stored
+
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>English</code> - Sedra English row  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| lexemeId | <code>number</code> | Lexeme address, e.g. 97 |
+| word | <code>string</code> | Meaning, e.g. "cause" |
+| before | <code>string</code> | String before meaning, e.g. "without" (i.e. without cause) |
+| after | <code>number</code> | String after meaning, e.g. "" |
+| comment | <code>number</code> | Comment, e.g. "" |
+| attributes | <code>number</code> | 16-bit map |
+| flag | <code>number</code> | 1 bit flag |
+
+<a name="module_sedra.makeEnglishAttribute"></a>
+
+### sedra.makeEnglishAttribute(commentPosition, commentFont, stringBeforeFont, stringAfterFont, verb, number, gender, form) ⇒ <code>EnglishAttribute</code>
+Build English Attribute object
+
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>EnglishAttribute</code> - English Attribute object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| commentPosition | <code>string</code> | Comment before or after word meaning |
+| commentFont | <code>string</code> | Normal or Italic |
+| stringBeforeFont | <code>string</code> | Normal or Italic string before text font |
+| stringAfterFont | <code>string</code> | Normal or Italic string after text font |
+| verb | <code>string</code> | None, Transitive or Intransitive |
+| number | <code>string</code> | Word Number enumeration |
+| gender | <code>string</code> | Word Gender enumeration |
+| form | <code>string</code> | Word Form enumeration |
+
+<a name="module_sedra.getEnglishAttribute"></a>
+
+### sedra.getEnglishAttribute(attributes) ⇒ <code>EnglishAttribute</code>
+Get English Attribute object from english attribute bit map
+
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>EnglishAttribute</code> - English Attribute object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| attributes | <code>number</code> | 16-bit map |
+
+<a name="module_sedra.getEtymology"></a>
+
+### sedra.getEtymology(lexemeId, word, attributes) ⇒ <code>Etymology</code>
+Etymology records, e.g. 4:1,1:1,"a\255h\256r",5
+Id is the position in the array so it is not stored
+
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>Etymology</code> - Sedra Etymology row  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| lexemeId | <code>number</code> | Lexeme address, e.g. 1 |
+| word | <code>string</code> | Word Origin, e.g. "a\255h\256r" |
+| attributes | <code>number</code> | 16-bit map |
+
+<a name="module_sedra.makeEtymologyAttribute"></a>
+
+### sedra.makeEtymologyAttribute(language, type) ⇒ <code>EtymologyAttribute</code>
+Build Etymology Attribute object
+
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>EtymologyAttribute</code> - Etymology Attribute object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| language | <code>string</code> | true if root has seyame |
+| type | <code>string</code> | word type enumeration |
+
+<a name="module_sedra.getEtymologyAttribute"></a>
+
+### sedra.getEtymologyAttribute(attributes) ⇒ <code>EtymologyAttribute</code>
+Get Etymology Attribute object from etymology attribute bit map
+
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>EtymologyAttribute</code> - Etymology Attribute object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| attributes | <code>number</code> | 16-bit map |
 

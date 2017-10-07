@@ -1,10 +1,10 @@
-/** @module sedra */
 import { wordType } from './common';
 
 /**
  * Root records, e.g. 0:2,"AB","ab           |A",0
  * Id is the position in the containing array so it is not stored
  *
+ * @static
  * @param { string } root e.g. "AB"
  * @param { string } sort e.g. "ab          |A"
  * @param { number } attributes 16-bit map
@@ -21,6 +21,7 @@ export const getRoot = (root, sort, attributes) =>
 
 /**
  * Build Root Attribute object
+ * @static
  * @param { boolean } seyame true if root has seyame
  * @param { string } rootType word type enumeration
  * @returns { RootAttribute } Root Attribute object
@@ -35,6 +36,7 @@ export const makeRootAttribute = (seyame, rootType) =>
 
 /**
  * Get Root Attribute object from root attribute bit map
+ * @static
  * @param { number } attributes 16-bit map
  * @returns { RootAttribute } Root Attribute object
  */
