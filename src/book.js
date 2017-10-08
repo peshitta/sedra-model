@@ -12,7 +12,7 @@ const bookPrototype = Object.freeze(
       }
     },
     /**
-     * Get book abbreviated English name
+     * Get book first abbreviated English name
      * @alias module:sedra.Book#englishShortName
      * @returns { string } English abbreviated name
      */
@@ -30,9 +30,9 @@ const bookPrototype = Object.freeze(
  * @static
  * @param { number } id Book Id
  * @param { number } peshittaId Book Eastern Peshitta Id
- * @param { number } name Book Aramaic name
- * @param { number } vocalised Book vocalised Aramaic name
- * @param { number } english Book English name
+ * @param { string } name Book Aramaic name
+ * @param { string } vocalised Book vocalised Aramaic name
+ * @param { Array.<string> } english Book English names: full name followed by abbreviations
  * @return { Book } Book object
  */
 export const makeBook = (id, peshittaId, name, vocalised, english) =>
@@ -350,8 +350,16 @@ export const makeBookGroup = (id, name, bookSet) =>
  */
 export const bookGroups = Object.freeze(
   Object.create(null, {
-    gospels: makeBookGroup('gospels', 'Gospels', Object.freeze(peshittaBooks.slice(52, 56))),
-    general: makeBookGroup('general', 'General', Object.freeze(peshittaBooks.slice(56, 60))),
+    gospels: makeBookGroup(
+      'gospels',
+      'Gospels',
+      Object.freeze(peshittaBooks.slice(52, 56))
+    ),
+    general: makeBookGroup(
+      'general',
+      'General',
+      Object.freeze(peshittaBooks.slice(56, 60))
+    ),
     paulines: makeBookGroup(
       'paulines',
       'Paulines',

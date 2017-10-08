@@ -25,7 +25,7 @@ Following bundles are available:
 libraries and applications
 
 The package could also be downloaded directly from:
-[https://registry.npmjs.org/sedra-model/-/sedra-model-1.0.1.tgz](https://registry.npmjs.org/sedra-model/-/sedra-model-1.0.1.tgz)
+[https://registry.npmjs.org/sedra-model/-/sedra-model-1.0.2.tgz](https://registry.npmjs.org/sedra-model/-/sedra-model-1.0.2.tgz)
 
 ## More information
 
@@ -564,9 +564,9 @@ Build a Book object
 | --- | --- | --- |
 | id | <code>number</code> | Book Id |
 | peshittaId | <code>number</code> | Book Eastern Peshitta Id |
-| name | <code>number</code> | Book Aramaic name |
-| vocalised | <code>number</code> | Book vocalised Aramaic name |
-| english | <code>number</code> | Book English name |
+| name | <code>string</code> | Book Aramaic name |
+| vocalised | <code>string</code> | Book vocalised Aramaic name |
+| english | <code>Array.&lt;string&gt;</code> | Book English names: full name followed by abbreviations |
 
 <a name="module_sedra.sorter"></a>
 
