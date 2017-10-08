@@ -86,7 +86,7 @@ export const wordTense = Object.freeze([
  * @param { number } attributes 16-bit map
  * @returns { Word } Sedra Word row
  */
-export const getWord = (
+export const makeWord = (
   lexemeId,
   word,
   vocalised,

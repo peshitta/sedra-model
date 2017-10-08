@@ -38,7 +38,7 @@ export const verbType = Object.freeze(['None', 'Transitive', 'Intransitive']);
  * @param { number } flag 1 bit flag
  * @returns { English } Sedra English row
  */
-export const getEnglish = (
+export const makeEnglish = (
   lexemeId,
   word,
   before,

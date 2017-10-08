@@ -10,7 +10,7 @@ import { wordType } from './common';
  * @param { number } attributes 16-bit map
  * @returns { Root } Sedra Root row
  */
-export const getRoot = (root, sort, attributes) =>
+export const makeRoot = (root, sort, attributes) =>
   Object.freeze(
     Object.create(null, {
       root: { value: root, enumerable: true },

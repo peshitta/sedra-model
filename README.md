@@ -84,25 +84,32 @@ npm run build
     * [.fontType](#module_sedra.fontType) : <code>Array.&lt;string&gt;</code>
     * [.verbType](#module_sedra.verbType) : <code>Array.&lt;string&gt;</code>
     * [.etymologyLanguage](#module_sedra.etymologyLanguage) : <code>Array.&lt;string&gt;</code>
-    * [.getRoot(root, sort, attributes)](#module_sedra.getRoot) ⇒ <code>Root</code>
+    * [.books](#module_sedra.books) : <code>Array.&lt;string&gt;</code>
+    * [.peshittaBooks](#module_sedra.peshittaBooks) : <code>Array.&lt;Book&gt;</code>
+    * [.bookGroups](#module_sedra.bookGroups) : <code>Object</code>
+    * [.makeRoot(root, sort, attributes)](#module_sedra.makeRoot) ⇒ <code>Root</code>
     * [.makeRootAttribute(seyame, rootType)](#module_sedra.makeRootAttribute) ⇒ <code>RootAttribute</code>
     * [.getRootAttribute(attributes)](#module_sedra.getRootAttribute) ⇒ <code>RootAttribute</code>
-    * [.getLexeme(rootId, lexeme, morphologicalType, attributes)](#module_sedra.getLexeme) ⇒ <code>Lexeme</code>
+    * [.makeLexeme(rootId, lexeme, morphologicalType, attributes)](#module_sedra.makeLexeme) ⇒ <code>Lexeme</code>
     * [.makeLexemeAttribute(seyame, wordType, grammaticalCategory, listing)](#module_sedra.makeLexemeAttribute) ⇒ <code>LexemeAttribute</code>
     * [.getLexemeAttribute(attributes)](#module_sedra.getLexemeAttribute) ⇒ <code>LexemeAttribute</code>
     * [.makeLexemeMorphologicalType(firstSuffix, secondSuffix, thirdSuffix, prefix, firstVowel, secondVowel, thirdVowel, fourthVowel, vowelCount, radicalType, form)](#module_sedra.makeLexemeMorphologicalType) ⇒ <code>LexemeMorphologicalType</code>
     * [.getLexemeMorphologicalType(attributes)](#module_sedra.getLexemeMorphologicalType) ⇒ <code>LexemeMorphologicalType</code>
-    * [.getWord(lexemeId, word, vocalised, morphologicalType, attributes)](#module_sedra.getWord) ⇒ <code>Word</code>
+    * [.makeWord(lexemeId, word, vocalised, morphologicalType, attributes)](#module_sedra.makeWord) ⇒ <code>Word</code>
     * [.makeWordAttribute(seyame, listing, enclitic, lexeme)](#module_sedra.makeWordAttribute) ⇒ <code>WordAttribute</code>
     * [.getWordAttribute(attributes)](#module_sedra.getWordAttribute) ⇒ <code>WordAttribute</code>
     * [.makeWordMorphologicalType(suffixGender, suffixPerson, suffixNumber, suffixType, prefixCode, gender, person, number, state, tense, form)](#module_sedra.makeWordMorphologicalType) ⇒ <code>WordMorphologicalType</code>
     * [.getWordMorphologicalType(attributes)](#module_sedra.getWordMorphologicalType) ⇒ <code>WordMorphologicalType</code>
-    * [.getEnglish(lexemeId, word, before, after, comment, attributes, flag)](#module_sedra.getEnglish) ⇒ <code>English</code>
+    * [.makeEnglish(lexemeId, word, before, after, comment, attributes, flag)](#module_sedra.makeEnglish) ⇒ <code>English</code>
     * [.makeEnglishAttribute(commentPosition, commentFont, stringBeforeFont, stringAfterFont, verb, number, gender, form)](#module_sedra.makeEnglishAttribute) ⇒ <code>EnglishAttribute</code>
     * [.getEnglishAttribute(attributes)](#module_sedra.getEnglishAttribute) ⇒ <code>EnglishAttribute</code>
-    * [.getEtymology(lexemeId, word, attributes)](#module_sedra.getEtymology) ⇒ <code>Etymology</code>
+    * [.makeEtymology(lexemeId, word, attributes)](#module_sedra.makeEtymology) ⇒ <code>Etymology</code>
     * [.makeEtymologyAttribute(language, type)](#module_sedra.makeEtymologyAttribute) ⇒ <code>EtymologyAttribute</code>
     * [.getEtymologyAttribute(attributes)](#module_sedra.getEtymologyAttribute) ⇒ <code>EtymologyAttribute</code>
+    * [.makeBook(id, peshittaId, name, vocalised, english)](#module_sedra.makeBook) ⇒ <code>Book</code>
+    * [.sorter(a, b)](#module_sedra.sorter) ⇒ <code>number</code>
+    * [.getBook(id)](#module_sedra.getBook) ⇒ <code>Book</code>
+    * [.makeBookGroup(id, name, bookSet)](#module_sedra.makeBookGroup) ⇒ <code>BookGroup</code>
 
 <a name="module_sedra.wordType"></a>
 
@@ -242,9 +249,27 @@ Verb type enumeration
 Etymology Language enumeration
 
 **Kind**: static constant of [<code>sedra</code>](#module_sedra)  
-<a name="module_sedra.getRoot"></a>
+<a name="module_sedra.books"></a>
 
-### sedra.getRoot(root, sort, attributes) ⇒ <code>Root</code>
+### sedra.books : <code>Array.&lt;string&gt;</code>
+Peshitta books
+
+**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+<a name="module_sedra.peshittaBooks"></a>
+
+### sedra.peshittaBooks : <code>Array.&lt;Book&gt;</code>
+Peshitta books sorted according to Eastern Peshitta ordering
+
+**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+<a name="module_sedra.bookGroups"></a>
+
+### sedra.bookGroups : <code>Object</code>
+Eastern New Testament Peshitta book groups
+
+**Kind**: static constant of [<code>sedra</code>](#module_sedra)  
+<a name="module_sedra.makeRoot"></a>
+
+### sedra.makeRoot(root, sort, attributes) ⇒ <code>Root</code>
 Root records, e.g. 0:2,"AB","ab           |A",0
 Id is the position in the containing array so it is not stored
 
@@ -282,9 +307,9 @@ Get Root Attribute object from root attribute bit map
 | --- | --- | --- |
 | attributes | <code>number</code> | 16-bit map |
 
-<a name="module_sedra.getLexeme"></a>
+<a name="module_sedra.makeLexeme"></a>
 
-### sedra.getLexeme(rootId, lexeme, morphologicalType, attributes) ⇒ <code>Lexeme</code>
+### sedra.makeLexeme(rootId, lexeme, morphologicalType, attributes) ⇒ <code>Lexeme</code>
 Lexeme records, e.g. 1:2,0:2,"ABA",41960448,16
 Id is the position in the array so it is not stored
 
@@ -359,9 +384,9 @@ Get Lexeme Morphological Type object from lexeme bit map
 | --- | --- | --- |
 | attributes | <code>number</code> | Morphological Type 32-bit map |
 
-<a name="module_sedra.getWord"></a>
+<a name="module_sedra.makeWord"></a>
 
-### sedra.getWord(lexemeId, word, vocalised, morphologicalType, attributes) ⇒ <code>Word</code>
+### sedra.makeWord(lexemeId, word, vocalised, morphologicalType, attributes) ⇒ <code>Word</code>
 Word records, e.g. 2:8,1:2,"ABHOH;","AaB,oHaOH_;",7405716,129
 Id is the position in the array so it is not stored
 
@@ -437,9 +462,9 @@ Get Word Morphological Type object from word bit map
 | --- | --- | --- |
 | attributes | <code>number</code> | Morphological Type 32-bit map |
 
-<a name="module_sedra.getEnglish"></a>
+<a name="module_sedra.makeEnglish"></a>
 
-### sedra.getEnglish(lexemeId, word, before, after, comment, attributes, flag) ⇒ <code>English</code>
+### sedra.makeEnglish(lexemeId, word, before, after, comment, attributes, flag) ⇒ <code>English</code>
 English meaning, e.g. 3:165,1:97,"cause","without","","",0,0
 Id is the position in the database array so it is not stored
 
@@ -487,9 +512,9 @@ Get English Attribute object from english attribute bit map
 | --- | --- | --- |
 | attributes | <code>number</code> | 16-bit map |
 
-<a name="module_sedra.getEtymology"></a>
+<a name="module_sedra.makeEtymology"></a>
 
-### sedra.getEtymology(lexemeId, word, attributes) ⇒ <code>Etymology</code>
+### sedra.makeEtymology(lexemeId, word, attributes) ⇒ <code>Etymology</code>
 Etymology records, e.g. 4:1,1:1,"a\255h\256r",5
 Id is the position in the array so it is not stored
 
@@ -526,4 +551,59 @@ Get Etymology Attribute object from etymology attribute bit map
 | Param | Type | Description |
 | --- | --- | --- |
 | attributes | <code>number</code> | 16-bit map |
+
+<a name="module_sedra.makeBook"></a>
+
+### sedra.makeBook(id, peshittaId, name, vocalised, english) ⇒ <code>Book</code>
+Build a Book object
+
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>Book</code> - Book object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>number</code> | Book Id |
+| peshittaId | <code>number</code> | Book Eastern Peshitta Id |
+| name | <code>number</code> | Book Aramaic name |
+| vocalised | <code>number</code> | Book vocalised Aramaic name |
+| english | <code>number</code> | Book English name |
+
+<a name="module_sedra.sorter"></a>
+
+### sedra.sorter(a, b) ⇒ <code>number</code>
+Callback to sort books by Eastern Peshitta ordering
+
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>number</code> - sort order  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| a | <code>Book</code> | a book |
+| b | <code>Book</code> | another book |
+
+<a name="module_sedra.getBook"></a>
+
+### sedra.getBook(id) ⇒ <code>Book</code>
+Get book record with the given id from books array
+
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>Book</code> - Book object from books array  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>number</code> | Book id |
+
+<a name="module_sedra.makeBookGroup"></a>
+
+### sedra.makeBookGroup(id, name, bookSet) ⇒ <code>BookGroup</code>
+Build a BookGroup object - a grouping of Peshitta books
+
+**Kind**: static method of [<code>sedra</code>](#module_sedra)  
+**Returns**: <code>BookGroup</code> - A Book Group object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>number</code> \| <code>string</code> | Book Group assigned Id |
+| name | <code>string</code> | Book Group name |
+| bookSet | <code>Array.&lt;Book&gt;</code> | Book subset from books array |
 

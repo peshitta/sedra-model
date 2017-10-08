@@ -3,13 +3,13 @@ const sut = require('../build/sedra-model');
 
 describe('Sedra model', () => {
   it('Get Root', () => {
-    const m = sut.getRoot('ABOBA', 'abb          |0', 2);
+    const m = sut.makeRoot('ABOBA', 'abb          |0', 2);
     test.strictEqual(m.root, 'ABOBA', 'root matching');
     test.strictEqual(m.sort, 'abb          |0', 'sort matching');
     test.strictEqual(m.attributes, 2, 'attributes matching');
   });
   it('Get Lexeme', () => {
-    const m = sut.getLexeme(55, 'AKOTA', 37749824, 16);
+    const m = sut.makeLexeme(55, 'AKOTA', 37749824, 16);
     test.strictEqual(m.rootId, 55, 'rootId matching');
     test.strictEqual(m.lexeme, 'AKOTA', 'lexeme matching');
     test.strictEqual(
@@ -20,7 +20,7 @@ describe('Sedra model', () => {
     test.strictEqual(m.attributes, 16, 'attributes matching');
   });
   it('Get Word', () => {
-    const m = sut.getWord(55, 'MOBDO', "MaOB'oD,uO", 369098752, 128);
+    const m = sut.makeWord(55, 'MOBDO', "MaOB'oD,uO", 369098752, 128);
     test.strictEqual(m.lexemeId, 55, 'lexemeId matching');
     test.strictEqual(m.word, 'MOBDO', 'word matching');
     test.strictEqual(m.vocalised, "MaOB'oD,uO", 'vocalised matching');
@@ -32,7 +32,7 @@ describe('Sedra model', () => {
     test.strictEqual(m.attributes, 128, 'attributes matching');
   });
   it('Get English', () => {
-    const m = sut.getEnglish(
+    const m = sut.makeEnglish(
       71,
       'kindle',
       'make',
@@ -50,7 +50,7 @@ describe('Sedra model', () => {
     test.strictEqual(m.flag, 1, 'flag matching');
   });
   it('Get Etymology', () => {
-    const m = sut.getEtymology(46, 'eu\\255jaristi\\256a', 5);
+    const m = sut.makeEtymology(46, 'eu\\255jaristi\\256a', 5);
     test.strictEqual(m.lexemeId, 46, 'lexemeId matching');
     test.strictEqual(m.word, 'eu\\255jaristi\\256a', 'word matching');
     test.strictEqual(m.attributes, 5, 'attributes matching');

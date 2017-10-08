@@ -29,7 +29,7 @@ export const etymologyLanguage = Object.freeze([
  * @param { number } attributes 16-bit map
  * @returns { Etymology } Sedra Etymology row
  */
-export const getEtymology = (lexemeId, word, attributes) =>
+export const makeEtymology = (lexemeId, word, attributes) =>
   Object.freeze(
     Object.create(null, {
       lexemeId: { value: lexemeId, enumerable: true },

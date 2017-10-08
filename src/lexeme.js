@@ -124,7 +124,7 @@ export const lexemeForm = Object.freeze([
  * @param { number } attributes 16-bit map
  * @returns { Lexeme } Sedra Lexeme row
  */
-export const getLexeme = (rootId, lexeme, morphologicalType, attributes) =>
+export const makeLexeme = (rootId, lexeme, morphologicalType, attributes) =>
   Object.freeze(
     Object.create(null, {
       rootId: { value: rootId, enumerable: true },
