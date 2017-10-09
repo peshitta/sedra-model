@@ -3,7 +3,7 @@
   "version": "1.0.2",
   "description": "Sedra models and related utility functions",
   "main": "build/sedra-model.js",
-  "main݂Min": "build/sedra-model.min.js",
+  "mainMin": "build/sedra-model.min.js",
   "module": "build/sedra-model.esm.js",
   "scripts": {
     "pretest": "rollup -c",

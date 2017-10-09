@@ -83,7 +83,7 @@ if (isProduction) {
   // browser/nodejs-friendly minified UMD build
   targets.push({
     input,
-    output: [{ file: pkg.main݂Min, format }],
+    output: [{ file: pkg.mainMin, format }],
     external,
     plugins,
     name,
