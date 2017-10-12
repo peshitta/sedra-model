@@ -2,7 +2,7 @@ const bookPrototype = Object.freeze(
   Object.create(null, {
     /**
      * Get book full English name
-     * @alias module:sedra.Book#englishName
+     * @alias module:sedraModel.Book#englishName
      * @returns { string } English full name
      */
     englishName: {
@@ -13,7 +13,7 @@ const bookPrototype = Object.freeze(
     },
     /**
      * Get book first abbreviated English name
-     * @alias module:sedra.Book#englishShortName
+     * @alias module:sedraModel.Book#englishShortName
      * @returns { string } English abbreviated name
      */
     englishShortName: {
