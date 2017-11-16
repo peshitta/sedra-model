@@ -243,6 +243,7 @@ export const getLexemeMorphologicalType = morphologicalType =>
 
 /**
  * Return flatten lexeme object with parsed attribute and morphological values
+ * @static
  * @param { number } id the id of current lexeme object
  * @param { Lexeme } lexeme lexeme raw object
  * @returns { FlatLexeme } the flatten lexeme model

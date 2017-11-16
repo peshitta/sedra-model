@@ -116,6 +116,7 @@ export const getEnglishAttribute = attributes =>
 
 /**
  * Return flatten english object with parsed attribute values
+ * @static
  * @param { number } id the id of current english object
  * @param { English } english english raw object
  * @returns { FlatEnglish } the flatten english model

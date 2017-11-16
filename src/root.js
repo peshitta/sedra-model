@@ -51,6 +51,7 @@ export const getRootAttribute = attributes =>
 
 /**
  * Return flatten root object with parsed attribute values
+ * @static
  * @param { number } id the id of current root object
  * @param { Root } root root raw object
  * @returns { FlatRoot } the flatten root model

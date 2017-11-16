@@ -70,6 +70,7 @@ export const getEtymologyAttribute = attributes =>
 
 /**
  * Return flatten etymology object with parsed attribute values
+ * @static
  * @param { number } id the id of current etymology object
  * @param { Etymology } etymology etymology raw object
  * @returns { FlatEtymology } the flatten etymology model

@@ -65,62 +65,60 @@ npm run build
 ## API Reference
 
 * [sedraModel](#module_sedraModel)
-    * _static_
-        * [.wordType](#module_sedraModel.wordType) : <code>Array.&lt;string&gt;</code>
-        * [.vowel](#module_sedraModel.vowel) : <code>Array.&lt;string&gt;</code>
-        * [.wordNumber](#module_sedraModel.wordNumber) : <code>Array.&lt;string&gt;</code>
-        * [.wordGender](#module_sedraModel.wordGender) : <code>Array.&lt;string&gt;</code>
-        * [.wordForm](#module_sedraModel.wordForm) : <code>Array.&lt;string&gt;</code>
-        * [.lexemeGrammaticalCategory](#module_sedraModel.lexemeGrammaticalCategory) : <code>Array.&lt;string&gt;</code>
-        * [.lexemeFirstSuffix](#module_sedraModel.lexemeFirstSuffix) : <code>Array.&lt;string&gt;</code>
-        * [.lexemeSecondSuffix](#module_sedraModel.lexemeSecondSuffix) : <code>Array.&lt;string&gt;</code>
-        * [.lexemeThirdSuffix](#module_sedraModel.lexemeThirdSuffix) : <code>Array.&lt;string&gt;</code>
-        * [.lexemePrefix](#module_sedraModel.lexemePrefix) : <code>Array.&lt;string&gt;</code>
-        * [.lexemeRadicalType](#module_sedraModel.lexemeRadicalType) : <code>Array.&lt;string&gt;</code>
-        * [.lexemeForm](#module_sedraModel.lexemeForm) : <code>Array.&lt;string&gt;</code>
-        * [.wordSuffixGender](#module_sedraModel.wordSuffixGender) : <code>Array.&lt;string&gt;</code>
-        * [.wordSuffixPerson](#module_sedraModel.wordSuffixPerson) : <code>Array.&lt;string&gt;</code>
-        * [.wordSuffixNumber](#module_sedraModel.wordSuffixNumber) : <code>Array.&lt;string&gt;</code>
-        * [.wordSuffixType](#module_sedraModel.wordSuffixType) : <code>Array.&lt;string&gt;</code>
-        * [.wordPerson](#module_sedraModel.wordPerson) : <code>Array.&lt;string&gt;</code>
-        * [.wordState](#module_sedraModel.wordState) : <code>Array.&lt;string&gt;</code>
-        * [.wordTense](#module_sedraModel.wordTense) : <code>Array.&lt;string&gt;</code>
-        * [.textPosition](#module_sedraModel.textPosition) : <code>Array.&lt;string&gt;</code>
-        * [.fontType](#module_sedraModel.fontType) : <code>Array.&lt;string&gt;</code>
-        * [.verbType](#module_sedraModel.verbType) : <code>Array.&lt;string&gt;</code>
-        * [.etymologyLanguage](#module_sedraModel.etymologyLanguage) : <code>Array.&lt;string&gt;</code>
-        * [.books](#module_sedraModel.books) : <code>Array.&lt;string&gt;</code>
-        * [.peshittaBooks](#module_sedraModel.peshittaBooks) : <code>Array.&lt;Book&gt;</code>
-        * [.bookGroups](#module_sedraModel.bookGroups) : <code>Object</code>
-        * [.makeRoot(root, sort, attributes)](#module_sedraModel.makeRoot) ⇒ <code>Root</code>
-        * [.makeRootAttribute(seyame, rootType)](#module_sedraModel.makeRootAttribute) ⇒ <code>RootAttribute</code>
-        * [.getRootAttribute(attributes)](#module_sedraModel.getRootAttribute) ⇒ <code>RootAttribute</code>
-        * [.makeLexeme(rootId, lexeme, morphologicalType, attributes)](#module_sedraModel.makeLexeme) ⇒ <code>Lexeme</code>
-        * [.makeLexemeAttribute(seyame, wordType, grammaticalCategory, listing)](#module_sedraModel.makeLexemeAttribute) ⇒ <code>LexemeAttribute</code>
-        * [.getLexemeAttribute(attributes)](#module_sedraModel.getLexemeAttribute) ⇒ <code>LexemeAttribute</code>
-        * [.makeLexemeMorphologicalType(firstSuffix, secondSuffix, thirdSuffix, prefix, firstVowel, secondVowel, thirdVowel, fourthVowel, vowelCount, radicalType, form)](#module_sedraModel.makeLexemeMorphologicalType) ⇒ <code>LexemeMorphologicalType</code>
-        * [.getLexemeMorphologicalType(morphologicalType)](#module_sedraModel.getLexemeMorphologicalType) ⇒ <code>LexemeMorphologicalType</code>
-        * [.makeWord(lexemeId, word, vocalised, morphologicalType, attributes)](#module_sedraModel.makeWord) ⇒ <code>Word</code>
-        * [.makeWordAttribute(seyame, listing, enclitic, lexeme)](#module_sedraModel.makeWordAttribute) ⇒ <code>WordAttribute</code>
-        * [.getWordAttribute(attributes)](#module_sedraModel.getWordAttribute) ⇒ <code>WordAttribute</code>
-        * [.makeWordMorphologicalType(suffixGender, suffixPerson, suffixNumber, suffixType, prefixCode, gender, person, number, state, tense, form)](#module_sedraModel.makeWordMorphologicalType) ⇒ <code>WordMorphologicalType</code>
-        * [.getWordMorphologicalType(attributes)](#module_sedraModel.getWordMorphologicalType) ⇒ <code>WordMorphologicalType</code>
-        * [.makeEnglish(lexemeId, word, before, after, comment, attributes, flag)](#module_sedraModel.makeEnglish) ⇒ <code>English</code>
-        * [.makeEnglishAttribute(commentPosition, commentFont, stringBeforeFont, stringAfterFont, verb, number, gender, form)](#module_sedraModel.makeEnglishAttribute) ⇒ <code>EnglishAttribute</code>
-        * [.getEnglishAttribute(attributes)](#module_sedraModel.getEnglishAttribute) ⇒ <code>EnglishAttribute</code>
-        * [.makeEtymology(lexemeId, word, attributes)](#module_sedraModel.makeEtymology) ⇒ <code>Etymology</code>
-        * [.makeEtymologyAttribute(language, type)](#module_sedraModel.makeEtymologyAttribute) ⇒ <code>EtymologyAttribute</code>
-        * [.getEtymologyAttribute(attributes)](#module_sedraModel.getEtymologyAttribute) ⇒ <code>EtymologyAttribute</code>
-        * [.makeBook(id, peshittaId, name, vocalised, english)](#module_sedraModel.makeBook) ⇒ <code>Book</code>
-        * [.sorter(a, b)](#module_sedraModel.sorter) ⇒ <code>number</code>
-        * [.getBook(id)](#module_sedraModel.getBook) ⇒ <code>Book</code>
-        * [.makeBookGroup(id, name, bookSet)](#module_sedraModel.makeBookGroup) ⇒ <code>BookGroup</code>
-    * _inner_
-        * [~getRoot(id, root)](#module_sedraModel..getRoot) ⇒ <code>FlatRoot</code>
-        * [~getLexeme(id, lexeme)](#module_sedraModel..getLexeme) ⇒ <code>FlatLexeme</code>
-        * [~getWord(id, lexeme)](#module_sedraModel..getWord) ⇒ <code>FlatWord</code>
-        * [~getEnglish(id, english)](#module_sedraModel..getEnglish) ⇒ <code>FlatEnglish</code>
-        * [~getEtymology(id, etymology)](#module_sedraModel..getEtymology) ⇒ <code>FlatEtymology</code>
+    * [.wordType](#module_sedraModel.wordType) : <code>Array.&lt;string&gt;</code>
+    * [.vowel](#module_sedraModel.vowel) : <code>Array.&lt;string&gt;</code>
+    * [.wordNumber](#module_sedraModel.wordNumber) : <code>Array.&lt;string&gt;</code>
+    * [.wordGender](#module_sedraModel.wordGender) : <code>Array.&lt;string&gt;</code>
+    * [.wordForm](#module_sedraModel.wordForm) : <code>Array.&lt;string&gt;</code>
+    * [.lexemeGrammaticalCategory](#module_sedraModel.lexemeGrammaticalCategory) : <code>Array.&lt;string&gt;</code>
+    * [.lexemeFirstSuffix](#module_sedraModel.lexemeFirstSuffix) : <code>Array.&lt;string&gt;</code>
+    * [.lexemeSecondSuffix](#module_sedraModel.lexemeSecondSuffix) : <code>Array.&lt;string&gt;</code>
+    * [.lexemeThirdSuffix](#module_sedraModel.lexemeThirdSuffix) : <code>Array.&lt;string&gt;</code>
+    * [.lexemePrefix](#module_sedraModel.lexemePrefix) : <code>Array.&lt;string&gt;</code>
+    * [.lexemeRadicalType](#module_sedraModel.lexemeRadicalType) : <code>Array.&lt;string&gt;</code>
+    * [.lexemeForm](#module_sedraModel.lexemeForm) : <code>Array.&lt;string&gt;</code>
+    * [.wordSuffixGender](#module_sedraModel.wordSuffixGender) : <code>Array.&lt;string&gt;</code>
+    * [.wordSuffixPerson](#module_sedraModel.wordSuffixPerson) : <code>Array.&lt;string&gt;</code>
+    * [.wordSuffixNumber](#module_sedraModel.wordSuffixNumber) : <code>Array.&lt;string&gt;</code>
+    * [.wordSuffixType](#module_sedraModel.wordSuffixType) : <code>Array.&lt;string&gt;</code>
+    * [.wordPerson](#module_sedraModel.wordPerson) : <code>Array.&lt;string&gt;</code>
+    * [.wordState](#module_sedraModel.wordState) : <code>Array.&lt;string&gt;</code>
+    * [.wordTense](#module_sedraModel.wordTense) : <code>Array.&lt;string&gt;</code>
+    * [.textPosition](#module_sedraModel.textPosition) : <code>Array.&lt;string&gt;</code>
+    * [.fontType](#module_sedraModel.fontType) : <code>Array.&lt;string&gt;</code>
+    * [.verbType](#module_sedraModel.verbType) : <code>Array.&lt;string&gt;</code>
+    * [.etymologyLanguage](#module_sedraModel.etymologyLanguage) : <code>Array.&lt;string&gt;</code>
+    * [.books](#module_sedraModel.books) : <code>Array.&lt;string&gt;</code>
+    * [.peshittaBooks](#module_sedraModel.peshittaBooks) : <code>Array.&lt;Book&gt;</code>
+    * [.bookGroups](#module_sedraModel.bookGroups) : <code>Object</code>
+    * [.makeRoot(root, sort, attributes)](#module_sedraModel.makeRoot) ⇒ <code>Root</code>
+    * [.makeRootAttribute(seyame, rootType)](#module_sedraModel.makeRootAttribute) ⇒ <code>RootAttribute</code>
+    * [.getRootAttribute(attributes)](#module_sedraModel.getRootAttribute) ⇒ <code>RootAttribute</code>
+    * [.getRoot(id, root)](#module_sedraModel.getRoot) ⇒ <code>FlatRoot</code>
+    * [.makeLexeme(rootId, lexeme, morphologicalType, attributes)](#module_sedraModel.makeLexeme) ⇒ <code>Lexeme</code>
+    * [.makeLexemeAttribute(seyame, wordType, grammaticalCategory, listing)](#module_sedraModel.makeLexemeAttribute) ⇒ <code>LexemeAttribute</code>
+    * [.getLexemeAttribute(attributes)](#module_sedraModel.getLexemeAttribute) ⇒ <code>LexemeAttribute</code>
+    * [.makeLexemeMorphologicalType(firstSuffix, secondSuffix, thirdSuffix, prefix, firstVowel, secondVowel, thirdVowel, fourthVowel, vowelCount, radicalType, form)](#module_sedraModel.makeLexemeMorphologicalType) ⇒ <code>LexemeMorphologicalType</code>
+    * [.getLexemeMorphologicalType(morphologicalType)](#module_sedraModel.getLexemeMorphologicalType) ⇒ <code>LexemeMorphologicalType</code>
+    * [.getLexeme(id, lexeme)](#module_sedraModel.getLexeme) ⇒ <code>FlatLexeme</code>
+    * [.makeWord(lexemeId, word, vocalised, morphologicalType, attributes)](#module_sedraModel.makeWord) ⇒ <code>Word</code>
+    * [.makeWordAttribute(seyame, listing, enclitic, lexeme)](#module_sedraModel.makeWordAttribute) ⇒ <code>WordAttribute</code>
+    * [.getWordAttribute(attributes)](#module_sedraModel.getWordAttribute) ⇒ <code>WordAttribute</code>
+    * [.makeWordMorphologicalType(suffixGender, suffixPerson, suffixNumber, suffixType, prefixCode, gender, person, number, state, tense, form)](#module_sedraModel.makeWordMorphologicalType) ⇒ <code>WordMorphologicalType</code>
+    * [.getWordMorphologicalType(attributes)](#module_sedraModel.getWordMorphologicalType) ⇒ <code>WordMorphologicalType</code>
+    * [.getWord(id, lexeme)](#module_sedraModel.getWord) ⇒ <code>FlatWord</code>
+    * [.makeEnglish(lexemeId, word, before, after, comment, attributes, flag)](#module_sedraModel.makeEnglish) ⇒ <code>English</code>
+    * [.makeEnglishAttribute(commentPosition, commentFont, stringBeforeFont, stringAfterFont, verb, number, gender, form)](#module_sedraModel.makeEnglishAttribute) ⇒ <code>EnglishAttribute</code>
+    * [.getEnglishAttribute(attributes)](#module_sedraModel.getEnglishAttribute) ⇒ <code>EnglishAttribute</code>
+    * [.getEnglish(id, english)](#module_sedraModel.getEnglish) ⇒ <code>FlatEnglish</code>
+    * [.makeEtymology(lexemeId, word, attributes)](#module_sedraModel.makeEtymology) ⇒ <code>Etymology</code>
+    * [.makeEtymologyAttribute(language, type)](#module_sedraModel.makeEtymologyAttribute) ⇒ <code>EtymologyAttribute</code>
+    * [.getEtymologyAttribute(attributes)](#module_sedraModel.getEtymologyAttribute) ⇒ <code>EtymologyAttribute</code>
+    * [.getEtymology(id, etymology)](#module_sedraModel.getEtymology) ⇒ <code>FlatEtymology</code>
+    * [.makeBook(id, peshittaId, name, vocalised, english)](#module_sedraModel.makeBook) ⇒ <code>Book</code>
+    * [.sorter(a, b)](#module_sedraModel.sorter) ⇒ <code>number</code>
+    * [.getBook(id)](#module_sedraModel.getBook) ⇒ <code>Book</code>
+    * [.makeBookGroup(id, name, bookSet)](#module_sedraModel.makeBookGroup) ⇒ <code>BookGroup</code>
 
 <a name="module_sedraModel.wordType"></a>
 
@@ -318,6 +316,19 @@ Get Root Attribute object from root attribute bit map
 | --- | --- | --- |
 | attributes | <code>number</code> | 16-bit map |
 
+<a name="module_sedraModel.getRoot"></a>
+
+### sedraModel.getRoot(id, root) ⇒ <code>FlatRoot</code>
+Return flatten root object with parsed attribute values
+
+**Kind**: static method of [<code>sedraModel</code>](#module_sedraModel)  
+**Returns**: <code>FlatRoot</code> - the flatten root model  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>number</code> | the id of current root object |
+| root | <code>Root</code> | root raw object |
+
 <a name="module_sedraModel.makeLexeme"></a>
 
 ### sedraModel.makeLexeme(rootId, lexeme, morphologicalType, attributes) ⇒ <code>Lexeme</code>
@@ -394,6 +405,19 @@ Get Lexeme Morphological Type object from lexeme bit map
 | Param | Type | Description |
 | --- | --- | --- |
 | morphologicalType | <code>number</code> | Morphological Type 32-bit map |
+
+<a name="module_sedraModel.getLexeme"></a>
+
+### sedraModel.getLexeme(id, lexeme) ⇒ <code>FlatLexeme</code>
+Return flatten lexeme object with parsed attribute and morphological values
+
+**Kind**: static method of [<code>sedraModel</code>](#module_sedraModel)  
+**Returns**: <code>FlatLexeme</code> - the flatten lexeme model  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>number</code> | the id of current lexeme object |
+| lexeme | <code>Lexeme</code> | lexeme raw object |
 
 <a name="module_sedraModel.makeWord"></a>
 
@@ -473,6 +497,19 @@ Get Word Morphological Type object from word bit map
 | --- | --- | --- |
 | attributes | <code>number</code> | Morphological Type 32-bit map |
 
+<a name="module_sedraModel.getWord"></a>
+
+### sedraModel.getWord(id, lexeme) ⇒ <code>FlatWord</code>
+Return flatten word object with parsed attribute and morphological values
+
+**Kind**: static method of [<code>sedraModel</code>](#module_sedraModel)  
+**Returns**: <code>FlatWord</code> - the flatten word model  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>number</code> | the id of current word object |
+| lexeme | <code>Word</code> | word raw object |
+
 <a name="module_sedraModel.makeEnglish"></a>
 
 ### sedraModel.makeEnglish(lexemeId, word, before, after, comment, attributes, flag) ⇒ <code>English</code>
@@ -523,6 +560,19 @@ Get English Attribute object from english attribute bit map
 | --- | --- | --- |
 | attributes | <code>number</code> | 16-bit map |
 
+<a name="module_sedraModel.getEnglish"></a>
+
+### sedraModel.getEnglish(id, english) ⇒ <code>FlatEnglish</code>
+Return flatten english object with parsed attribute values
+
+**Kind**: static method of [<code>sedraModel</code>](#module_sedraModel)  
+**Returns**: <code>FlatEnglish</code> - the flatten english model  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>number</code> | the id of current english object |
+| english | <code>English</code> | english raw object |
+
 <a name="module_sedraModel.makeEtymology"></a>
 
 ### sedraModel.makeEtymology(lexemeId, word, attributes) ⇒ <code>Etymology</code>
@@ -562,6 +612,19 @@ Get Etymology Attribute object from etymology attribute bit map
 | Param | Type | Description |
 | --- | --- | --- |
 | attributes | <code>number</code> | 16-bit map |
+
+<a name="module_sedraModel.getEtymology"></a>
+
+### sedraModel.getEtymology(id, etymology) ⇒ <code>FlatEtymology</code>
+Return flatten etymology object with parsed attribute values
+
+**Kind**: static method of [<code>sedraModel</code>](#module_sedraModel)  
+**Returns**: <code>FlatEtymology</code> - the flatten etymology model  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>number</code> | the id of current etymology object |
+| etymology | <code>Etymology</code> | etymology raw object |
 
 <a name="module_sedraModel.makeBook"></a>
 
@@ -617,69 +680,4 @@ Build a BookGroup object - a grouping of Peshitta books
 | id | <code>number</code> \| <code>string</code> | Book Group assigned Id |
 | name | <code>string</code> | Book Group name |
 | bookSet | <code>Array.&lt;Book&gt;</code> | Book subset from books array |
-
-<a name="module_sedraModel..getRoot"></a>
-
-### sedraModel~getRoot(id, root) ⇒ <code>FlatRoot</code>
-Return flatten root object with parsed attribute values
-
-**Kind**: inner method of [<code>sedraModel</code>](#module_sedraModel)  
-**Returns**: <code>FlatRoot</code> - the flatten root model  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| id | <code>number</code> | the id of current root object |
-| root | <code>Root</code> | root raw object |
-
-<a name="module_sedraModel..getLexeme"></a>
-
-### sedraModel~getLexeme(id, lexeme) ⇒ <code>FlatLexeme</code>
-Return flatten lexeme object with parsed attribute and morphological values
-
-**Kind**: inner method of [<code>sedraModel</code>](#module_sedraModel)  
-**Returns**: <code>FlatLexeme</code> - the flatten lexeme model  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| id | <code>number</code> | the id of current lexeme object |
-| lexeme | <code>Lexeme</code> | lexeme raw object |
-
-<a name="module_sedraModel..getWord"></a>
-
-### sedraModel~getWord(id, lexeme) ⇒ <code>FlatWord</code>
-Return flatten word object with parsed attribute and morphological values
-
-**Kind**: inner method of [<code>sedraModel</code>](#module_sedraModel)  
-**Returns**: <code>FlatWord</code> - the flatten word model  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| id | <code>number</code> | the id of current word object |
-| lexeme | <code>Word</code> | word raw object |
-
-<a name="module_sedraModel..getEnglish"></a>
-
-### sedraModel~getEnglish(id, english) ⇒ <code>FlatEnglish</code>
-Return flatten english object with parsed attribute values
-
-**Kind**: inner method of [<code>sedraModel</code>](#module_sedraModel)  
-**Returns**: <code>FlatEnglish</code> - the flatten english model  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| id | <code>number</code> | the id of current english object |
-| english | <code>English</code> | english raw object |
-
-<a name="module_sedraModel..getEtymology"></a>
-
-### sedraModel~getEtymology(id, etymology) ⇒ <code>FlatEtymology</code>
-Return flatten etymology object with parsed attribute values
-
-**Kind**: inner method of [<code>sedraModel</code>](#module_sedraModel)  
-**Returns**: <code>FlatEtymology</code> - the flatten etymology model  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| id | <code>number</code> | the id of current etymology object |
-| etymology | <code>Etymology</code> | etymology raw object |
 

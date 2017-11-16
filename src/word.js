@@ -205,6 +205,7 @@ export const getWordMorphologicalType = attributes =>
 
 /**
  * Return flatten word object with parsed attribute and morphological values
+ * @static
  * @param { number } id the id of current word object
  * @param { Word } lexeme word raw object
  * @returns { FlatWord } the flatten word model
