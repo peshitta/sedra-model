@@ -223,20 +223,58 @@ export const makeLexemeMorphologicalType = (
 /**
  * Get Lexeme Morphological Type object from lexeme bit map
  * @static
- * @param { number } attributes Morphological Type 32-bit map
+ * @param { number } morphologicalType Morphological Type 32-bit map
  * @returns { LexemeMorphologicalType } Lexeme Morphological Type object
  */
-export const getLexemeMorphologicalType = attributes =>
+export const getLexemeMorphologicalType = morphologicalType =>
   makeLexemeMorphologicalType(
-    lexemeFirstSuffix[0xf & attributes], // 0-3 First SUFFIX
-    lexemeSecondSuffix[(0x30 & attributes) >> 4], // 4-5 SECOND SUFFIX
-    lexemeThirdSuffix[(0xc0 & attributes) >> 6], // 6-7 THIRD SUFFIX
-    lexemePrefix[(0x300 & attributes) >> 8], // 8-9 PREFIX
-    v[(0x1c00 & attributes) >> 10], // 10-12 FIRST VOWEL
-    v[(0xe000 & attributes) >> 13], // 13-15 SECOND VOWEL
-    v[(0x70000 & attributes) >> 16], // 16-18 THIRD VOWEL
-    v[(0x380000 & attributes) >> 19], // 19-21 FOURTH VOWEL
-    (0x1c00000 & attributes) >> 22, // 22-24 Total no of vowels in lexeme
-    lexemeRadicalType[(0xe000000 & attributes) >> 25], // 25-27 RADICAL TYPE
-    lexemeForm[(0xf0000000 & attributes) >> 28] // 28-31 FORM
+    lexemeFirstSuffix[0xf & morphologicalType], // 0-3 First SUFFIX
+    lexemeSecondSuffix[(0x30 & morphologicalType) >> 4], // 4-5 SECOND SUFFIX
+    lexemeThirdSuffix[(0xc0 & morphologicalType) >> 6], // 6-7 THIRD SUFFIX
+    lexemePrefix[(0x300 & morphologicalType) >> 8], // 8-9 PREFIX
+    v[(0x1c00 & morphologicalType) >> 10], // 10-12 FIRST VOWEL
+    v[(0xe000 & morphologicalType) >> 13], // 13-15 SECOND VOWEL
+    v[(0x70000 & morphologicalType) >> 16], // 16-18 THIRD VOWEL
+    v[(0x380000 & morphologicalType) >> 19], // 19-21 FOURTH VOWEL
+    (0x1c00000 & morphologicalType) >> 22, // 22-24 Total no of vowels in lexeme
+    lexemeRadicalType[(0xe000000 & morphologicalType) >> 25], // 25-27 RADICAL TYPE
+    lexemeForm[(0xf0000000 & morphologicalType) >> 28] // 28-31 FORM
   );
+
+/**
+ * Return flatten lexeme object with parsed attribute and morphological values
+ * @param { number } id the id of current lexeme object
+ * @param { Lexeme } lexeme lexeme raw object
+ * @returns { FlatLexeme } the flatten lexeme model
+ */
+export const getLexeme = (id, lexeme) => {
+  const attributes = getLexemeAttribute(lexeme.attributes);
+  const morphologicalType = getLexemeMorphologicalType(
+    lexeme.morphologicalType
+  );
+  return Object.freeze(
+    Object.create(null, {
+      id: { value: id, enumerable: true },
+      rootId: { value: lexeme.rootId, enumerable: true },
+      lexeme: { value: lexeme.lexeme, enumerable: true },
+      firstSuffix: { value: morphologicalType.firstSuffix, enumerable: true },
+      secondSuffix: { value: morphologicalType.secondSuffix, enumerable: true },
+      thirdSuffix: { value: morphologicalType.thirdSuffix, enumerable: true },
+      prefix: { value: morphologicalType.prefix, enumerable: true },
+      firstVowel: { value: morphologicalType.firstVowel, enumerable: true },
+      secondVowel: { value: morphologicalType.secondVowel, enumerable: true },
+      thirdVowel: { value: morphologicalType.thirdVowel, enumerable: true },
+      fourthVowel: { value: morphologicalType.fourthVowel, enumerable: true },
+      vowelCount: { value: morphologicalType.vowelCount, enumerable: true },
+      radicalType: { value: morphologicalType.radicalType, enumerable: true },
+      form: { value: morphologicalType.form, enumerable: true },
+      seyame: { value: attributes.seyame, enumerable: true },
+      wordType: { value: attributes.wordType, enumerable: true },
+      grammaticalCategory: {
+        value: attributes.grammaticalCategory,
+        enumerable: true
+      },
+      listing: { value: attributes.listing, enumerable: true }
+    })
+  );
+};

@@ -67,3 +67,22 @@ export const getEtymologyAttribute = attributes =>
     etymologyLanguage[0xf & attributes], // 0-3 LANGUAGE
     wordType[(0x10 & attributes) >> 4] // 4 TYPE
   );
+
+/**
+ * Return flatten etymology object with parsed attribute values
+ * @param { number } id the id of current etymology object
+ * @param { Etymology } etymology etymology raw object
+ * @returns { FlatEtymology } the flatten etymology model
+ */
+export const getEtymology = (id, etymology) => {
+  const attributes = getEtymologyAttribute(etymology.attributes);
+  return Object.freeze(
+    Object.create(null, {
+      id: { value: id, enumerable: true },
+      lexemeId: { value: etymology.lexemeId, enumerable: true },
+      word: { value: etymology.word, enumerable: true },
+      language: { value: attributes.language, enumerable: true },
+      wordType: { value: attributes.wordType, enumerable: true }
+    })
+  );
+};

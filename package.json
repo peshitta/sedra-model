@@ -1,6 +1,6 @@
 {
   "name": "sedra-model",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Sedra models and related utility functions",
   "main": "build/sedra-model.js",
   "mainMin": "build/sedra-model.min.js",

@@ -1,4 +1,4 @@
-export { makeRoot, makeRootAttribute, getRootAttribute } from './root';
+export { makeRoot, makeRootAttribute, getRootAttribute, getRoot } from './root';
 
 export {
   lexemeGrammaticalCategory,
@@ -12,7 +12,8 @@ export {
   makeLexemeAttribute,
   getLexemeAttribute,
   makeLexemeMorphologicalType,
-  getLexemeMorphologicalType
+  getLexemeMorphologicalType,
+  getLexeme
 } from './lexeme';
 
 export {
@@ -27,7 +28,8 @@ export {
   makeWordAttribute,
   getWordAttribute,
   makeWordMorphologicalType,
-  getWordMorphologicalType
+  getWordMorphologicalType,
+  getWord
 } from './word';
 
 export {
@@ -36,14 +38,16 @@ export {
   verbType,
   makeEnglish,
   makeEnglishAttribute,
-  getEnglishAttribute
+  getEnglishAttribute,
+  getEnglish
 } from './english';
 
 export {
   etymologyLanguage,
   makeEtymology,
   makeEtymologyAttribute,
-  getEtymologyAttribute
+  getEtymologyAttribute,
+  getEtymology
 } from './etymology';
 
 export {

@@ -48,3 +48,22 @@ export const getRootAttribute = attributes =>
     !!(0x1 & attributes), // 0  SEYAME FLAG
     wordType[(0x6 & attributes) >> 1] // 1-2 ROOT TYPE
   );
+
+/**
+ * Return flatten root object with parsed attribute values
+ * @param { number } id the id of current root object
+ * @param { Root } root root raw object
+ * @returns { FlatRoot } the flatten root model
+ */
+export const getRoot = (id, root) => {
+  const attributes = getRootAttribute(root.attributes);
+  return Object.freeze(
+    Object.create(null, {
+      id: { value: id, enumerable: true },
+      root: { value: root.root, enumerable: true },
+      sort: { value: root.sort, enumerable: true },
+      seyame: { value: attributes.seyame, enumerable: true },
+      rootType: { value: attributes.rootType, enumerable: true }
+    })
+  );
+};

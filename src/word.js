@@ -202,3 +202,37 @@ export const getWordMorphologicalType = attributes =>
     wordTense[(0x3800000 & attributes) >> 23], // 23-25 TENSE
     wordForm[(0xfc000000 & attributes) >> 26] // 26-31 FORM
   );
+
+/**
+ * Return flatten word object with parsed attribute and morphological values
+ * @param { number } id the id of current word object
+ * @param { Word } lexeme word raw object
+ * @returns { FlatWord } the flatten word model
+ */
+export const getWord = (id, word) => {
+  const attributes = getWordAttribute(word.attributes);
+  const morphologicalType = getWordMorphologicalType(word.morphologicalType);
+  return Object.freeze(
+    Object.create(null, {
+      id: { value: id, enumerable: true },
+      lexemeId: { value: word.lexemeId, enumerable: true },
+      word: { value: word.word, enumerable: true },
+      vocalised: { value: word.vocalised, enumerable: true },
+      suffixGender: { value: morphologicalType.suffixGender, enumerable: true },
+      suffixPerson: { value: morphologicalType.suffixPerson, enumerable: true },
+      suffixNumber: { value: morphologicalType.suffixNumber, enumerable: true },
+      suffixType: { value: morphologicalType.suffixType, enumerable: true },
+      prefixCode: { value: morphologicalType.prefixCode, enumerable: true },
+      gender: { value: morphologicalType.gender, enumerable: true },
+      person: { value: morphologicalType.person, enumerable: true },
+      number: { value: morphologicalType.number, enumerable: true },
+      state: { value: morphologicalType.state, enumerable: true },
+      tense: { value: morphologicalType.tense, enumerable: true },
+      form: { value: morphologicalType.form, enumerable: true },
+      seyame: { value: attributes.seyame, enumerable: true },
+      listing: { value: attributes.listing, enumerable: true },
+      enclitic: { value: attributes.enclitic, enumerable: true },
+      lexeme: { value: attributes.lexeme, enumerable: true }
+    })
+  );
+};

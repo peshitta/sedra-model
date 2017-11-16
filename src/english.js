@@ -113,3 +113,35 @@ export const getEnglishAttribute = attributes =>
     wordGender[(0x600 & attributes) >> 9], // 9-10 GENDER
     wordForm[(0xf800 & attributes) >> 11] // 11-15 FORM
   );
+
+/**
+ * Return flatten english object with parsed attribute values
+ * @param { number } id the id of current english object
+ * @param { English } english english raw object
+ * @returns { FlatEnglish } the flatten english model
+ */
+export const getEnglish = (id, english) => {
+  const attributes = getEnglishAttribute(english.attributes);
+  return Object.freeze(
+    Object.create(null, {
+      id: { value: id, enumerable: true },
+      lexemeId: { value: english.lexemeId, enumerable: true },
+      word: { value: english.word, enumerable: true },
+      before: { value: english.before, enumerable: true },
+      after: { value: english.after, enumerable: true },
+      comment: { value: english.comment, enumerable: true },
+      commentPosition: { value: attributes.commentPosition, enumerable: true },
+      commentFont: { value: attributes.commentFont, enumerable: true },
+      stringBeforeFont: {
+        value: attributes.stringBeforeFont,
+        enumerable: true
+      },
+      stringAfterFont: { value: attributes.stringAfterFont, enumerable: true },
+      verbType: { value: attributes.verbType, enumerable: true },
+      number: { value: attributes.number, enumerable: true },
+      gender: { value: attributes.gender, enumerable: true },
+      form: { value: attributes.form, enumerable: true },
+      flag: { value: english.flag, enumerable: true }
+    })
+  );
+};
