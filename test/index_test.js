@@ -32,6 +32,14 @@ describe('Sedra model', () => {
     test.strictEqual(a.seyame, f.seyame, 'seyame');
     test.strictEqual(a.rootType, f.rootType, 'root type');
   });
+  it('Get NULL Root', () => {
+    const f = sut.getRoot(10, null);
+    test.strictEqual(10, f.id, 'root matching');
+    test.strictEqual(null, f.root, 'root matching');
+    test.strictEqual(null, f.sort, 'sort matching');
+    test.strictEqual(null, f.seyame, 'seyame');
+    test.strictEqual(null, f.rootType, 'Bracketed', 'root type');
+  });
   it('Get Lexeme', () => {
     const m = sut.makeLexeme(55, 'AKOTA', 37749824, 16);
     test.strictEqual(m.rootId, 55, 'rootId matching');
@@ -98,6 +106,30 @@ describe('Sedra model', () => {
     test.strictEqual(t.radicalType, f.radicalType, 'radicalType');
     test.strictEqual(t.form, f.form, 'form');
   });
+  it('Get NULL Lexeme', () => {
+    const f = sut.getLexeme(20, null);
+    test.strictEqual(null, f.rootId, 'rootId matching');
+    test.strictEqual(null, f.lexeme, 'lexeme matching');
+    test.strictEqual(20, f.id, 'id matching');
+
+    test.strictEqual(null, f.seyame, 'seyame');
+    test.strictEqual(null, f.wordType, 'wordType');
+    test.strictEqual(null, f.grammaticalCategory, 'grammaticalCategory');
+    test.strictEqual(null, f.listing, 'listing');
+
+    test.strictEqual(null, f.firstSuffix, 'firstSuffix');
+    test.strictEqual(null, f.secondSuffix, 'secondSuffix');
+    test.strictEqual(null, f.thirdSuffix, 'thirdSuffix');
+    test.strictEqual(null, f.prefix, 'prefix');
+    test.strictEqual(null, f.firstVowel, 'firstVowel');
+    test.strictEqual(null, f.secondVowel, 'secondVowel');
+
+    test.strictEqual(null, f.thirdVowel, 'thirdVowel');
+    test.strictEqual(null, f.fourthVowel, 'fourthVowel');
+    test.strictEqual(null, f.vowelCount, 'vowelCount');
+    test.strictEqual(null, f.radicalType, 'radicalType');
+    test.strictEqual(null, f.form, 'form');
+  });
   it('Get Word', () => {
     const m = sut.makeWord(55, 'MOBDO', "MaOB'oD,uO", 369098752, 128);
     test.strictEqual(m.lexemeId, 55, 'lexemeId matching');
@@ -162,6 +194,33 @@ describe('Sedra model', () => {
     test.strictEqual(t.state, f.state, 'state');
     test.strictEqual(t.tense, f.tense, 'tense');
     test.strictEqual(t.form, f.form, 'form');
+  });
+  it('Get NULL Word', () => {
+    const NULL = null;
+    const f = sut.getWord(33, NULL);
+
+    test.strictEqual(NULL, f.lexemeId, 'lexemeId matching');
+    test.strictEqual(NULL, f.word, 'word matching');
+    test.strictEqual(NULL, f.vocalised, 'vocalised matching');
+    test.strictEqual(33, f.id, 'id matching');
+
+    test.strictEqual(NULL, f.seyame, 'seyame');
+    test.strictEqual(NULL, f.listing, 'listing');
+    test.strictEqual(NULL, f.enclitic, 'enclitic');
+    test.strictEqual(NULL, f.lexeme, 'lexeme');
+
+    test.strictEqual(NULL, f.suffixGender, 'suffixGender');
+    test.strictEqual(NULL, f.suffixPerson, 'suffixPerson');
+    test.strictEqual(NULL, f.suffixNumber, 'suffixNumber');
+    test.strictEqual(NULL, f.suffixType, 'suffixType');
+    test.strictEqual(NULL, f.prefixCode, 'prefixCode');
+    test.strictEqual(NULL, f.gender, 'gender');
+
+    test.strictEqual(NULL, f.person, 'person');
+    test.strictEqual(NULL, f.number, 'number');
+    test.strictEqual(NULL, f.state, 'state');
+    test.strictEqual(NULL, f.tense, 'tense');
+    test.strictEqual(NULL, f.form, 'form');
   });
   it('Get English', () => {
     const m = sut.makeEnglish(
@@ -235,6 +294,26 @@ describe('Sedra model', () => {
     test.strictEqual(a.gender, f.gender, 'gender');
     test.strictEqual(a.form, f.form, 'form');
   });
+  it('Get NULL English', () => {
+    const f = sut.getEnglish(50, null);
+
+    test.strictEqual(null, f.lexemeId, 'lexemeId matching');
+    test.strictEqual(null, f.word, 'word matching');
+    test.strictEqual(null, f.before, 'before matching');
+    test.strictEqual(null, f.after, 'after matching');
+    test.strictEqual(null, f.comment, 'comment matching');
+    test.strictEqual(50, f.id, 'attributes matching');
+    test.strictEqual(null, f.flag, 'flag matching');
+
+    test.strictEqual(null, f.commentPosition, 'commentPosition');
+    test.strictEqual(null, f.commentFont, 'commentFont');
+    test.strictEqual(null, f.stringBeforeFont, 'stringBeforeFont');
+    test.strictEqual(null, f.stringAfterFont, 'stringAfterFont');
+    test.strictEqual(null, f.verbType, 'verbType');
+    test.strictEqual(null, f.number, 'number');
+    test.strictEqual(null, f.gender, 'gender');
+    test.strictEqual(null, f.form, 'form');
+  });
   it('Get Etymology', () => {
     const m = sut.makeEtymology(46, 'eu\\255jaristi\\256a', 5);
     test.strictEqual(m.lexemeId, 46, 'lexemeId matching');
@@ -247,7 +326,7 @@ describe('Sedra model', () => {
     test.strictEqual(a.language, 'Greek', 'language');
     test.strictEqual(a.wordType, 'Normal', 'wordType');
   });
-  it('Get Etymology', () => {
+  it('Get Flat Etymology', () => {
     const m = sut.makeEtymology(46, 'eu\\255jaristi\\256a', 5);
     const a = sut.getEtymologyAttribute(m.attributes);
     const f = sut.getEtymology(3, m);
@@ -257,6 +336,15 @@ describe('Sedra model', () => {
 
     test.strictEqual(a.language, f.language, 'language');
     test.strictEqual(a.wordType, f.wordType, 'wordType');
+  });
+  it('Get NULL Etymology', () => {
+    const f = sut.getEtymology(30, null);
+    test.strictEqual(null, f.lexemeId, 'lexemeId matching');
+    test.strictEqual(null, f.word, 'word matching');
+    test.strictEqual(30, f.id, 'attributes matching');
+
+    test.strictEqual(null, f.language, 'language');
+    test.strictEqual(null, f.wordType, 'wordType');
   });
   it('Make Book', () => {
     const m = sut.makeBook(59, 62, 'b. qwr*ynty)', 'b. qwUr*yint,oye)', [

@@ -211,29 +211,63 @@ export const getWordMorphologicalType = attributes =>
  * @returns { FlatWord } the flatten word model
  */
 export const getWord = (id, word) => {
-  const attributes = getWordAttribute(word.attributes);
-  const morphologicalType = getWordMorphologicalType(word.morphologicalType);
+  if (word) {
+    const attributes = getWordAttribute(word.attributes);
+    const morphologicalType = getWordMorphologicalType(word.morphologicalType);
+    return Object.freeze(
+      Object.create(null, {
+        id: { value: id, enumerable: true },
+        lexemeId: { value: word.lexemeId, enumerable: true },
+        word: { value: word.word, enumerable: true },
+        vocalised: { value: word.vocalised, enumerable: true },
+        suffixGender: {
+          value: morphologicalType.suffixGender,
+          enumerable: true
+        },
+        suffixPerson: {
+          value: morphologicalType.suffixPerson,
+          enumerable: true
+        },
+        suffixNumber: {
+          value: morphologicalType.suffixNumber,
+          enumerable: true
+        },
+        suffixType: { value: morphologicalType.suffixType, enumerable: true },
+        prefixCode: { value: morphologicalType.prefixCode, enumerable: true },
+        gender: { value: morphologicalType.gender, enumerable: true },
+        person: { value: morphologicalType.person, enumerable: true },
+        number: { value: morphologicalType.number, enumerable: true },
+        state: { value: morphologicalType.state, enumerable: true },
+        tense: { value: morphologicalType.tense, enumerable: true },
+        form: { value: morphologicalType.form, enumerable: true },
+        seyame: { value: attributes.seyame, enumerable: true },
+        listing: { value: attributes.listing, enumerable: true },
+        enclitic: { value: attributes.enclitic, enumerable: true },
+        lexeme: { value: attributes.lexeme, enumerable: true }
+      })
+    );
+  }
   return Object.freeze(
     Object.create(null, {
       id: { value: id, enumerable: true },
-      lexemeId: { value: word.lexemeId, enumerable: true },
-      word: { value: word.word, enumerable: true },
-      vocalised: { value: word.vocalised, enumerable: true },
-      suffixGender: { value: morphologicalType.suffixGender, enumerable: true },
-      suffixPerson: { value: morphologicalType.suffixPerson, enumerable: true },
-      suffixNumber: { value: morphologicalType.suffixNumber, enumerable: true },
-      suffixType: { value: morphologicalType.suffixType, enumerable: true },
-      prefixCode: { value: morphologicalType.prefixCode, enumerable: true },
-      gender: { value: morphologicalType.gender, enumerable: true },
-      person: { value: morphologicalType.person, enumerable: true },
-      number: { value: morphologicalType.number, enumerable: true },
-      state: { value: morphologicalType.state, enumerable: true },
-      tense: { value: morphologicalType.tense, enumerable: true },
-      form: { value: morphologicalType.form, enumerable: true },
-      seyame: { value: attributes.seyame, enumerable: true },
-      listing: { value: attributes.listing, enumerable: true },
-      enclitic: { value: attributes.enclitic, enumerable: true },
-      lexeme: { value: attributes.lexeme, enumerable: true }
+      lexemeId: { value: null, enumerable: true },
+      word: { value: null, enumerable: true },
+      vocalised: { value: null, enumerable: true },
+      suffixGender: { value: null, enumerable: true },
+      suffixPerson: { value: null, enumerable: true },
+      suffixNumber: { value: null, enumerable: true },
+      suffixType: { value: null, enumerable: true },
+      prefixCode: { value: null, enumerable: true },
+      gender: { value: null, enumerable: true },
+      person: { value: null, enumerable: true },
+      number: { value: null, enumerable: true },
+      state: { value: null, enumerable: true },
+      tense: { value: null, enumerable: true },
+      form: { value: null, enumerable: true },
+      seyame: { value: null, enumerable: true },
+      listing: { value: null, enumerable: true },
+      enclitic: { value: null, enumerable: true },
+      lexeme: { value: null, enumerable: true }
     })
   );
 };

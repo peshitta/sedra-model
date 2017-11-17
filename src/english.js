@@ -122,27 +122,54 @@ export const getEnglishAttribute = attributes =>
  * @returns { FlatEnglish } the flatten english model
  */
 export const getEnglish = (id, english) => {
-  const attributes = getEnglishAttribute(english.attributes);
+  if (english) {
+    const attributes = getEnglishAttribute(english.attributes);
+    return Object.freeze(
+      Object.create(null, {
+        id: { value: id, enumerable: true },
+        lexemeId: { value: english.lexemeId, enumerable: true },
+        word: { value: english.word, enumerable: true },
+        before: { value: english.before, enumerable: true },
+        after: { value: english.after, enumerable: true },
+        comment: { value: english.comment, enumerable: true },
+        commentPosition: {
+          value: attributes.commentPosition,
+          enumerable: true
+        },
+        commentFont: { value: attributes.commentFont, enumerable: true },
+        stringBeforeFont: {
+          value: attributes.stringBeforeFont,
+          enumerable: true
+        },
+        stringAfterFont: {
+          value: attributes.stringAfterFont,
+          enumerable: true
+        },
+        verbType: { value: attributes.verbType, enumerable: true },
+        number: { value: attributes.number, enumerable: true },
+        gender: { value: attributes.gender, enumerable: true },
+        form: { value: attributes.form, enumerable: true },
+        flag: { value: english.flag, enumerable: true }
+      })
+    );
+  }
   return Object.freeze(
     Object.create(null, {
       id: { value: id, enumerable: true },
-      lexemeId: { value: english.lexemeId, enumerable: true },
-      word: { value: english.word, enumerable: true },
-      before: { value: english.before, enumerable: true },
-      after: { value: english.after, enumerable: true },
-      comment: { value: english.comment, enumerable: true },
-      commentPosition: { value: attributes.commentPosition, enumerable: true },
-      commentFont: { value: attributes.commentFont, enumerable: true },
-      stringBeforeFont: {
-        value: attributes.stringBeforeFont,
-        enumerable: true
-      },
-      stringAfterFont: { value: attributes.stringAfterFont, enumerable: true },
-      verbType: { value: attributes.verbType, enumerable: true },
-      number: { value: attributes.number, enumerable: true },
-      gender: { value: attributes.gender, enumerable: true },
-      form: { value: attributes.form, enumerable: true },
-      flag: { value: english.flag, enumerable: true }
+      lexemeId: { value: null, enumerable: true },
+      word: { value: null, enumerable: true },
+      before: { value: null, enumerable: true },
+      after: { value: null, enumerable: true },
+      comment: { value: null, enumerable: true },
+      commentPosition: { value: null, enumerable: true },
+      commentFont: { value: null, enumerable: true },
+      stringBeforeFont: { value: null, enumerable: true },
+      stringAfterFont: { value: null, enumerable: true },
+      verbType: { value: null, enumerable: true },
+      number: { value: null, enumerable: true },
+      gender: { value: null, enumerable: true },
+      form: { value: null, enumerable: true },
+      flag: { value: null, enumerable: true }
     })
   );
 };

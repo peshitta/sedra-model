@@ -76,14 +76,25 @@ export const getEtymologyAttribute = attributes =>
  * @returns { FlatEtymology } the flatten etymology model
  */
 export const getEtymology = (id, etymology) => {
-  const attributes = getEtymologyAttribute(etymology.attributes);
+  if (etymology) {
+    const attributes = getEtymologyAttribute(etymology.attributes);
+    return Object.freeze(
+      Object.create(null, {
+        id: { value: id, enumerable: true },
+        lexemeId: { value: etymology.lexemeId, enumerable: true },
+        word: { value: etymology.word, enumerable: true },
+        language: { value: attributes.language, enumerable: true },
+        wordType: { value: attributes.wordType, enumerable: true }
+      })
+    );
+  }
   return Object.freeze(
     Object.create(null, {
       id: { value: id, enumerable: true },
-      lexemeId: { value: etymology.lexemeId, enumerable: true },
-      word: { value: etymology.word, enumerable: true },
-      language: { value: attributes.language, enumerable: true },
-      wordType: { value: attributes.wordType, enumerable: true }
+      lexemeId: { value: null, enumerable: true },
+      word: { value: null, enumerable: true },
+      language: { value: null, enumerable: true },
+      wordType: { value: null, enumerable: true }
     })
   );
 };

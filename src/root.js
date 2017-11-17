@@ -57,14 +57,25 @@ export const getRootAttribute = attributes =>
  * @returns { FlatRoot } the flatten root model
  */
 export const getRoot = (id, root) => {
-  const attributes = getRootAttribute(root.attributes);
+  if (root) {
+    const attributes = getRootAttribute(root.attributes);
+    return Object.freeze(
+      Object.create(null, {
+        id: { value: id, enumerable: true },
+        root: { value: root.root, enumerable: true },
+        sort: { value: root.sort, enumerable: true },
+        seyame: { value: attributes.seyame, enumerable: true },
+        rootType: { value: attributes.rootType, enumerable: true }
+      })
+    );
+  }
   return Object.freeze(
     Object.create(null, {
       id: { value: id, enumerable: true },
-      root: { value: root.root, enumerable: true },
-      sort: { value: root.sort, enumerable: true },
-      seyame: { value: attributes.seyame, enumerable: true },
-      rootType: { value: attributes.rootType, enumerable: true }
+      root: { value: null, enumerable: true },
+      sort: { value: null, enumerable: true },
+      seyame: { value: null, enumerable: true },
+      rootType: { value: null, enumerable: true }
     })
   );
 };

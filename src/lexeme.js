@@ -249,33 +249,60 @@ export const getLexemeMorphologicalType = morphologicalType =>
  * @returns { FlatLexeme } the flatten lexeme model
  */
 export const getLexeme = (id, lexeme) => {
-  const attributes = getLexemeAttribute(lexeme.attributes);
-  const morphologicalType = getLexemeMorphologicalType(
-    lexeme.morphologicalType
-  );
+  if (lexeme) {
+    const attributes = getLexemeAttribute(lexeme.attributes);
+    const morphologicalType = getLexemeMorphologicalType(
+      lexeme.morphologicalType
+    );
+    return Object.freeze(
+      Object.create(null, {
+        id: { value: id, enumerable: true },
+        rootId: { value: lexeme.rootId, enumerable: true },
+        lexeme: { value: lexeme.lexeme, enumerable: true },
+        firstSuffix: { value: morphologicalType.firstSuffix, enumerable: true },
+        secondSuffix: {
+          value: morphologicalType.secondSuffix,
+          enumerable: true
+        },
+        thirdSuffix: { value: morphologicalType.thirdSuffix, enumerable: true },
+        prefix: { value: morphologicalType.prefix, enumerable: true },
+        firstVowel: { value: morphologicalType.firstVowel, enumerable: true },
+        secondVowel: { value: morphologicalType.secondVowel, enumerable: true },
+        thirdVowel: { value: morphologicalType.thirdVowel, enumerable: true },
+        fourthVowel: { value: morphologicalType.fourthVowel, enumerable: true },
+        vowelCount: { value: morphologicalType.vowelCount, enumerable: true },
+        radicalType: { value: morphologicalType.radicalType, enumerable: true },
+        form: { value: morphologicalType.form, enumerable: true },
+        seyame: { value: attributes.seyame, enumerable: true },
+        wordType: { value: attributes.wordType, enumerable: true },
+        grammaticalCategory: {
+          value: attributes.grammaticalCategory,
+          enumerable: true
+        },
+        listing: { value: attributes.listing, enumerable: true }
+      })
+    );
+  }
   return Object.freeze(
     Object.create(null, {
       id: { value: id, enumerable: true },
-      rootId: { value: lexeme.rootId, enumerable: true },
-      lexeme: { value: lexeme.lexeme, enumerable: true },
-      firstSuffix: { value: morphologicalType.firstSuffix, enumerable: true },
-      secondSuffix: { value: morphologicalType.secondSuffix, enumerable: true },
-      thirdSuffix: { value: morphologicalType.thirdSuffix, enumerable: true },
-      prefix: { value: morphologicalType.prefix, enumerable: true },
-      firstVowel: { value: morphologicalType.firstVowel, enumerable: true },
-      secondVowel: { value: morphologicalType.secondVowel, enumerable: true },
-      thirdVowel: { value: morphologicalType.thirdVowel, enumerable: true },
-      fourthVowel: { value: morphologicalType.fourthVowel, enumerable: true },
-      vowelCount: { value: morphologicalType.vowelCount, enumerable: true },
-      radicalType: { value: morphologicalType.radicalType, enumerable: true },
-      form: { value: morphologicalType.form, enumerable: true },
-      seyame: { value: attributes.seyame, enumerable: true },
-      wordType: { value: attributes.wordType, enumerable: true },
-      grammaticalCategory: {
-        value: attributes.grammaticalCategory,
-        enumerable: true
-      },
-      listing: { value: attributes.listing, enumerable: true }
+      rootId: { value: null, enumerable: true },
+      lexeme: { value: null, enumerable: true },
+      firstSuffix: { value: null, enumerable: true },
+      secondSuffix: { value: null, enumerable: true },
+      thirdSuffix: { value: null, enumerable: true },
+      prefix: { value: null, enumerable: true },
+      firstVowel: { value: null, enumerable: true },
+      secondVowel: { value: null, enumerable: true },
+      thirdVowel: { value: null, enumerable: true },
+      fourthVowel: { value: null, enumerable: true },
+      vowelCount: { value: null, enumerable: true },
+      radicalType: { value: null, enumerable: true },
+      form: { value: null, enumerable: true },
+      seyame: { value: null, enumerable: true },
+      wordType: { value: null, enumerable: true },
+      grammaticalCategory: { value: null, enumerable: true },
+      listing: { value: null, enumerable: true }
     })
   );
 };
