@@ -246,9 +246,10 @@ export const getLexemeMorphologicalType = morphologicalType =>
  * @static
  * @param { number } id the id of current lexeme object
  * @param { Lexeme } lexeme lexeme raw object
+ * @param { Array.<Root> } roots root list
  * @returns { FlatLexeme } the flatten lexeme model
  */
-export const getLexeme = (id, lexeme) => {
+export const getLexeme = (id, lexeme, roots) => {
   if (lexeme) {
     const attributes = getLexemeAttribute(lexeme.attributes);
     const morphologicalType = getLexemeMorphologicalType(
@@ -258,6 +259,11 @@ export const getLexeme = (id, lexeme) => {
       Object.create(null, {
         id: { value: id, enumerable: true },
         rootId: { value: lexeme.rootId, enumerable: true },
+        root: {
+          value:
+            roots && roots[lexeme.rootId] ? roots[lexeme.rootId].root : null,
+          enumerable: true
+        },
         lexeme: { value: lexeme.lexeme, enumerable: true },
         firstSuffix: { value: morphologicalType.firstSuffix, enumerable: true },
         secondSuffix: {
@@ -287,6 +293,7 @@ export const getLexeme = (id, lexeme) => {
     Object.create(null, {
       id: { value: id, enumerable: true },
       rootId: { value: null, enumerable: true },
+      root: { value: null, enumerable: true },
       lexeme: { value: null, enumerable: true },
       firstSuffix: { value: null, enumerable: true },
       secondSuffix: { value: null, enumerable: true },

@@ -1,6 +1,6 @@
 {
   "name": "sedra-model",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Sedra models and related utility functions",
   "main": "build/sedra-model.js",
   "mainMin": "build/sedra-model.min.js",
@@ -69,8 +69,8 @@
     "istanbul": "^0.4.5",
     "jsdoc-to-markdown": "^3.0.2",
     "mocha": "^4.0.1",
-    "rollup": "^0.51.6",
-    "rollup-plugin-buble": "^0.17.0",
+    "rollup": "^0.51.8",
+    "rollup-plugin-buble": "^0.18.0",
     "rollup-plugin-istanbul": "^1.1.0",
     "rollup-plugin-uglify": "^2.0.1"
   }

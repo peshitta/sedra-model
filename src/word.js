@@ -208,9 +208,10 @@ export const getWordMorphologicalType = attributes =>
  * @static
  * @param { number } id the id of current word object
  * @param { Word } lexeme word raw object
+ * @param { Array.<Lexeme> } lexemes lexeme list
  * @returns { FlatWord } the flatten word model
  */
-export const getWord = (id, word) => {
+export const getWord = (id, word, lexemes) => {
   if (word) {
     const attributes = getWordAttribute(word.attributes);
     const morphologicalType = getWordMorphologicalType(word.morphologicalType);
@@ -218,6 +219,13 @@ export const getWord = (id, word) => {
       Object.create(null, {
         id: { value: id, enumerable: true },
         lexemeId: { value: word.lexemeId, enumerable: true },
+        lexeme: {
+          value:
+            lexemes && lexemes[word.lexemeId]
+              ? lexemes[word.lexemeId].lexeme
+              : null,
+          enumerable: true
+        },
         word: { value: word.word, enumerable: true },
         vocalised: { value: word.vocalised, enumerable: true },
         suffixGender: {
@@ -243,7 +251,7 @@ export const getWord = (id, word) => {
         seyame: { value: attributes.seyame, enumerable: true },
         listing: { value: attributes.listing, enumerable: true },
         enclitic: { value: attributes.enclitic, enumerable: true },
-        lexeme: { value: attributes.lexeme, enumerable: true }
+        isLexeme: { value: attributes.lexeme, enumerable: true }
       })
     );
   }
@@ -251,6 +259,7 @@ export const getWord = (id, word) => {
     Object.create(null, {
       id: { value: id, enumerable: true },
       lexemeId: { value: null, enumerable: true },
+      lexeme: { value: null, enumerable: true },
       word: { value: null, enumerable: true },
       vocalised: { value: null, enumerable: true },
       suffixGender: { value: null, enumerable: true },
@@ -267,7 +276,7 @@ export const getWord = (id, word) => {
       seyame: { value: null, enumerable: true },
       listing: { value: null, enumerable: true },
       enclitic: { value: null, enumerable: true },
-      lexeme: { value: null, enumerable: true }
+      isLexeme: { value: null, enumerable: true }
     })
   );
 };

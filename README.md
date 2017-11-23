@@ -25,7 +25,7 @@ Following bundles are available:
 libraries and applications
 
 The package could also be downloaded directly from:
-[https://registry.npmjs.org/sedra-model/-/sedra-model-1.0.6.tgz](https://registry.npmjs.org/sedra-model/-/sedra-model-1.0.6.tgz)
+[https://registry.npmjs.org/sedra-model/-/sedra-model-1.0.7.tgz](https://registry.npmjs.org/sedra-model/-/sedra-model-1.0.7.tgz)
 
 ## More information
 
@@ -100,21 +100,21 @@ npm run build
     * [.getLexemeAttribute(attributes)](#module_sedraModel.getLexemeAttribute) ⇒ <code>LexemeAttribute</code>
     * [.makeLexemeMorphologicalType(firstSuffix, secondSuffix, thirdSuffix, prefix, firstVowel, secondVowel, thirdVowel, fourthVowel, vowelCount, radicalType, form)](#module_sedraModel.makeLexemeMorphologicalType) ⇒ <code>LexemeMorphologicalType</code>
     * [.getLexemeMorphologicalType(morphologicalType)](#module_sedraModel.getLexemeMorphologicalType) ⇒ <code>LexemeMorphologicalType</code>
-    * [.getLexeme(id, lexeme)](#module_sedraModel.getLexeme) ⇒ <code>FlatLexeme</code>
+    * [.getLexeme(id, lexeme, roots)](#module_sedraModel.getLexeme) ⇒ <code>FlatLexeme</code>
     * [.makeWord(lexemeId, word, vocalised, morphologicalType, attributes)](#module_sedraModel.makeWord) ⇒ <code>Word</code>
     * [.makeWordAttribute(seyame, listing, enclitic, lexeme)](#module_sedraModel.makeWordAttribute) ⇒ <code>WordAttribute</code>
     * [.getWordAttribute(attributes)](#module_sedraModel.getWordAttribute) ⇒ <code>WordAttribute</code>
     * [.makeWordMorphologicalType(suffixGender, suffixPerson, suffixNumber, suffixType, prefixCode, gender, person, number, state, tense, form)](#module_sedraModel.makeWordMorphologicalType) ⇒ <code>WordMorphologicalType</code>
     * [.getWordMorphologicalType(attributes)](#module_sedraModel.getWordMorphologicalType) ⇒ <code>WordMorphologicalType</code>
-    * [.getWord(id, lexeme)](#module_sedraModel.getWord) ⇒ <code>FlatWord</code>
+    * [.getWord(id, lexeme, lexemes)](#module_sedraModel.getWord) ⇒ <code>FlatWord</code>
     * [.makeEnglish(lexemeId, word, before, after, comment, attributes, flag)](#module_sedraModel.makeEnglish) ⇒ <code>English</code>
     * [.makeEnglishAttribute(commentPosition, commentFont, stringBeforeFont, stringAfterFont, verb, number, gender, form)](#module_sedraModel.makeEnglishAttribute) ⇒ <code>EnglishAttribute</code>
     * [.getEnglishAttribute(attributes)](#module_sedraModel.getEnglishAttribute) ⇒ <code>EnglishAttribute</code>
-    * [.getEnglish(id, english)](#module_sedraModel.getEnglish) ⇒ <code>FlatEnglish</code>
+    * [.getEnglish(id, english, lexemes)](#module_sedraModel.getEnglish) ⇒ <code>FlatEnglish</code>
     * [.makeEtymology(lexemeId, word, attributes)](#module_sedraModel.makeEtymology) ⇒ <code>Etymology</code>
     * [.makeEtymologyAttribute(language, type)](#module_sedraModel.makeEtymologyAttribute) ⇒ <code>EtymologyAttribute</code>
     * [.getEtymologyAttribute(attributes)](#module_sedraModel.getEtymologyAttribute) ⇒ <code>EtymologyAttribute</code>
-    * [.getEtymology(id, etymology)](#module_sedraModel.getEtymology) ⇒ <code>FlatEtymology</code>
+    * [.getEtymology(id, etymology, lexemes)](#module_sedraModel.getEtymology) ⇒ <code>FlatEtymology</code>
     * [.makeBook(id, peshittaId, name, vocalised, english)](#module_sedraModel.makeBook) ⇒ <code>Book</code>
     * [.sorter(a, b)](#module_sedraModel.sorter) ⇒ <code>number</code>
     * [.getBook(id)](#module_sedraModel.getBook) ⇒ <code>Book</code>
@@ -408,7 +408,7 @@ Get Lexeme Morphological Type object from lexeme bit map
 
 <a name="module_sedraModel.getLexeme"></a>
 
-### sedraModel.getLexeme(id, lexeme) ⇒ <code>FlatLexeme</code>
+### sedraModel.getLexeme(id, lexeme, roots) ⇒ <code>FlatLexeme</code>
 Return flatten lexeme object with parsed attribute and morphological values
 
 **Kind**: static method of [<code>sedraModel</code>](#module_sedraModel)  
@@ -418,6 +418,7 @@ Return flatten lexeme object with parsed attribute and morphological values
 | --- | --- | --- |
 | id | <code>number</code> | the id of current lexeme object |
 | lexeme | <code>Lexeme</code> | lexeme raw object |
+| roots | <code>Array.&lt;Root&gt;</code> | root list |
 
 <a name="module_sedraModel.makeWord"></a>
 
@@ -499,7 +500,7 @@ Get Word Morphological Type object from word bit map
 
 <a name="module_sedraModel.getWord"></a>
 
-### sedraModel.getWord(id, lexeme) ⇒ <code>FlatWord</code>
+### sedraModel.getWord(id, lexeme, lexemes) ⇒ <code>FlatWord</code>
 Return flatten word object with parsed attribute and morphological values
 
 **Kind**: static method of [<code>sedraModel</code>](#module_sedraModel)  
@@ -509,6 +510,7 @@ Return flatten word object with parsed attribute and morphological values
 | --- | --- | --- |
 | id | <code>number</code> | the id of current word object |
 | lexeme | <code>Word</code> | word raw object |
+| lexemes | <code>Array.&lt;Lexeme&gt;</code> | lexeme list |
 
 <a name="module_sedraModel.makeEnglish"></a>
 
@@ -562,7 +564,7 @@ Get English Attribute object from english attribute bit map
 
 <a name="module_sedraModel.getEnglish"></a>
 
-### sedraModel.getEnglish(id, english) ⇒ <code>FlatEnglish</code>
+### sedraModel.getEnglish(id, english, lexemes) ⇒ <code>FlatEnglish</code>
 Return flatten english object with parsed attribute values
 
 **Kind**: static method of [<code>sedraModel</code>](#module_sedraModel)  
@@ -572,6 +574,7 @@ Return flatten english object with parsed attribute values
 | --- | --- | --- |
 | id | <code>number</code> | the id of current english object |
 | english | <code>English</code> | english raw object |
+| lexemes | <code>Array.&lt;Lexeme&gt;</code> | lexeme list |
 
 <a name="module_sedraModel.makeEtymology"></a>
 
@@ -615,7 +618,7 @@ Get Etymology Attribute object from etymology attribute bit map
 
 <a name="module_sedraModel.getEtymology"></a>
 
-### sedraModel.getEtymology(id, etymology) ⇒ <code>FlatEtymology</code>
+### sedraModel.getEtymology(id, etymology, lexemes) ⇒ <code>FlatEtymology</code>
 Return flatten etymology object with parsed attribute values
 
 **Kind**: static method of [<code>sedraModel</code>](#module_sedraModel)  
@@ -625,6 +628,7 @@ Return flatten etymology object with parsed attribute values
 | --- | --- | --- |
 | id | <code>number</code> | the id of current etymology object |
 | etymology | <code>Etymology</code> | etymology raw object |
+| lexemes | <code>Array.&lt;Lexeme&gt;</code> | lexeme list |
 
 <a name="module_sedraModel.makeBook"></a>
 

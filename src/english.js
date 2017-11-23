@@ -96,11 +96,11 @@ export const makeEnglishAttribute = (
   );
 
 /**
-* Get English Attribute object from english attribute bit map
-* @static
-* @param { number } attributes 16-bit map
-* @returns { EnglishAttribute } English Attribute object
-*/
+ * Get English Attribute object from english attribute bit map
+ * @static
+ * @param { number } attributes 16-bit map
+ * @returns { EnglishAttribute } English Attribute object
+ */
 export const getEnglishAttribute = attributes =>
   makeEnglishAttribute(
     // 0 <RESERVED>
@@ -119,15 +119,23 @@ export const getEnglishAttribute = attributes =>
  * @static
  * @param { number } id the id of current english object
  * @param { English } english english raw object
+ * @param { Array.<Lexeme> } lexemes lexeme list
  * @returns { FlatEnglish } the flatten english model
  */
-export const getEnglish = (id, english) => {
+export const getEnglish = (id, english, lexemes) => {
   if (english) {
     const attributes = getEnglishAttribute(english.attributes);
     return Object.freeze(
       Object.create(null, {
         id: { value: id, enumerable: true },
         lexemeId: { value: english.lexemeId, enumerable: true },
+        lexeme: {
+          value:
+            lexemes && lexemes[english.lexemeId]
+              ? lexemes[english.lexemeId].lexeme
+              : null,
+          enumerable: true
+        },
         word: { value: english.word, enumerable: true },
         before: { value: english.before, enumerable: true },
         after: { value: english.after, enumerable: true },
@@ -157,6 +165,7 @@ export const getEnglish = (id, english) => {
     Object.create(null, {
       id: { value: id, enumerable: true },
       lexemeId: { value: null, enumerable: true },
+      lexeme: { value: null, enumerable: true },
       word: { value: null, enumerable: true },
       before: { value: null, enumerable: true },
       after: { value: null, enumerable: true },

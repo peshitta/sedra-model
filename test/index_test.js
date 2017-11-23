@@ -106,6 +106,71 @@ describe('Sedra model', () => {
     test.strictEqual(t.radicalType, f.radicalType, 'radicalType');
     test.strictEqual(t.form, f.form, 'form');
   });
+  it('Get Flat Lexeme with missing roots', () => {
+    const m = sut.makeLexeme(55, 'AKOTA', 37749824, 16);
+    const a = sut.getLexemeAttribute(m.attributes);
+    const f = sut.getLexeme(2, m, []);
+    test.strictEqual(m.rootId, f.rootId, 'rootId matching');
+    test.strictEqual(m.lexeme, f.lexeme, 'lexeme matching');
+    test.strictEqual(2, f.id, 'id matching');
+
+    test.strictEqual(a.seyame, f.seyame, 'seyame');
+    test.strictEqual(a.wordType, f.wordType, 'wordType');
+    test.strictEqual(
+      a.grammaticalCategory,
+      f.grammaticalCategory,
+      'grammaticalCategory'
+    );
+    test.strictEqual(a.listing, f.listing, 'listing');
+
+    const t = sut.getLexemeMorphologicalType(m.morphologicalType);
+    test.strictEqual(t.firstSuffix, f.firstSuffix, 'firstSuffix');
+    test.strictEqual(t.secondSuffix, f.secondSuffix, 'secondSuffix');
+    test.strictEqual(t.thirdSuffix, f.thirdSuffix, 'thirdSuffix');
+    test.strictEqual(t.prefix, f.prefix, 'prefix');
+    test.strictEqual(t.firstVowel, f.firstVowel, 'firstVowel');
+    test.strictEqual(t.secondVowel, f.secondVowel, 'secondVowel');
+
+    test.strictEqual(t.thirdVowel, f.thirdVowel, 'thirdVowel');
+    test.strictEqual(t.fourthVowel, f.fourthVowel, 'fourthVowel');
+    test.strictEqual(t.vowelCount, f.vowelCount, 'vowelCount');
+    test.strictEqual(t.radicalType, f.radicalType, 'radicalType');
+    test.strictEqual(t.form, f.form, 'form');
+  });
+  it('Get Flat Lexeme using roots', () => {
+    const m = sut.makeLexeme(55, 'AKOTA', 37749824, 16);
+    const a = sut.getLexemeAttribute(m.attributes);
+    const roots = [];
+    roots[55] = { root: 'AKA' };
+    const f = sut.getLexeme(2, m, roots);
+    test.strictEqual(m.rootId, f.rootId, 'rootId matching');
+    test.strictEqual(roots[55].root, f.root, 'root matching');
+    test.strictEqual(m.lexeme, f.lexeme, 'lexeme matching');
+    test.strictEqual(2, f.id, 'id matching');
+
+    test.strictEqual(a.seyame, f.seyame, 'seyame');
+    test.strictEqual(a.wordType, f.wordType, 'wordType');
+    test.strictEqual(
+      a.grammaticalCategory,
+      f.grammaticalCategory,
+      'grammaticalCategory'
+    );
+    test.strictEqual(a.listing, f.listing, 'listing');
+
+    const t = sut.getLexemeMorphologicalType(m.morphologicalType);
+    test.strictEqual(t.firstSuffix, f.firstSuffix, 'firstSuffix');
+    test.strictEqual(t.secondSuffix, f.secondSuffix, 'secondSuffix');
+    test.strictEqual(t.thirdSuffix, f.thirdSuffix, 'thirdSuffix');
+    test.strictEqual(t.prefix, f.prefix, 'prefix');
+    test.strictEqual(t.firstVowel, f.firstVowel, 'firstVowel');
+    test.strictEqual(t.secondVowel, f.secondVowel, 'secondVowel');
+
+    test.strictEqual(t.thirdVowel, f.thirdVowel, 'thirdVowel');
+    test.strictEqual(t.fourthVowel, f.fourthVowel, 'fourthVowel');
+    test.strictEqual(t.vowelCount, f.vowelCount, 'vowelCount');
+    test.strictEqual(t.radicalType, f.radicalType, 'radicalType');
+    test.strictEqual(t.form, f.form, 'form');
+  });
   it('Get NULL Lexeme', () => {
     const f = sut.getLexeme(20, null);
     test.strictEqual(null, f.rootId, 'rootId matching');
@@ -166,7 +231,7 @@ describe('Sedra model', () => {
     test.strictEqual(a.tense, 'Infinitive', 'tense');
     test.strictEqual(a.form, 'Aphel', 'form');
   });
-  it('Get Flatten Word', () => {
+  it('Get Flatten Word with no lexeme', () => {
     const m = sut.makeWord(55, 'MOBDO', "MaOB'oD,uO", 369098752, 128);
     const a = sut.getWordAttribute(m.attributes);
     const t = sut.getWordMorphologicalType(m.morphologicalType);
@@ -180,7 +245,68 @@ describe('Sedra model', () => {
     test.strictEqual(a.seyame, f.seyame, 'seyame');
     test.strictEqual(a.listing, f.listing, 'listing');
     test.strictEqual(a.enclitic, f.enclitic, 'enclitic');
-    test.strictEqual(a.lexeme, f.lexeme, 'lexeme');
+    test.strictEqual(a.lexeme, f.isLexeme, 'lexeme');
+
+    test.strictEqual(t.suffixGender, f.suffixGender, 'suffixGender');
+    test.strictEqual(t.suffixPerson, f.suffixPerson, 'suffixPerson');
+    test.strictEqual(t.suffixNumber, f.suffixNumber, 'suffixNumber');
+    test.strictEqual(t.suffixType, f.suffixType, 'suffixType');
+    test.strictEqual(t.prefixCode, f.prefixCode, 'prefixCode');
+    test.strictEqual(t.gender, f.gender, 'gender');
+
+    test.strictEqual(t.person, f.person, 'person');
+    test.strictEqual(t.number, f.number, 'number');
+    test.strictEqual(t.state, f.state, 'state');
+    test.strictEqual(t.tense, f.tense, 'tense');
+    test.strictEqual(t.form, f.form, 'form');
+  });
+  it('Get Flatten Word with missing lexeme', () => {
+    const m = sut.makeWord(55, 'MOBDO', "MaOB'oD,uO", 369098752, 128);
+    const a = sut.getWordAttribute(m.attributes);
+    const t = sut.getWordMorphologicalType(m.morphologicalType);
+    const f = sut.getWord(3, m, []);
+
+    test.strictEqual(m.lexemeId, f.lexemeId, 'lexemeId matching');
+    test.strictEqual(m.word, f.word, 'word matching');
+    test.strictEqual(m.vocalised, f.vocalised, 'vocalised matching');
+    test.strictEqual(3, f.id, 'id matching');
+
+    test.strictEqual(a.seyame, f.seyame, 'seyame');
+    test.strictEqual(a.listing, f.listing, 'listing');
+    test.strictEqual(a.enclitic, f.enclitic, 'enclitic');
+    test.strictEqual(a.lexeme, f.isLexeme, 'lexeme');
+
+    test.strictEqual(t.suffixGender, f.suffixGender, 'suffixGender');
+    test.strictEqual(t.suffixPerson, f.suffixPerson, 'suffixPerson');
+    test.strictEqual(t.suffixNumber, f.suffixNumber, 'suffixNumber');
+    test.strictEqual(t.suffixType, f.suffixType, 'suffixType');
+    test.strictEqual(t.prefixCode, f.prefixCode, 'prefixCode');
+    test.strictEqual(t.gender, f.gender, 'gender');
+
+    test.strictEqual(t.person, f.person, 'person');
+    test.strictEqual(t.number, f.number, 'number');
+    test.strictEqual(t.state, f.state, 'state');
+    test.strictEqual(t.tense, f.tense, 'tense');
+    test.strictEqual(t.form, f.form, 'form');
+  });
+  it('Get Flatten Word with existing lexeme', () => {
+    const m = sut.makeWord(55, 'MOBDO', "MaOB'oD,uO", 369098752, 128);
+    const a = sut.getWordAttribute(m.attributes);
+    const t = sut.getWordMorphologicalType(m.morphologicalType);
+    const lexemes = [];
+    lexemes[55] = { lexeme: 'AORDEA' };
+    const f = sut.getWord(3, m, lexemes);
+
+    test.strictEqual(m.lexemeId, f.lexemeId, 'lexemeId matching');
+    test.strictEqual('AORDEA', f.lexeme, 'lexeme matching');
+    test.strictEqual(m.word, f.word, 'word matching');
+    test.strictEqual(m.vocalised, f.vocalised, 'vocalised matching');
+    test.strictEqual(3, f.id, 'id matching');
+
+    test.strictEqual(a.seyame, f.seyame, 'seyame');
+    test.strictEqual(a.listing, f.listing, 'listing');
+    test.strictEqual(a.enclitic, f.enclitic, 'enclitic');
+    test.strictEqual(a.lexeme, f.isLexeme, 'lexeme');
 
     test.strictEqual(t.suffixGender, f.suffixGender, 'suffixGender');
     test.strictEqual(t.suffixPerson, f.suffixPerson, 'suffixPerson');
@@ -294,6 +420,77 @@ describe('Sedra model', () => {
     test.strictEqual(a.gender, f.gender, 'gender');
     test.strictEqual(a.form, f.form, 'form');
   });
+  it('Get Flat English with missing lexeme', () => {
+    const m = sut.makeEnglish(
+      71,
+      'kindle',
+      'make',
+      '(in Egypt)',
+      'w/ &NuORoA& ',
+      10240,
+      1
+    );
+    const a = sut.getEnglishAttribute(m.attributes);
+    const f = sut.getEnglish(5, m, []);
+
+    test.strictEqual(m.lexemeId, f.lexemeId, 'lexemeId matching');
+    test.strictEqual(m.word, f.word, 'word matching');
+    test.strictEqual(m.before, f.before, 'before matching');
+    test.strictEqual(m.after, f.after, 'after matching');
+    test.strictEqual(m.comment, f.comment, 'comment matching');
+    test.strictEqual(5, f.id, 'attributes matching');
+    test.strictEqual(m.flag, f.flag, 'flag matching');
+
+    test.strictEqual(a.commentPosition, f.commentPosition, 'commentPosition');
+    test.strictEqual(a.commentFont, f.commentFont, 'commentFont');
+    test.strictEqual(
+      a.stringBeforeFont,
+      f.stringBeforeFont,
+      'stringBeforeFont'
+    );
+    test.strictEqual(a.stringAfterFont, f.stringAfterFont, 'stringAfterFont');
+    test.strictEqual(a.verbType, f.verbType, 'verbType');
+    test.strictEqual(a.number, f.number, 'number');
+    test.strictEqual(a.gender, f.gender, 'gender');
+    test.strictEqual(a.form, f.form, 'form');
+  });
+  it('Get Flat English with lexeme', () => {
+    const m = sut.makeEnglish(
+      71,
+      'kindle',
+      'make',
+      '(in Egypt)',
+      'w/ &NuORoA& ',
+      10240,
+      1
+    );
+    const a = sut.getEnglishAttribute(m.attributes);
+    const lexemes = [];
+    lexemes[71] = { lexeme: 'AKD' };
+    const f = sut.getEnglish(5, m, lexemes);
+
+    test.strictEqual(m.lexemeId, f.lexemeId, 'lexemeId matching');
+    test.strictEqual('AKD', f.lexeme, 'lexeme matching');
+    test.strictEqual(m.word, f.word, 'word matching');
+    test.strictEqual(m.before, f.before, 'before matching');
+    test.strictEqual(m.after, f.after, 'after matching');
+    test.strictEqual(m.comment, f.comment, 'comment matching');
+    test.strictEqual(5, f.id, 'attributes matching');
+    test.strictEqual(m.flag, f.flag, 'flag matching');
+
+    test.strictEqual(a.commentPosition, f.commentPosition, 'commentPosition');
+    test.strictEqual(a.commentFont, f.commentFont, 'commentFont');
+    test.strictEqual(
+      a.stringBeforeFont,
+      f.stringBeforeFont,
+      'stringBeforeFont'
+    );
+    test.strictEqual(a.stringAfterFont, f.stringAfterFont, 'stringAfterFont');
+    test.strictEqual(a.verbType, f.verbType, 'verbType');
+    test.strictEqual(a.number, f.number, 'number');
+    test.strictEqual(a.gender, f.gender, 'gender');
+    test.strictEqual(a.form, f.form, 'form');
+  });
   it('Get NULL English', () => {
     const f = sut.getEnglish(50, null);
 
@@ -331,6 +528,31 @@ describe('Sedra model', () => {
     const a = sut.getEtymologyAttribute(m.attributes);
     const f = sut.getEtymology(3, m);
     test.strictEqual(m.lexemeId, f.lexemeId, 'lexemeId matching');
+    test.strictEqual(m.word, f.word, 'word matching');
+    test.strictEqual(3, f.id, 'attributes matching');
+
+    test.strictEqual(a.language, f.language, 'language');
+    test.strictEqual(a.wordType, f.wordType, 'wordType');
+  });
+  it('Get Flat Etymology with missing lexeme', () => {
+    const m = sut.makeEtymology(46, 'eu\\255jaristi\\256a', 5);
+    const a = sut.getEtymologyAttribute(m.attributes);
+    const f = sut.getEtymology(3, m, []);
+    test.strictEqual(m.lexemeId, f.lexemeId, 'lexemeId matching');
+    test.strictEqual(m.word, f.word, 'word matching');
+    test.strictEqual(3, f.id, 'attributes matching');
+
+    test.strictEqual(a.language, f.language, 'language');
+    test.strictEqual(a.wordType, f.wordType, 'wordType');
+  });
+  it('Get Flat Etymology with lexemes', () => {
+    const m = sut.makeEtymology(46, 'eu\\255jaristi\\256a', 5);
+    const a = sut.getEtymologyAttribute(m.attributes);
+    const lexemes = [];
+    lexemes[46] = { lexeme: 'AOCRSY;A' };
+    const f = sut.getEtymology(3, m, lexemes);
+    test.strictEqual(m.lexemeId, f.lexemeId, 'lexemeId matching');
+    test.strictEqual('AOCRSY;A', f.lexeme, 'lexeme matching');
     test.strictEqual(m.word, f.word, 'word matching');
     test.strictEqual(3, f.id, 'attributes matching');
 

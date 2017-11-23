@@ -54,11 +54,11 @@ export const makeEtymologyAttribute = (language, type) =>
   );
 
 /**
-* Get Etymology Attribute object from etymology attribute bit map
-* @static
-* @param { number } attributes 16-bit map
-* @returns { EtymologyAttribute } Etymology Attribute object
-*/
+ * Get Etymology Attribute object from etymology attribute bit map
+ * @static
+ * @param { number } attributes 16-bit map
+ * @returns { EtymologyAttribute } Etymology Attribute object
+ */
 export const getEtymologyAttribute = attributes =>
   // 0  SEYAME FLAG
   // 1-2 ROOT TYPE
@@ -73,15 +73,23 @@ export const getEtymologyAttribute = attributes =>
  * @static
  * @param { number } id the id of current etymology object
  * @param { Etymology } etymology etymology raw object
+ * @param { Array.<Lexeme> } lexemes lexeme list
  * @returns { FlatEtymology } the flatten etymology model
  */
-export const getEtymology = (id, etymology) => {
+export const getEtymology = (id, etymology, lexemes) => {
   if (etymology) {
     const attributes = getEtymologyAttribute(etymology.attributes);
     return Object.freeze(
       Object.create(null, {
         id: { value: id, enumerable: true },
         lexemeId: { value: etymology.lexemeId, enumerable: true },
+        lexeme: {
+          value:
+            lexemes && lexemes[etymology.lexemeId]
+              ? lexemes[etymology.lexemeId].lexeme
+              : null,
+          enumerable: true
+        },
         word: { value: etymology.word, enumerable: true },
         language: { value: attributes.language, enumerable: true },
         wordType: { value: attributes.wordType, enumerable: true }
@@ -92,6 +100,7 @@ export const getEtymology = (id, etymology) => {
     Object.create(null, {
       id: { value: id, enumerable: true },
       lexemeId: { value: null, enumerable: true },
+      lexeme: { value: null, enumerable: true },
       word: { value: null, enumerable: true },
       language: { value: null, enumerable: true },
       wordType: { value: null, enumerable: true }
