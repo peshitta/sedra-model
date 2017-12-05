@@ -25,7 +25,7 @@ Following bundles are available:
 libraries and applications
 
 The package could also be downloaded directly from:
-[https://registry.npmjs.org/sedra-model/-/sedra-model-1.0.7.tgz](https://registry.npmjs.org/sedra-model/-/sedra-model-1.0.7.tgz)
+[https://registry.npmjs.org/sedra-model/-/sedra-model-1.0.8.tgz](https://registry.npmjs.org/sedra-model/-/sedra-model-1.0.8.tgz)
 
 ## More information
 
@@ -355,7 +355,7 @@ Build Lexeme Attribute object
 
 | Param | Type | Description |
 | --- | --- | --- |
-| seyame | <code>boolean</code> | true if root has seyame |
+| seyame | <code>boolean</code> | true if lexeme has seyame |
 | wordType | <code>string</code> | word type enumeration |
 | grammaticalCategory | <code>string</code> | grammatical category enumeration |
 | listing | <code>boolean</code> | not clear yet what this is used for |
@@ -601,7 +601,7 @@ Build Etymology Attribute object
 
 | Param | Type | Description |
 | --- | --- | --- |
-| language | <code>string</code> | true if root has seyame |
+| language | <code>string</code> | the source language |
 | type | <code>string</code> | word type enumeration |
 
 <a name="module_sedraModel.getEtymologyAttribute"></a>

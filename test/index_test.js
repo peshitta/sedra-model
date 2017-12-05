@@ -377,10 +377,10 @@ describe('Sedra model', () => {
       1
     );
     const a = sut.getEnglishAttribute(m.attributes);
-    test.strictEqual(a.commentPosition, 'Before Meaning', 'commentPosition');
+    test.strictEqual(a.commentPosition, 'BeforeWord', 'commentPosition');
     test.strictEqual(a.commentFont, 'Normal', 'commentFont');
-    test.strictEqual(a.stringBeforeFont, 'Before Meaning', 'stringBeforeFont');
-    test.strictEqual(a.stringAfterFont, 'Before Meaning', 'stringAfterFont');
+    test.strictEqual(a.stringBeforeFont, 'BeforeWord', 'stringBeforeFont');
+    test.strictEqual(a.stringAfterFont, 'BeforeWord', 'stringAfterFont');
     test.strictEqual(a.verbType, 'None', 'verbType');
     test.strictEqual(a.number, '', 'number');
     test.strictEqual(a.gender, '', 'gender');

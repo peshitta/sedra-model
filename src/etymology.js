@@ -41,7 +41,7 @@ export const makeEtymology = (lexemeId, word, attributes) =>
 /**
  * Build Etymology Attribute object
  * @static
- * @param { string } language true if root has seyame
+ * @param { string } language the source language
  * @param { string } type word type enumeration
  * @returns { EtymologyAttribute } Etymology Attribute object
  */

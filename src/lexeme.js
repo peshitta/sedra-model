@@ -137,7 +137,7 @@ export const makeLexeme = (rootId, lexeme, morphologicalType, attributes) =>
 /**
  * Build Lexeme Attribute object
  * @static
- * @param { boolean } seyame true if root has seyame
+ * @param { boolean } seyame true if lexeme has seyame
  * @param { string } wordType word type enumeration
  * @param { string } grammaticalCategory grammatical category enumeration
  * @param { boolean } listing not clear yet what this is used for

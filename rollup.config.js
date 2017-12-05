@@ -9,7 +9,7 @@ const banner = isProduction
   ? '/** @module sedraModel */\n' +
     '/**\n' +
     '* @file Sedra models and related utility functions\n' +
-    '* @version 1.0.7\n' +
+    '* @version 1.0.8\n' +
     '* @author Greg Borota\n' +
     '* @copyright (c) 2017 Greg Borota.\n' +
     '* @license MIT\n' +

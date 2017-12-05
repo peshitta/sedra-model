@@ -6,7 +6,7 @@ import { wordNumber, wordGender, wordForm } from './common';
  * @const
  * @type { Array.<string> }
  */
-export const textPosition = Object.freeze(['Before Meaning', 'After Meaning']);
+export const textPosition = Object.freeze(['BeforeWord', 'AfterWord']);
 
 /**
  * Font type enumeration
