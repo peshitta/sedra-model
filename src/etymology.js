@@ -65,7 +65,7 @@ export const getEtymologyAttribute = attributes =>
   // 3-15 <RESERVED>
   makeEtymologyAttribute(
     etymologyLanguage[0xf & attributes], // 0-3 LANGUAGE
-    wordType[(0x10 & attributes) >> 4] // 4 TYPE
+    wordType[(0x10 & attributes) >>> 4] // 4 TYPE
   );
 
 /**

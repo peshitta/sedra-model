@@ -131,7 +131,7 @@ export const makeWordAttribute = (seyame, listing, enclitic, lexeme) =>
 export const getWordAttribute = attributes =>
   makeWordAttribute(
     !!(0x1 & attributes), // 0 SEYAME FLAG
-    (0x1e & attributes) >> 1, // 1-4 ignore
+    (0x1e & attributes) >>> 1, // 1-4 ignore
     !!(0x20 & attributes), // 5 ENCLITIC FLAG
     !!(0x40 & attributes) // 6 LEXEME FLAG
   );
@@ -190,17 +190,17 @@ export const makeWordMorphologicalType = (
 export const getWordMorphologicalType = attributes =>
   makeWordMorphologicalType(
     // 0-1 <RESERVED>
-    wordSuffixGender[(0xc & attributes) >> 2], // 2-3 SUFFIX GENDER
-    wordSuffixPerson[(0x30 & attributes) >> 4], // 4-5 SUFFIX PERSON
-    wordSuffixNumber[(0x40 & attributes) >> 6], // 6 SUFFIX NUMBER
-    wordSuffixType[(0x180 & attributes) >> 7], // 7-8 SUFFIX/CONTRACTION
-    (0x7e00 & attributes) >> 9, // 9-14 PREFIX CODE
-    wordGender[(0x18000 & attributes) >> 15], // 15-16 GENDER
-    wordPerson[(0x60000 & attributes) >> 17], // 17-18 PERSON
-    wordNumber[(0x180000 & attributes) >> 19], // 19-20 NUMBER
-    wordState[(0x600000 & attributes) >> 21], // 21-22 STATE
-    wordTense[(0x3800000 & attributes) >> 23], // 23-25 TENSE
-    wordForm[(0xfc000000 & attributes) >> 26] // 26-31 FORM
+    wordSuffixGender[(0xc & attributes) >>> 2], // 2-3 SUFFIX GENDER
+    wordSuffixPerson[(0x30 & attributes) >>> 4], // 4-5 SUFFIX PERSON
+    wordSuffixNumber[(0x40 & attributes) >>> 6], // 6 SUFFIX NUMBER
+    wordSuffixType[(0x180 & attributes) >>> 7], // 7-8 SUFFIX/CONTRACTION
+    (0x7e00 & attributes) >>> 9, // 9-14 PREFIX CODE
+    wordGender[(0x18000 & attributes) >>> 15], // 15-16 GENDER
+    wordPerson[(0x60000 & attributes) >>> 17], // 17-18 PERSON
+    wordNumber[(0x180000 & attributes) >>> 19], // 19-20 NUMBER
+    wordState[(0x600000 & attributes) >>> 21], // 21-22 STATE
+    wordTense[(0x3800000 & attributes) >>> 23], // 23-25 TENSE
+    wordForm[(0xfc000000 & attributes) >>> 26] // 26-31 FORM
   );
 
 /**

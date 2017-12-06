@@ -46,7 +46,7 @@ export const getRootAttribute = attributes =>
   // 3-15 <RESERVED>
   makeRootAttribute(
     !!(0x1 & attributes), // 0  SEYAME FLAG
-    wordType[(0x6 & attributes) >> 1] // 1-2 ROOT TYPE
+    wordType[(0x6 & attributes) >>> 1] // 1-2 ROOT TYPE
   );
 
 /**

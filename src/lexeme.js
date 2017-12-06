@@ -98,6 +98,7 @@ export const lexemeRadicalType = Object.freeze([
  */
 export const lexemeForm = Object.freeze([
   '',
+  'Peal',
   'Ethpeal',
   'Pael',
   'Ethpael',
@@ -170,9 +171,9 @@ export const getLexemeAttribute = attributes =>
   // 3-15 <RESERVED>
   makeLexemeAttribute(
     !!(0x1 & attributes), // 0  SEYAME FLAG
-    wt[(0x2 & attributes) >> 1], // 1    WORD TYPE
-    lexemeGrammaticalCategory[(0x3c & attributes) >> 2], // 2-5 GRAMMATICAL CATEGORY
-    !!(0x40 & (attributes >> 6)) // 6 ?
+    wt[(0x2 & attributes) >>> 1], // 1    WORD TYPE
+    lexemeGrammaticalCategory[(0x3c & attributes) >>> 2], // 2-5 GRAMMATICAL CATEGORY
+    !!(0x40 & (attributes >>> 6)) // 6 ?
   );
 
 /**
@@ -229,16 +230,16 @@ export const makeLexemeMorphologicalType = (
 export const getLexemeMorphologicalType = morphologicalType =>
   makeLexemeMorphologicalType(
     lexemeFirstSuffix[0xf & morphologicalType], // 0-3 First SUFFIX
-    lexemeSecondSuffix[(0x30 & morphologicalType) >> 4], // 4-5 SECOND SUFFIX
-    lexemeThirdSuffix[(0xc0 & morphologicalType) >> 6], // 6-7 THIRD SUFFIX
-    lexemePrefix[(0x300 & morphologicalType) >> 8], // 8-9 PREFIX
-    v[(0x1c00 & morphologicalType) >> 10], // 10-12 FIRST VOWEL
-    v[(0xe000 & morphologicalType) >> 13], // 13-15 SECOND VOWEL
-    v[(0x70000 & morphologicalType) >> 16], // 16-18 THIRD VOWEL
-    v[(0x380000 & morphologicalType) >> 19], // 19-21 FOURTH VOWEL
-    (0x1c00000 & morphologicalType) >> 22, // 22-24 Total no of vowels in lexeme
-    lexemeRadicalType[(0xe000000 & morphologicalType) >> 25], // 25-27 RADICAL TYPE
-    lexemeForm[(0xf0000000 & morphologicalType) >> 28] // 28-31 FORM
+    lexemeSecondSuffix[(0x30 & morphologicalType) >>> 4], // 4-5 SECOND SUFFIX
+    lexemeThirdSuffix[(0xc0 & morphologicalType) >>> 6], // 6-7 THIRD SUFFIX
+    lexemePrefix[(0x300 & morphologicalType) >>> 8], // 8-9 PREFIX
+    v[(0x1c00 & morphologicalType) >>> 10], // 10-12 FIRST VOWEL
+    v[(0xe000 & morphologicalType) >>> 13], // 13-15 SECOND VOWEL
+    v[(0x70000 & morphologicalType) >>> 16], // 16-18 THIRD VOWEL
+    v[(0x380000 & morphologicalType) >>> 19], // 19-21 FOURTH VOWEL
+    (0x1c00000 & morphologicalType) >>> 22, // 22-24 Total no of vowels in lexeme
+    lexemeRadicalType[(0xe000000 & morphologicalType) >>> 25], // 25-27 RADICAL TYPE
+    lexemeForm[(0xf0000000 & morphologicalType) >>> 28] // 28-31 FORM
   );
 
 /**

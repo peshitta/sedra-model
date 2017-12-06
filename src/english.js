@@ -104,14 +104,14 @@ export const makeEnglishAttribute = (
 export const getEnglishAttribute = attributes =>
   makeEnglishAttribute(
     // 0 <RESERVED>
-    textPosition[(0x2 & attributes) >> 1], // 1   COMMENT POSITION
-    fontType[(0x4 & attributes) >> 2], // 2   COMMENT FONT
-    fontType[(0x8 & attributes) >> 3], // 3   STRING BEFORE FONT
-    fontType[(0x10 & attributes) >> 4], // 4   STRING AFTER FONT
-    verbType[(0x60 & attributes) >> 5], // 5-6 VERB TYPE
-    wordNumber[(0x180 & attributes) >> 7], // 7-8  NUMBER
-    wordGender[(0x600 & attributes) >> 9], // 9-10 GENDER
-    wordForm[(0xf800 & attributes) >> 11] // 11-15 FORM
+    textPosition[(0x2 & attributes) >>> 1], // 1   COMMENT POSITION
+    fontType[(0x4 & attributes) >>> 2], // 2   COMMENT FONT
+    fontType[(0x8 & attributes) >>> 3], // 3   STRING BEFORE FONT
+    fontType[(0x10 & attributes) >>> 4], // 4   STRING AFTER FONT
+    verbType[(0x60 & attributes) >>> 5], // 5-6 VERB TYPE
+    wordNumber[(0x180 & attributes) >>> 7], // 7-8  NUMBER
+    wordGender[(0x600 & attributes) >>> 9], // 9-10 GENDER
+    wordForm[(0xf800 & attributes) >>> 11] // 11-15 FORM
   );
 
 /**

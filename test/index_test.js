@@ -106,6 +106,38 @@ describe('Sedra model', () => {
     test.strictEqual(t.radicalType, f.radicalType, 'radicalType');
     test.strictEqual(t.form, f.form, 'form');
   });
+  it('Get Another flat Lexeme', () => {
+    const m = sut.makeLexeme(1733, 'MSRHBA', -1879048192, 4);
+    const a = sut.getLexemeAttribute(m.attributes);
+    const f = sut.getLexeme(2, m);
+    test.strictEqual(m.rootId, f.rootId, 'rootId matching');
+    test.strictEqual(m.lexeme, f.lexeme, 'lexeme matching');
+    test.strictEqual(2, f.id, 'id matching');
+
+    test.strictEqual(a.seyame, f.seyame, 'seyame');
+    test.strictEqual(a.wordType, f.wordType, 'wordType');
+    test.strictEqual(
+      a.grammaticalCategory,
+      f.grammaticalCategory,
+      'grammaticalCategory'
+    );
+    test.strictEqual(a.listing, f.listing, 'listing');
+
+    const t = sut.getLexemeMorphologicalType(m.morphologicalType);
+    test.strictEqual(t.firstSuffix, f.firstSuffix, 'firstSuffix');
+    test.strictEqual(t.secondSuffix, f.secondSuffix, 'secondSuffix');
+    test.strictEqual(t.thirdSuffix, f.thirdSuffix, 'thirdSuffix');
+    test.strictEqual(t.prefix, f.prefix, 'prefix');
+    test.strictEqual(t.firstVowel, f.firstVowel, 'firstVowel');
+    test.strictEqual(t.secondVowel, f.secondVowel, 'secondVowel');
+
+    test.strictEqual(t.thirdVowel, f.thirdVowel, 'thirdVowel');
+    test.strictEqual(t.fourthVowel, f.fourthVowel, 'fourthVowel');
+    test.strictEqual(t.vowelCount, f.vowelCount, 'vowelCount');
+    test.strictEqual(t.radicalType, f.radicalType, 'radicalType');
+    test.strictEqual(t.form, f.form, 'form');
+    test.strictEqual(t.form, 'Saphel', 'form');
+  });
   it('Get Flat Lexeme with missing roots', () => {
     const m = sut.makeLexeme(55, 'AKOTA', 37749824, 16);
     const a = sut.getLexemeAttribute(m.attributes);
