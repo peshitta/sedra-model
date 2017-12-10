@@ -18,6 +18,15 @@ describe('Sedra model', () => {
     test.strictEqual(a.seyame, true, 'seyame');
     test.strictEqual(a.rootType, 'Bracketed', 'root type');
   });
+  it('Get Negative Root attributes', () => {
+    let a = sut.getRootAttribute(-1094);
+    test.strictEqual(a.seyame, false, 'seyame -1094');
+    test.strictEqual(a.rootType, 'Parenthesized', 'rootType -1094');
+
+    a = sut.getRootAttribute(-1096);
+    test.strictEqual(a.seyame, false, 'seyame -1096');
+    test.strictEqual(a.rootType, 'Normal', 'rootType -1096');
+  });
   it('Get Flatten Root', () => {
     let m = sut.makeRoot('AGORSA', 'acto         |0', 4);
     let a = sut.getRootAttribute(m.attributes);
@@ -58,6 +67,37 @@ describe('Sedra model', () => {
     test.strictEqual(a.wordType, 'Normal', 'wordType');
     test.strictEqual(a.grammaticalCategory, 'Noun', 'grammaticalCategory');
     test.strictEqual(a.listing, false, 'listing');
+  });
+  it('Get Negative Lexeme attribute', () => {
+    let a = sut.getLexemeAttribute(-1264);
+    test.strictEqual(a.seyame, false, 'seyame');
+    test.strictEqual(a.wordType, 'Normal', 'wordType');
+    test.strictEqual(a.grammaticalCategory, 'Noun', 'grammaticalCategory');
+    test.strictEqual(a.listing, true, 'listing');
+
+    a = sut.getLexemeAttribute(-1236);
+    test.strictEqual(a.seyame, false, 'seyame');
+    test.strictEqual(a.wordType, 'Normal', 'wordType');
+    test.strictEqual(a.grammaticalCategory, 'Adverb-)iTt', 'grammaticalCategory');
+    test.strictEqual(a.listing, true, 'listing');
+
+    a = sut.getLexemeAttribute(-1280);
+    test.strictEqual(a.seyame, false, 'seyame');
+    test.strictEqual(a.wordType, 'Normal', 'wordType');
+    test.strictEqual(a.grammaticalCategory, 'Verb', 'grammaticalCategory');
+    test.strictEqual(a.listing, true, 'listing');
+
+    a = sut.getLexemeAttribute(-1231);
+    test.strictEqual(a.seyame, true, 'seyame');
+    test.strictEqual(a.wordType, 'Normal', 'wordType');
+    test.strictEqual(a.grammaticalCategory, 'AdjectiveOfPlace', 'grammaticalCategory');
+    test.strictEqual(a.listing, true, 'listing');
+
+    a = sut.getLexemeAttribute(-232);
+    test.strictEqual(a.seyame, false, 'seyame');
+    test.strictEqual(a.wordType, 'Normal', 'wordType');
+    test.strictEqual(a.grammaticalCategory, 'ProperNoun', 'grammaticalCategory');
+    test.strictEqual(a.listing, true, 'listing');
   });
   it('Get Lexeme MorphologicalType', () => {
     const m = sut.makeLexeme(55, 'AKOTA', 37749824, 16);
