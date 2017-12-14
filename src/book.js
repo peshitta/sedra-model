@@ -378,7 +378,7 @@ export const bookGroups = Object.freeze(
  * @static
  * @param { number } index verse index overall NT Peshitta
  * @param { object } ubs NT Peshitta object hash
- * @returns { Array } a verse list of words
+ * @returns { object } a hash with verse content, verse, chapter and book number
  */
 export const getVerseByIndex = (index, ubs) => {
   const firstBook = 52;
@@ -396,7 +396,17 @@ export const getVerseByIndex = (index, ubs) => {
         chapterCount += ubs[book][chapter].verses;
         if (bookIndex >= lastChapterCount && bookIndex <= chapterCount) {
           const chapterIndex = bookIndex - lastChapterCount;
-          return ubs[book][chapter][chapterIndex];
+          return Object.freeze(
+            Object.create(null, {
+              content: {
+                value: ubs[book][chapter][chapterIndex],
+                enumerable: true
+              },
+              verse: { value: chapterIndex, enumerable: true },
+              chapter: { value: chapter, enumerable: true },
+              book: { value: book, enumerable: true }
+            })
+          );
         }
         lastChapterCount = chapterCount;
       }

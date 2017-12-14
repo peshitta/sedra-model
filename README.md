@@ -25,7 +25,7 @@ Following bundles are available:
 libraries and applications
 
 The package could also be downloaded directly from:
-[https://registry.npmjs.org/sedra-model/-/sedra-model-1.1.1.tgz](https://registry.npmjs.org/sedra-model/-/sedra-model-1.1.1.tgz)
+[https://registry.npmjs.org/sedra-model/-/sedra-model-1.1.2.tgz](https://registry.npmjs.org/sedra-model/-/sedra-model-1.1.2.tgz)
 
 ## More information
 
@@ -119,7 +119,7 @@ npm run build
     * [.sorter(a, b)](#module_sedraModel.sorter) ⇒ <code>number</code>
     * [.getBook(id)](#module_sedraModel.getBook) ⇒ <code>Book</code>
     * [.makeBookGroup(id, name, bookSet)](#module_sedraModel.makeBookGroup) ⇒ <code>BookGroup</code>
-    * [.getVerseByIndex(index, ubs)](#module_sedraModel.getVerseByIndex) ⇒ <code>Array</code>
+    * [.getVerseByIndex(index, ubs)](#module_sedraModel.getVerseByIndex) ⇒ <code>object</code>
 
 <a name="module_sedraModel.wordType"></a>
 
@@ -688,11 +688,11 @@ Build a BookGroup object - a grouping of Peshitta books
 
 <a name="module_sedraModel.getVerseByIndex"></a>
 
-### sedraModel.getVerseByIndex(index, ubs) ⇒ <code>Array</code>
+### sedraModel.getVerseByIndex(index, ubs) ⇒ <code>object</code>
 Get a verse by its index inside the whole of NT Peshitta
 
 **Kind**: static method of [<code>sedraModel</code>](#module_sedraModel)  
-**Returns**: <code>Array</code> - a verse list of words  
+**Returns**: <code>object</code> - a hash with verse content, verse, chapter and book number  
 
 | Param | Type | Description |
 | --- | --- | --- |
