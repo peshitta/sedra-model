@@ -372,3 +372,36 @@ export const bookGroups = Object.freeze(
     )
   })
 );
+
+/**
+ * Get a verse by its index inside the whole of NT Peshitta
+ * @static
+ * @param { number } index verse index overall NT Peshitta
+ * @param { object } ubs NT Peshitta object hash
+ * @returns { Array } a verse list of words
+ */
+export const getVerseByIndex = (index, ubs) => {
+  const firstBook = 52;
+  const lastBook = firstBook + (ubs.books - 1);
+  let lastCount = 0;
+  let count = 0;
+  for (let book = firstBook; book <= lastBook; book++) {
+    count += ubs[book].verses;
+    if (index >= lastCount && index <= count) {
+      const bookIndex = index - lastCount;
+      const { chapters } = ubs[book];
+      let lastChapterCount = 0;
+      let chapterCount = 0;
+      for (let chapter = 1; chapter <= chapters; chapter++) {
+        chapterCount += ubs[book][chapter].verses;
+        if (bookIndex >= lastChapterCount && bookIndex <= chapterCount) {
+          const chapterIndex = bookIndex - lastChapterCount;
+          return ubs[book][chapter][chapterIndex];
+        }
+        lastChapterCount = chapterCount;
+      }
+      lastCount = count;
+    }
+  }
+  return null;
+};
