@@ -78,7 +78,11 @@ describe('Sedra model', () => {
     a = sut.getLexemeAttribute(-1236);
     test.strictEqual(a.seyame, false, 'seyame');
     test.strictEqual(a.wordType, 'Normal', 'wordType');
-    test.strictEqual(a.grammaticalCategory, 'Adverb-)iTt', 'grammaticalCategory');
+    test.strictEqual(
+      a.grammaticalCategory,
+      'Adverb-)iTt',
+      'grammaticalCategory'
+    );
     test.strictEqual(a.listing, true, 'listing');
 
     a = sut.getLexemeAttribute(-1280);
@@ -90,13 +94,21 @@ describe('Sedra model', () => {
     a = sut.getLexemeAttribute(-1231);
     test.strictEqual(a.seyame, true, 'seyame');
     test.strictEqual(a.wordType, 'Normal', 'wordType');
-    test.strictEqual(a.grammaticalCategory, 'AdjectiveOfPlace', 'grammaticalCategory');
+    test.strictEqual(
+      a.grammaticalCategory,
+      'AdjectiveOfPlace',
+      'grammaticalCategory'
+    );
     test.strictEqual(a.listing, true, 'listing');
 
     a = sut.getLexemeAttribute(-232);
     test.strictEqual(a.seyame, false, 'seyame');
     test.strictEqual(a.wordType, 'Normal', 'wordType');
-    test.strictEqual(a.grammaticalCategory, 'ProperNoun', 'grammaticalCategory');
+    test.strictEqual(
+      a.grammaticalCategory,
+      'ProperNoun',
+      'grammaticalCategory'
+    );
     test.strictEqual(a.listing, true, 'listing');
   });
   it('Get Lexeme MorphologicalType', () => {
@@ -674,5 +686,57 @@ describe('Sedra model', () => {
       Object.freeze(sut.peshittaBooks.slice(74, 79))
     );
     test.strictEqual(m.name, 'Western Five', 'makeBookGroup');
+  });
+  it('getVerseByIndex', () => {
+    const ubs = {
+      52: {
+        1: {
+          1: [10762, 9144, 9568, 12523, 3245, 4227, 3245, 167],
+          2: [165, 9084, 696, 690, 9084, 9371, 9370, 9084, 8941, 432],
+          verses: 2,
+          words: 18
+        },
+        2: {
+          1: [10762, 9144, 9568, 12523, 3245, 4227, 3245, 167],
+          2: [165, 9084, 696, 690, 9084, 9371, 9370, 9084, 8941, 432],
+          verses: 2,
+          words: 18
+        },
+        chapters: 2,
+        verses: 4,
+        words: 36
+      },
+      53: {
+        1: {
+          1: [19959, 283, 9568, 12523, 3245, 914],
+          verses: 1,
+          words: 6
+        },
+        chapters: 1,
+        verses: 1,
+        words: 6
+      },
+      books: 2,
+      chapters: 3,
+      verses: 5,
+      words: 42
+    };
+    let verse = sut.getVerseByIndex(2, ubs);
+    test.strictEqual(verse.book, 52, 'matthew book');
+    test.strictEqual(verse.chapter, 1, 'matthew chapter 1');
+    test.strictEqual(verse.verse, 2, 'matthew verse 1:2');
+
+    verse = sut.getVerseByIndex(4, ubs);
+    test.strictEqual(verse.book, 52, 'matthew book');
+    test.strictEqual(verse.chapter, 2, 'matthew chapter 2');
+    test.strictEqual(verse.verse, 2, 'matthew verse 2:2');
+
+    verse = sut.getVerseByIndex(5, ubs);
+    test.strictEqual(verse.book, 53, 'mark book');
+    test.strictEqual(verse.chapter, 1, 'mark chapter');
+    test.strictEqual(verse.verse, 1, 'mark verse');
+
+    verse = sut.getVerseByIndex(6, ubs);
+    test.strictEqual(verse, null, 'non-existent verse');
   });
 });

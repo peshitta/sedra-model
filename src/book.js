@@ -410,8 +410,8 @@ export const getVerseByIndex = (index, ubs) => {
         }
         lastChapterCount = chapterCount;
       }
-      lastCount = count;
     }
+    lastCount = count;
   }
   return null;
 };
