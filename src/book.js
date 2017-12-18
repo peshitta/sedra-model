@@ -383,35 +383,28 @@ export const bookGroups = Object.freeze(
 export const getVerseByIndex = (index, ubs) => {
   const firstBook = 52;
   const lastBook = firstBook + (ubs.books - 1);
-  let lastCount = 0;
-  let count = 0;
   for (let book = firstBook; book <= lastBook; book++) {
-    count += ubs[book].verses;
-    if (index >= lastCount && index <= count) {
-      const bookIndex = index - lastCount;
-      const { chapters } = ubs[book];
-      let lastChapterCount = 0;
-      let chapterCount = 0;
-      for (let chapter = 1; chapter <= chapters; chapter++) {
-        chapterCount += ubs[book][chapter].verses;
-        if (bookIndex >= lastChapterCount && bookIndex <= chapterCount) {
-          const chapterIndex = bookIndex - lastChapterCount;
+    const b = ubs[book];
+    if (index >= b.rollupVerses && index <= b.rollupVerses + b.verses) {
+      for (let chapter = 1; chapter <= b.chapters; chapter++) {
+        const c = ubs[book][chapter];
+        if (index >= c.rollupVerses && index <= c.rollupVerses + c.verses) {
+          const verse = index - c.rollupVerses;
           return Object.freeze(
             Object.create(null, {
-              content: {
-                value: ubs[book][chapter][chapterIndex],
-                enumerable: true
-              },
-              verse: { value: chapterIndex, enumerable: true },
+              content: { value: c[verse], enumerable: true },
+              verse: { value: verse, enumerable: true },
               chapter: { value: chapter, enumerable: true },
-              book: { value: book, enumerable: true }
+              book: { value: book, enumerable: true },
+              rollupBooks: { value: b.rollupBooks, enumerable: true },
+              rollupChapters: { value: c.rollupChapters, enumerable: true },
+              rollupVerses: { value: c.rollupVerses, enumerable: true },
+              rollupWords: { value: c.rollupWords, enumerable: true }
             })
           );
         }
-        lastChapterCount = chapterCount;
       }
     }
-    lastCount = count;
   }
   return null;
 };

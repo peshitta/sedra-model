@@ -694,27 +694,44 @@ describe('Sedra model', () => {
           1: [10762, 9144, 9568, 12523, 3245, 4227, 3245, 167],
           2: [165, 9084, 696, 690, 9084, 9371, 9370, 9084, 8941, 432],
           verses: 2,
-          words: 18
+          words: 18,
+          rollupChapters: 0,
+          rollupVerses: 0,
+          rollupWords: 0
         },
         2: {
           1: [10762, 9144, 9568, 12523, 3245, 4227, 3245, 167],
           2: [165, 9084, 696, 690, 9084, 9371, 9370, 9084, 8941, 432],
           verses: 2,
-          words: 18
+          words: 18,
+          rollupChapters: 1,
+          rollupVerses: 2,
+          rollupWords: 18
         },
         chapters: 2,
         verses: 4,
-        words: 36
+        words: 36,
+        rollupBooks: 0,
+        rollupChapters: 0,
+        rollupVerses: 0,
+        rollupWords: 0
       },
       53: {
         1: {
           1: [19959, 283, 9568, 12523, 3245, 914],
           verses: 1,
-          words: 6
+          words: 6,
+          rollupChapters: 2,
+          rollupVerses: 4,
+          rollupWords: 36
         },
         chapters: 1,
         verses: 1,
-        words: 6
+        words: 6,
+        rollupBooks: 1,
+        rollupChapters: 2,
+        rollupVerses: 4,
+        rollupWords: 36
       },
       books: 2,
       chapters: 3,
