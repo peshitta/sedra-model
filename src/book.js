@@ -107,12 +107,12 @@ export const books = [
   m(50, 50, '', '', []),
   m(51, 51, '', '', ['New Testament', 'NT']),
   m(52, 52, 'mty', "mat'ay", ['Matthew', 'Mt', 'Matt']),
-  m(53, 53, 'mrqws', 'marqwUs', ['Mark', 'Mk', 'Mrk', 'Mr']),
+  m(53, 53, 'mrqws', 'marqwOs', ['Mark', 'Mk', 'Mrk', 'Mr']),
   m(54, 54, 'lwq)', 'lwuqo)', ['Luke', 'Lk', 'Luk']),
   m(55, 55, 'ywxnn', 'ywuxanon', ['John', 'Jn', 'Jhn']),
   m(56, 56, 'prksys', 'praksyis', ['Acts of the Apostles', 'Acts', 'Ac']),
   m(57, 60, 'r*hwmy)', 'r*h_wumoye)', ['Romans', 'Rom', 'Ro', 'Rm']),
-  m(58, 61, '). qwr*ynty)', '). qwUr*yint,oye)', [
+  m(58, 61, '). qwr*ynty)', '). qwOr*yint,oye)', [
     '1 Corinthians',
     '1Cor',
     '1 Cor',
@@ -126,7 +126,7 @@ export const books = [
     '1st Corinthians',
     'First Corinthians'
   ]),
-  m(59, 62, 'b. qwr*ynty)', 'b. qwUr*yint,oye)', [
+  m(59, 62, 'b. qwr*ynty)', 'b. qwOr*yint,oye)', [
     '2 Corinthians',
     '2Cor',
     '2 Cor',
@@ -143,7 +143,7 @@ export const books = [
   m(61, 64, ')psy*)', ')epEsy*e)', ['Ephesians', 'Eph', 'Ephes']),
   m(62, 65, 'pylypsy*)', 'pyilyipEsoy*e)', ['Philippians', 'Phil', 'Php']),
   m(63, 66, 'qwl*sy)', 'qwl*sy)', ['Colossians', 'Col']),
-  m(64, 67, '). tsl*wnyqy)', "). t'esol*wUnyiqoye)", [
+  m(64, 67, '). tsl*wnyqy)', "). t'esol*wOnyiqoye)", [
     '1 Thessalonians',
     '1Thes',
     '1 Thes',
@@ -159,7 +159,7 @@ export const books = [
     '1st Thessalonians',
     'First Thessalonians'
   ]),
-  m(65, 68, 'b. tsl*wnyqy)', "b. t'esol*wUnyiqoye)", [
+  m(65, 68, 'b. tsl*wnyqy)', "b. t'esol*wOnyiqoye)", [
     '2 Thessalonians',
     '2Thes',
     '2 Thes',
@@ -175,7 +175,7 @@ export const books = [
     '2nd Thessalonians',
     'Second Thessalonians'
   ]),
-  m(66, 69, '). Tymt)ws', '). Tyimote)wUs', [
+  m(66, 69, '). Tymt)ws', '). Tyimote)wOs', [
     '1 Timothy',
     '1Tim',
     '1 Tim',
@@ -188,7 +188,7 @@ export const books = [
     '1st Timothy',
     'First Timothy'
   ]),
-  m(67, 70, 'b. Tymt)ws', 'b. Tyimote)wUs', [
+  m(67, 70, 'b. Tymt)ws', 'b. Tyimote)wOs', [
     '2 Timothy',
     '2Tim',
     '2 Tim',
@@ -201,10 +201,10 @@ export const books = [
     '2nd Timothy',
     'Second Timothy'
   ]),
-  m(68, 71, 'TTws', 'TETwUs', ['Titus', 'Tit']),
-  m(69, 72, 'pylmwn', 'pyilemwUn', ['Philemon', 'Philem', 'Phm']),
+  m(68, 71, 'TTws', 'TETwOs', ['Titus', 'Tit']),
+  m(69, 72, 'pylmwn', 'pyilemwOn', ['Philemon', 'Philem', 'Phm']),
   m(70, 73, '(br*y)', '(eb,r*oye)', ['Hebrews', 'Heb']),
-  m(71, 57, 'y(qwb', 'ya(qwUb,', ['James', 'Jas', 'Jm']),
+  m(71, 57, 'y(qwb', 'ya(qwOb,', ['James', 'Jas', 'Jm']),
   m(72, 58, '). k)p)', "). k'e)p,o)", [
     '1 Peter',
     '1Pet',
