@@ -734,6 +734,8 @@ describe('Sedra model', () => {
     test.strictEqual(book.englishName, 'Matthew', 'getBookByEnglish Matthew');
     book = sut.getBookByEnglish('III Joh');
     test.strictEqual(book.englishName, '3 John', 'getBookByEnglish 3 John');
+    book = sut.getBookByEnglish(null);
+    test.strictEqual(book, undefined, 'non-existent book');
   });
   it('Get Book English Names', () => {
     let englishNames = sut.getBookEnglishNames();
@@ -788,6 +790,24 @@ describe('Sedra model', () => {
 
     index = sut.getIndexByVerse({ book: 53 }, ubs);
     test.strictEqual(index, 4, 'missing chapter reference, 53 book');
+
+    index = sut.getIndexByVerse(
+      { book: 54, chapter: 2, verse: 2 },
+      ubs
+    );
+    test.strictEqual(index, 0, 'book 54');
+
+    index = sut.getIndexByVerse(
+      { book: 52, chapter: 19, verse: 2 },
+      ubs
+    );
+    test.strictEqual(index, 3, 'non-existent chapter 19');
+
+    index = sut.getIndexByVerse(
+      { book: 52, chapter: 2, verse: 100 },
+      ubs
+    );
+    test.strictEqual(index, 3, 'non-existent verse 100');
   });
   it('getIndexByVerseWithChapters', () => {
     let index = sut.getIndexByVerseWithChapters(
@@ -804,5 +824,23 @@ describe('Sedra model', () => {
 
     index = sut.getIndexByVerseWithChapters({ book: 53 }, ubs);
     test.strictEqual(index, 6, 'missing chapter reference, 53 book');
+
+    index = sut.getIndexByVerseWithChapters(
+      { book: 54, chapter: 2, verse: 2 },
+      ubs
+    );
+    test.strictEqual(index, 0, 'book 54');
+
+    index = sut.getIndexByVerseWithChapters(
+      { book: 52, chapter: 19, verse: 2 },
+      ubs
+    );
+    test.strictEqual(index, 5, 'non-existent chapter 19');
+
+    index = sut.getIndexByVerseWithChapters(
+      { book: 52, chapter: 2, verse: 100 },
+      ubs
+    );
+    test.strictEqual(index, 5, 'non-existent verse 100');
   });
 });

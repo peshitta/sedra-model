@@ -328,8 +328,8 @@ export const getBook = id => books[id];
 const bookByEnglish = {};
 
 /**
- * Get book object by english name, short or full
- * @param { string } name book english full or short name
+ * Get book object by English name, short or full
+ * @param { string } name book English full or short name
  * @returns { Book } Book object from books array
  */
 export const getBookByEnglish = name => {
@@ -340,18 +340,18 @@ export const getBookByEnglish = name => {
     for (let id = 52; id < 79; id++) {
       const book = getBook(id);
       for (let i = 0, len = book.english.length; i < len; i++) {
-        bookByEnglish[book.english[i]] = book;
+        bookByEnglish[book.english[i].toLowerCase()] = book;
       }
     }
     Object.freeze(bookByEnglish);
   }
-  return bookByEnglish[name];
+  return bookByEnglish[(name || '').toLowerCase()];
 };
 
 const bookEnglishNames = [];
 /**
- * Get the list of english book names, short and full.
- * @returns { Array } sorted list of book english names
+ * Get the list of English book names, short and full.
+ * @returns { Array } sorted list of book English names
  */
 export const getBookEnglishNames = () => {
   if (!bookEnglishNames.length) {
@@ -451,21 +451,47 @@ export const getVerseByIndex = (index, ubs) => {
 /**
  * Get an index by verse reference
  * @static
- * @param { object } reference {book, chapter, verse} reference
+ * @param { object } reference {book:number, chapter:number, verse:number} reference
  * @param { object } ubs NT Peshitta object hash
  * @returns { number } index
  */
-export const getIndexByVerse = ({ book, chapter, verse }, ubs) =>
-  ubs[book][chapter || 1].rollupVerses + ((verse || 1) - 1);
+export const getIndexByVerse = ({ book, chapter, verse }, ubs) => {
+  const b = ubs[book];
+  if (!b) {
+    return 0;
+  }
+  let ci = chapter && chapter > 0 ? chapter : 1;
+  if (ci > b.chapters) {
+    ci = b.chapters;
+  }
+  const c = b[ci];
+  let vi = verse && verse > 0 ? verse : 1;
+  if (vi > c.verses) {
+    vi = c.verses;
+  }
+  return c.rollupVerses + (vi - 1);
+};
 
 /**
  * Get an index by verse reference with rollup chapters included
  * @static
- * @param { object } reference {book, chapter, verse} reference
+ * @param { object } reference {book:number, chapter:number, verse:number} reference
  * @param { object } ubs NT Peshitta object hash
  * @returns { number } index
  */
 export const getIndexByVerseWithChapters = ({ book, chapter, verse }, ubs) => {
-  const c = ubs[book][chapter || 1];
-  return c.rollupChapters + c.rollupVerses + (verse || 0);
+  const b = ubs[book];
+  if (!b) {
+    return 0;
+  }
+  let ci = chapter && chapter > 0 ? chapter : 1;
+  if (ci > b.chapters) {
+    ci = b.chapters;
+  }
+  const c = b[ci];
+  let vi = verse && verse > 0 ? verse : 0;
+  if (vi > c.verses) {
+    vi = c.verses;
+  }
+  return c.rollupChapters + c.rollupVerses + vi;
 };
