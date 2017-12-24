@@ -58,5 +58,9 @@ export {
   peshittaBooks,
   makeBookGroup,
   bookGroups,
-  getVerseByIndex
+  getVerseByIndex,
+  getIndexByVerse,
+  getIndexByVerseWithChapters,
+  getBookByEnglish,
+  getBookEnglishNames
 } from './book';

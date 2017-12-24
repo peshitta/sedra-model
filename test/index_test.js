@@ -2,6 +2,56 @@ const test = require('assert');
 const sut = require('../build/sedra-model');
 
 describe('Sedra model', () => {
+  const ubs = {
+    52: {
+      1: {
+        1: [10762, 9144, 9568, 12523, 3245, 4227, 3245, 167],
+        2: [165, 9084, 696, 690, 9084, 9371, 9370, 9084, 8941, 432],
+        verses: 2,
+        words: 18,
+        rollupChapters: 0,
+        rollupVerses: 0,
+        rollupWords: 0
+      },
+      2: {
+        1: [10762, 9144, 9568, 12523, 3245, 4227, 3245, 167],
+        2: [165, 9084, 696, 690, 9084, 9371, 9370, 9084, 8941, 432],
+        verses: 2,
+        words: 18,
+        rollupChapters: 1,
+        rollupVerses: 2,
+        rollupWords: 18
+      },
+      chapters: 2,
+      verses: 4,
+      words: 36,
+      rollupBooks: 0,
+      rollupChapters: 0,
+      rollupVerses: 0,
+      rollupWords: 0
+    },
+    53: {
+      1: {
+        1: [19959, 283, 9568, 12523, 3245, 914],
+        verses: 1,
+        words: 6,
+        rollupChapters: 2,
+        rollupVerses: 4,
+        rollupWords: 36
+      },
+      chapters: 1,
+      verses: 1,
+      words: 6,
+      rollupBooks: 1,
+      rollupChapters: 2,
+      rollupVerses: 4,
+      rollupWords: 36
+    },
+    books: 2,
+    chapters: 3,
+    verses: 5,
+    words: 42
+  };
   it('Make Root', () => {
     const m = sut.makeRoot('ABOBA', 'abb          |0', 2);
     test.strictEqual(m.root, 'ABOBA', 'root matching');
@@ -679,6 +729,26 @@ describe('Sedra model', () => {
     const m = sut.getBook(77);
     test.strictEqual(m.englishName, 'Jude', 'getBook');
   });
+  it('Get Book By English Names', () => {
+    let book = sut.getBookByEnglish('Matthew');
+    test.strictEqual(book.englishName, 'Matthew', 'getBookByEnglish Matthew');
+    book = sut.getBookByEnglish('III Joh');
+    test.strictEqual(book.englishName, '3 John', 'getBookByEnglish 3 John');
+  });
+  it('Get Book English Names', () => {
+    let englishNames = sut.getBookEnglishNames();
+    test.strictEqual(
+      englishNames.length,
+      196,
+      'getBookEnglishNames un-initialized'
+    );
+    englishNames = sut.getBookEnglishNames();
+    test.strictEqual(
+      englishNames[0],
+      '1 Co',
+      'getBookEnglishNames initialized'
+    );
+  });
   it('Make Group Book', () => {
     const m = sut.makeBookGroup(
       'western',
@@ -688,56 +758,6 @@ describe('Sedra model', () => {
     test.strictEqual(m.name, 'Western Five', 'makeBookGroup');
   });
   it('getVerseByIndex', () => {
-    const ubs = {
-      52: {
-        1: {
-          1: [10762, 9144, 9568, 12523, 3245, 4227, 3245, 167],
-          2: [165, 9084, 696, 690, 9084, 9371, 9370, 9084, 8941, 432],
-          verses: 2,
-          words: 18,
-          rollupChapters: 0,
-          rollupVerses: 0,
-          rollupWords: 0
-        },
-        2: {
-          1: [10762, 9144, 9568, 12523, 3245, 4227, 3245, 167],
-          2: [165, 9084, 696, 690, 9084, 9371, 9370, 9084, 8941, 432],
-          verses: 2,
-          words: 18,
-          rollupChapters: 1,
-          rollupVerses: 2,
-          rollupWords: 18
-        },
-        chapters: 2,
-        verses: 4,
-        words: 36,
-        rollupBooks: 0,
-        rollupChapters: 0,
-        rollupVerses: 0,
-        rollupWords: 0
-      },
-      53: {
-        1: {
-          1: [19959, 283, 9568, 12523, 3245, 914],
-          verses: 1,
-          words: 6,
-          rollupChapters: 2,
-          rollupVerses: 4,
-          rollupWords: 36
-        },
-        chapters: 1,
-        verses: 1,
-        words: 6,
-        rollupBooks: 1,
-        rollupChapters: 2,
-        rollupVerses: 4,
-        rollupWords: 36
-      },
-      books: 2,
-      chapters: 3,
-      verses: 5,
-      words: 42
-    };
     let verse = sut.getVerseByIndex(2, ubs);
     test.strictEqual(verse.book, 52, 'matthew book');
     test.strictEqual(verse.chapter, 1, 'matthew chapter 1');
@@ -755,5 +775,34 @@ describe('Sedra model', () => {
 
     verse = sut.getVerseByIndex(6, ubs);
     test.strictEqual(verse, null, 'non-existent verse');
+  });
+  it('getIndexByVerse', () => {
+    let index = sut.getIndexByVerse({ book: 52, chapter: 2, verse: 2 }, ubs);
+    test.strictEqual(index, 3, 'full reference');
+
+    index = sut.getIndexByVerse({ book: 53, chapter: 1 }, ubs);
+    test.strictEqual(index, 4, 'missing verse reference');
+
+    index = sut.getIndexByVerse({ book: 52 }, ubs);
+    test.strictEqual(index, 0, 'missing chapter reference, 52 book');
+
+    index = sut.getIndexByVerse({ book: 53 }, ubs);
+    test.strictEqual(index, 4, 'missing chapter reference, 53 book');
+  });
+  it('getIndexByVerseWithChapters', () => {
+    let index = sut.getIndexByVerseWithChapters(
+      { book: 52, chapter: 2, verse: 2 },
+      ubs
+    );
+    test.strictEqual(index, 5, 'full reference');
+
+    index = sut.getIndexByVerseWithChapters({ book: 53, chapter: 1 }, ubs);
+    test.strictEqual(index, 6, 'missing verse reference');
+
+    index = sut.getIndexByVerseWithChapters({ book: 52 }, ubs);
+    test.strictEqual(index, 0, 'missing chapter reference, 52 book');
+
+    index = sut.getIndexByVerseWithChapters({ book: 53 }, ubs);
+    test.strictEqual(index, 6, 'missing chapter reference, 53 book');
   });
 });

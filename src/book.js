@@ -325,6 +325,45 @@ Object.freeze(books);
  */
 export const getBook = id => books[id];
 
+const bookByEnglish = {};
+
+/**
+ * Get book object by english name, short or full
+ * @param { string } name book english full or short name
+ * @returns { Book } Book object from books array
+ */
+export const getBookByEnglish = name => {
+  if (
+    Object.keys(bookByEnglish).length === 0 &&
+    bookByEnglish.constructor === Object
+  ) {
+    for (let id = 52; id < 79; id++) {
+      const book = getBook(id);
+      for (let i = 0, len = book.english.length; i < len; i++) {
+        bookByEnglish[book.english[i]] = book;
+      }
+    }
+    Object.freeze(bookByEnglish);
+  }
+  return bookByEnglish[name];
+};
+
+const bookEnglishNames = [];
+/**
+ * Get the list of english book names, short and full.
+ * @returns { Array } sorted list of book english names
+ */
+export const getBookEnglishNames = () => {
+  if (!bookEnglishNames.length) {
+    for (let book = 52; book < 79; book++) {
+      bookEnglishNames.push(...getBook(book).english);
+      bookEnglishNames.sort();
+    }
+    Object.freeze(bookEnglishNames);
+  }
+  return bookEnglishNames;
+};
+
 /**
  * Build a BookGroup object - a grouping of Peshitta books
  * @static
@@ -407,4 +446,26 @@ export const getVerseByIndex = (index, ubs) => {
     }
   }
   return null;
+};
+
+/**
+ * Get an index by verse reference
+ * @static
+ * @param { object } reference {book, chapter, verse} reference
+ * @param { object } ubs NT Peshitta object hash
+ * @returns { number } index
+ */
+export const getIndexByVerse = ({ book, chapter, verse }, ubs) =>
+  ubs[book][chapter || 1].rollupVerses + ((verse || 1) - 1);
+
+/**
+ * Get an index by verse reference with rollup chapters included
+ * @static
+ * @param { object } reference {book, chapter, verse} reference
+ * @param { object } ubs NT Peshitta object hash
+ * @returns { number } index
+ */
+export const getIndexByVerseWithChapters = ({ book, chapter, verse }, ubs) => {
+  const c = ubs[book][chapter || 1];
+  return c.rollupChapters + c.rollupVerses + (verse || 0);
 };
