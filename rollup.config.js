@@ -49,10 +49,9 @@ const plugins = [buble()];
 const targets = [
   {
     input,
-    output: [{ file: pkg.main, format, name, globals, sourcemap }],
+    output: [{ file: pkg.main, format, name, globals, banner, sourcemap }],
     external,
-    plugins: plugins.slice(0),
-    banner
+    plugins: plugins.slice(0)
   }
 ];
 
@@ -60,10 +59,9 @@ if (isProduction) {
   // ES module (for bundlers) build.
   targets.push({
     input,
-    output: [{ file: pkg.module, format: 'es' }],
+    output: [{ file: pkg.module, format: 'es', banner }],
     external,
-    plugins: plugins.slice(0),
-    banner
+    plugins: plugins.slice(0)
   });
 
   plugins.push(
@@ -80,10 +78,9 @@ if (isProduction) {
   // browser/nodejs-friendly minified UMD build
   targets.push({
     input,
-    output: [{ file: pkg.mainMin, format, name, globals }],
+    output: [{ file: pkg.mainMin, format, name, banner, globals }],
     external,
-    plugins,
-    banner
+    plugins
   });
 } else if (!isDev) {
   targets[0].plugins.push(

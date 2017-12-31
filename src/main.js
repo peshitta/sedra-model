@@ -59,8 +59,9 @@ export {
   makeBookGroup,
   bookGroups,
   getVerseByIndex,
+  getIndexByVerseWoChapter,
   getIndexByVerse,
-  getIndexByVerseWithChapters,
   getBookByEnglish,
-  getBookEnglishNames
+  getBookEnglishNames,
+  getNamedReferences
 } from './book';

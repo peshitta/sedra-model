@@ -741,7 +741,7 @@ describe('Sedra model', () => {
     let englishNames = sut.getBookEnglishNames();
     test.strictEqual(
       englishNames.length,
-      196,
+      221,
       'getBookEnglishNames un-initialized'
     );
     englishNames = sut.getBookEnglishNames();
@@ -778,69 +778,64 @@ describe('Sedra model', () => {
     verse = sut.getVerseByIndex(6, ubs);
     test.strictEqual(verse, null, 'non-existent verse');
   });
-  it('getIndexByVerse', () => {
-    let index = sut.getIndexByVerse({ book: 52, chapter: 2, verse: 2 }, ubs);
+  it('getIndexByVerseWoChapter', () => {
+    let index = sut.getIndexByVerseWoChapter(
+      { book: 52, chapter: 2, verse: 2 },
+      ubs
+    );
     test.strictEqual(index, 3, 'full reference');
 
-    index = sut.getIndexByVerse({ book: 53, chapter: 1 }, ubs);
+    index = sut.getIndexByVerseWoChapter({ book: 53, chapter: 1 }, ubs);
     test.strictEqual(index, 4, 'missing verse reference');
 
-    index = sut.getIndexByVerse({ book: 52 }, ubs);
+    index = sut.getIndexByVerseWoChapter({ book: 52 }, ubs);
     test.strictEqual(index, 0, 'missing chapter reference, 52 book');
 
-    index = sut.getIndexByVerse({ book: 53 }, ubs);
+    index = sut.getIndexByVerseWoChapter({ book: 53 }, ubs);
     test.strictEqual(index, 4, 'missing chapter reference, 53 book');
 
-    index = sut.getIndexByVerse(
+    index = sut.getIndexByVerseWoChapter(
       { book: 54, chapter: 2, verse: 2 },
       ubs
     );
     test.strictEqual(index, 0, 'book 54');
 
-    index = sut.getIndexByVerse(
+    index = sut.getIndexByVerseWoChapter(
       { book: 52, chapter: 19, verse: 2 },
       ubs
     );
     test.strictEqual(index, 3, 'non-existent chapter 19');
 
-    index = sut.getIndexByVerse(
+    index = sut.getIndexByVerseWoChapter(
       { book: 52, chapter: 2, verse: 100 },
       ubs
     );
     test.strictEqual(index, 3, 'non-existent verse 100');
   });
-  it('getIndexByVerseWithChapters', () => {
-    let index = sut.getIndexByVerseWithChapters(
-      { book: 52, chapter: 2, verse: 2 },
-      ubs
-    );
+  it('getIndexByVerse', () => {
+    let index = sut.getIndexByVerse({ book: 52, chapter: 2, verse: 2 }, ubs);
     test.strictEqual(index, 5, 'full reference');
 
-    index = sut.getIndexByVerseWithChapters({ book: 53, chapter: 1 }, ubs);
+    index = sut.getIndexByVerse({ book: 53, chapter: 1 }, ubs);
     test.strictEqual(index, 6, 'missing verse reference');
 
-    index = sut.getIndexByVerseWithChapters({ book: 52 }, ubs);
+    index = sut.getIndexByVerse({ book: 52 }, ubs);
     test.strictEqual(index, 0, 'missing chapter reference, 52 book');
 
-    index = sut.getIndexByVerseWithChapters({ book: 53 }, ubs);
+    index = sut.getIndexByVerse({ book: 53 }, ubs);
     test.strictEqual(index, 6, 'missing chapter reference, 53 book');
 
-    index = sut.getIndexByVerseWithChapters(
-      { book: 54, chapter: 2, verse: 2 },
-      ubs
-    );
+    index = sut.getIndexByVerse({ book: 54, chapter: 2, verse: 2 }, ubs);
     test.strictEqual(index, 0, 'book 54');
 
-    index = sut.getIndexByVerseWithChapters(
-      { book: 52, chapter: 19, verse: 2 },
-      ubs
-    );
+    index = sut.getIndexByVerse({ book: 52, chapter: 19, verse: 2 }, ubs);
     test.strictEqual(index, 5, 'non-existent chapter 19');
 
-    index = sut.getIndexByVerseWithChapters(
-      { book: 52, chapter: 2, verse: 100 },
-      ubs
-    );
+    index = sut.getIndexByVerse({ book: 52, chapter: 2, verse: 100 }, ubs);
     test.strictEqual(index, 5, 'non-existent verse 100');
+  });
+  it('Get Named References', () => {
+    const namedReference = sut.getNamedReferences();
+    test.strictEqual(namedReference.length, 43796, 'length');
   });
 });
