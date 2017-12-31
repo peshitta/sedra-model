@@ -1635,6 +1635,7 @@ export const getBook = id => books[id];
 const bookByEnglish = {};
 
 /**
+ * @static
  * Get book object by English name, short or full
  * @param { string } name book English full or short name
  * @returns { Book } Book object from books array
@@ -1657,6 +1658,7 @@ export const getBookByEnglish = name => {
 
 const bookEnglishNames = [];
 /**
+ * @static
  * Get the list of English book names, short and full.
  * @returns { Array } sorted list of book English names
  */
@@ -1673,6 +1675,7 @@ export const getBookEnglishNames = () => {
 
 const namedReferences = [];
 /**
+ * @static
  * Get named reference list combining all supported name options
  * @returns { Array } list of named references
  */
