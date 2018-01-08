@@ -62,6 +62,7 @@ export {
   getIndexByVerseWoChapter,
   getIndexByVerse,
   getBookByEnglish,
+  getBooksByEnglish,
   getBookEnglishNames,
   getNamedReferences
 } from './book';

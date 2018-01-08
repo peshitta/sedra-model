@@ -25,7 +25,7 @@ Following bundles are available:
 libraries and applications
 
 The package could also be downloaded directly from:
-[https://registry.npmjs.org/sedra-model/-/sedra-model-1.1.8.tgz](https://registry.npmjs.org/sedra-model/-/sedra-model-1.1.8.tgz)
+[https://registry.npmjs.org/sedra-model/-/sedra-model-1.1.9.tgz](https://registry.npmjs.org/sedra-model/-/sedra-model-1.1.9.tgz)
 
 ## More information
 
@@ -118,6 +118,7 @@ npm run build
     * [.makeBook(id, peshittaId, name, vocalised, english, stats)](#module_sedraModel.makeBook) ⇒ <code>Book</code>
     * [.sorter(a, b)](#module_sedraModel.sorter) ⇒ <code>number</code>
     * [.getBook(id)](#module_sedraModel.getBook) ⇒ <code>Book</code>
+    * [.getBooksByEnglish()](#module_sedraModel.getBooksByEnglish) ⇒ <code>Object</code>
     * [.getBookByEnglish(name)](#module_sedraModel.getBookByEnglish) ⇒ <code>Book</code>
     * [.getBookEnglishNames()](#module_sedraModel.getBookEnglishNames) ⇒ <code>Array</code>
     * [.getNamedReferences()](#module_sedraModel.getNamedReferences) ⇒ <code>Array</code>
@@ -678,6 +679,11 @@ Get book record with the given id from books array
 | --- | --- | --- |
 | id | <code>number</code> | Book id |
 
+<a name="module_sedraModel.getBooksByEnglish"></a>
+
+### sedraModel.getBooksByEnglish() ⇒ <code>Object</code>
+**Kind**: static method of [<code>sedraModel</code>](#module_sedraModel)  
+**Returns**: <code>Object</code> - English name to Book hash  
 <a name="module_sedraModel.getBookByEnglish"></a>
 
 ### sedraModel.getBookByEnglish(name) ⇒ <code>Book</code>

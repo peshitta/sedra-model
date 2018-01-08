@@ -1632,7 +1632,35 @@ Object.freeze(books);
  */
 export const getBook = id => books[id];
 
-const bookByEnglish = {};
+/**
+ * @static
+ * @const
+ * @private
+ * Book by english name hash. The name key is lowercase.
+ * @type { Object } English name to Book hash
+ */
+const booksByEnglish = {};
+
+/**
+ * @static
+ * Get books hash by English name, short and full
+ * @returns { Object }  English name to Book hash
+ */
+export const getBooksByEnglish = () => {
+  if (
+    Object.keys(booksByEnglish).length === 0 &&
+    booksByEnglish.constructor === Object
+  ) {
+    for (let id = 52; id < 79; id++) {
+      const book = getBook(id);
+      for (let i = 0, len = book.english.length; i < len; i++) {
+        booksByEnglish[book.english[i].toLowerCase()] = book;
+      }
+    }
+    Object.freeze(booksByEnglish);
+  }
+  return booksByEnglish;
+};
 
 /**
  * @static
@@ -1641,19 +1669,8 @@ const bookByEnglish = {};
  * @returns { Book } Book object from books array
  */
 export const getBookByEnglish = name => {
-  if (
-    Object.keys(bookByEnglish).length === 0 &&
-    bookByEnglish.constructor === Object
-  ) {
-    for (let id = 52; id < 79; id++) {
-      const book = getBook(id);
-      for (let i = 0, len = book.english.length; i < len; i++) {
-        bookByEnglish[book.english[i].toLowerCase()] = book;
-      }
-    }
-    Object.freeze(bookByEnglish);
-  }
-  return bookByEnglish[(name || '').toLowerCase()];
+  const hash = getBooksByEnglish();
+  return hash[(name || '').toLowerCase()];
 };
 
 const bookEnglishNames = [];
@@ -1666,8 +1683,8 @@ export const getBookEnglishNames = () => {
   if (!bookEnglishNames.length) {
     for (let book = 52; book < 79; book++) {
       bookEnglishNames.push(...getBook(book).english);
-      bookEnglishNames.sort();
     }
+    bookEnglishNames.sort();
     Object.freeze(bookEnglishNames);
   }
   return bookEnglishNames;

@@ -729,6 +729,10 @@ describe('Sedra model', () => {
     const m = sut.getBook(77);
     test.strictEqual(m.englishName, 'Jude', 'getBook');
   });
+  it('Get Books By English Names', () => {
+    const bookNames = Object.keys(sut.getBooksByEnglish());
+    test.strictEqual(bookNames.length, 221, 'books by English length');
+  });
   it('Get Book By English Names', () => {
     let book = sut.getBookByEnglish('Matthew');
     test.strictEqual(book.englishName, 'Matthew', 'getBookByEnglish Matthew');
