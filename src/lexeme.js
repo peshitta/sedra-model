@@ -67,12 +67,7 @@ export const lexemeThirdSuffix = Object.freeze(['', 'wuto)', 'o)iTt']);
  * @const
  * @type { Array.<string> }
  */
-export const lexemePrefix = Object.freeze([
-  '',
-  'm',
-  't',
-  'b' // TODO verify
-]);
+export const lexemePrefix = Object.freeze(['', 'm', 't', '$']);
 
 /**
  * Lexeme Radical Type enumeration
@@ -111,7 +106,8 @@ export const lexemeForm = Object.freeze([
   'P',
   'Ethp',
   'Palpel',
-  'Ethpalpal'
+  'Ethpalpal',
+  'Pamel' // ??? not documented
 ]);
 
 /**
