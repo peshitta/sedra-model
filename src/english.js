@@ -35,7 +35,7 @@ export const verbType = Object.freeze(['None', 'Transitive', 'Intransitive']);
  * @param { number } after String after meaning, e.g. ""
  * @param { number } comment Comment, e.g. ""
  * @param { number } attributes 16-bit map
- * @param { number } flag 1 bit flag
+ * @param { boolean } flag 1 bit flag
  * @returns { English } Sedra English row
  */
 export const makeEnglish = (

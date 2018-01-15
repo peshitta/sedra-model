@@ -536,7 +536,7 @@ Id is the position in the database array so it is not stored
 | after | <code>number</code> | String after meaning, e.g. "" |
 | comment | <code>number</code> | Comment, e.g. "" |
 | attributes | <code>number</code> | 16-bit map |
-| flag | <code>number</code> | 1 bit flag |
+| flag | <code>boolean</code> | 1 bit flag |
 
 <a name="module_sedraModel.makeEnglishAttribute"></a>
 
